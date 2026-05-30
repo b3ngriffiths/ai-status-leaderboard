@@ -1,8 +1,20 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-05-30T21:04:23.776Z",
+  "last_scraped": "2026-05-30T21:07:20.603Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "2zr0rkdxjdtc-uncategorised",
+      "product_id": "anthropic-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated errors for Claude Opus 4.8",
+      "opened_at": "2026-05-29T18:35:22.808Z",
+      "resolved_at": "2026-05-29T19:12:08.252Z",
+      "duration_minutes": 37,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/03j611vnshfp"
+    },
     {
       "id": "5s24h0pbdj5d-rwppv331jlwc",
       "product_id": "claude-ai",
@@ -62,6 +74,18 @@
       "duration_minutes": 15,
       "raw_severity": "degraded_performance",
       "status_page_incident_url": "https://stspg.io/2zd5npm1vfzq"
+    },
+    {
+      "id": "8q00jfj4yfv6-uncategorised",
+      "product_id": "anthropic-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Billing and subscription management issues",
+      "opened_at": "2026-05-28T19:04:04.091Z",
+      "resolved_at": "2026-05-28T19:23:57.798Z",
+      "duration_minutes": 20,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/1bm8nzs3bzw2"
     },
     {
       "id": "0w1bqsc12lt8-rwppv331jlwc",
@@ -398,6 +422,18 @@
       "duration_minutes": 274,
       "raw_severity": "partial_outage",
       "status_page_incident_url": "https://stspg.io/fknlkqdwvwnm"
+    },
+    {
+      "id": "zvlgr3k8lny0-uncategorised",
+      "product_id": "anthropic-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated errors on Claude.ai",
+      "opened_at": "2026-05-21T20:24:32.488Z",
+      "resolved_at": "2026-05-21T21:08:57.362Z",
+      "duration_minutes": 44,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/16wtbm7m7hdy"
     },
     {
       "id": "4znk51f63g93-rwppv331jlwc",
@@ -1934,6 +1970,18 @@
       "duration_minutes": 21,
       "raw_severity": "degraded_performance",
       "status_page_incident_url": "https://stspg.io/v1941b5q9yxp"
+    },
+    {
+      "id": "7bk0ftl0mpny-uncategorised",
+      "product_id": "anthropic-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Claude Code Code Review was intermittently failing",
+      "opened_at": "2026-04-28T06:00:00.000Z",
+      "resolved_at": "2026-04-28T06:00:00.000Z",
+      "duration_minutes": 0,
+      "raw_severity": "operational",
+      "status_page_incident_url": "https://stspg.io/jw32q5lgvrhk"
     },
     {
       "id": "mct55f8gxb7k-rwppv331jlwc",

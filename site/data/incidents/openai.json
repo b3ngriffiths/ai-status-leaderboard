@@ -1,6 +1,282 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-05-30T21:04:23.381Z",
+  "last_scraped": "2026-05-30T21:07:20.365Z",
   "scrape_success": true,
-  "incidents": []
+  "incidents": [
+    {
+      "id": "01KSSY9D28AM92BCDXRTS4CDKZ-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Users May Experience Issues Accessing ChatGPT",
+      "opened_at": "2026-05-29T13:20:28Z",
+      "resolved_at": "2026-05-29T13:28:52Z",
+      "duration_minutes": 8,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSRVTZVW4J7NZ3WXM74DG4KX-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Users may encounter issues with conversations",
+      "opened_at": "2026-05-29T03:18:24Z",
+      "resolved_at": "2026-05-29T04:58:14Z",
+      "duration_minutes": 100,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSRVH1TAV8Q47M91F6V4V6X0-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Users may encounter issues logging in or creating an account",
+      "opened_at": "2026-05-29T03:12:59Z",
+      "resolved_at": "2026-05-29T04:57:55Z",
+      "duration_minutes": 105,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSR5D08APXRBVK8S120N4PDX-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Business plan subscription checkout issues on web and mobile web",
+      "opened_at": "2026-05-28T20:46:17Z",
+      "resolved_at": "2026-05-29T01:29:51Z",
+      "duration_minutes": 284,
+      "raw_severity": "operational"
+    },
+    {
+      "id": "01KSPYYC11CCY3KKXEK4E03CBG-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Subscription checkout failing",
+      "opened_at": "2026-05-28T09:34:12Z",
+      "resolved_at": "2026-05-28T05:27:00Z",
+      "duration_minutes": -247,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSN9ATSF1WCJ5ZTQSR1H9CC7-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Codex Context Compaction Latency",
+      "opened_at": "2026-05-27T17:57:17Z",
+      "resolved_at": "2026-05-28T06:59:35Z",
+      "duration_minutes": 782,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSN40TAYQYGAKFA50HNH22YG-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Android ChatGPT Business users having trouble switching workspaces",
+      "opened_at": "2026-05-27T16:24:26Z",
+      "resolved_at": "2026-05-28T03:59:09Z",
+      "duration_minutes": 695,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSMYEEWP0BZYANSMAXWJ3K59-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated Latency and Errors on API",
+      "opened_at": "2026-05-27T14:47:02Z",
+      "resolved_at": "2026-05-27T17:12:55Z",
+      "duration_minutes": 146,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSJZHDY7E780KF9J2ZZ8M0GE-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Users unable to access chat support on help center",
+      "opened_at": "2026-05-26T20:27:39Z",
+      "resolved_at": "2026-05-26T20:30:52Z",
+      "duration_minutes": 3,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KSJKR3EXTMKY0C287HS1BR8P-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Login issues for FedRAMP users who recently logged out",
+      "opened_at": "2026-05-26T17:01:35Z",
+      "resolved_at": "2026-05-27T06:01:00Z",
+      "duration_minutes": 779,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KS88SRADTWQW27NYRAXMBAQN-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Increase in users hitting Codex rate limits",
+      "opened_at": "2026-05-22T16:37:50Z",
+      "resolved_at": "2026-05-23T10:58:20Z",
+      "duration_minutes": 1101,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KS695P8GHC0NCMFE96C34KJ1-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated latency and error rates for ChatGPT 5.5 Thinking",
+      "opened_at": "2026-05-21T22:05:52Z",
+      "resolved_at": "2026-05-21T23:22:55Z",
+      "duration_minutes": 77,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KS5CYS472SA003BQSXSBM8EW-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated error rates on ChatGPT paid plans",
+      "opened_at": "2026-05-21T13:52:46Z",
+      "resolved_at": "2026-05-21T15:23:34Z",
+      "duration_minutes": 91,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KS19AHSEE3DAX1HHKNQB166F-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "API users may see increased error rates for GPT-5.4 and GPT-5.5",
+      "opened_at": "2026-05-19T23:32:19Z",
+      "resolved_at": "2026-05-20T00:37:42Z",
+      "duration_minutes": 65,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KRP6FM6HSKWB3MS1EJTY6AT4-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "GPT5.5 Performance Degradation",
+      "opened_at": "2026-05-15T16:11:01Z",
+      "resolved_at": "2026-05-17T00:15:05Z",
+      "duration_minutes": 1924,
+      "raw_severity": "operational"
+    },
+    {
+      "id": "01KRM4H2T37TNSS7BCSGXVS8RQ-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Codex Cloud and Code Review experiencing high failure rate",
+      "opened_at": "2026-05-14T20:58:23Z",
+      "resolved_at": "2026-05-14T21:28:20Z",
+      "duration_minutes": 30,
+      "raw_severity": "operational"
+    },
+    {
+      "id": "01KRHSDQP7DZPAVANG3R1RCNVW-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Issues accessing ChatGPT for logged-out users",
+      "opened_at": "2026-05-13T23:05:50Z",
+      "resolved_at": "2026-05-13T23:29:40Z",
+      "duration_minutes": 24,
+      "raw_severity": "major_outage"
+    },
+    {
+      "id": "01KRG6MF021JQ997JCR7R8Y9A0-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Codex 5.5 engines are experiencing high error rate",
+      "opened_at": "2026-05-13T08:18:13Z",
+      "resolved_at": "2026-05-13T10:20:14Z",
+      "duration_minutes": 122,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KRG0AZKH41DV4D9SNJSXM33Q-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Realtime API  - SIP/WebRTC flow are down",
+      "opened_at": "2026-05-13T06:28:11Z",
+      "resolved_at": "2026-05-13T09:23:49Z",
+      "duration_minutes": 176,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KRBZTV511HR7SWVFZJ0438D6-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated error rates with GPT 5.5",
+      "opened_at": "2026-05-11T17:02:24Z",
+      "resolved_at": "2026-05-11T17:59:00Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KRAA341YK58M05V2DFGDRMFB-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Users may experience elevated errors in ChatGPT uploading files and Codex Cloud creating tasks",
+      "opened_at": "2026-05-11T01:23:13Z",
+      "resolved_at": "2026-05-11T05:35:41Z",
+      "duration_minutes": 252,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KR50YN2DBMTXGPC6BQSJN48J-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated errors for Responses API",
+      "opened_at": "2026-05-09T00:07:17Z",
+      "resolved_at": "2026-05-09T00:08:01Z",
+      "duration_minutes": 1,
+      "raw_severity": "partial_outage"
+    },
+    {
+      "id": "01KR421V8PCTFKA8EJJC2VCGA3-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Degraded Performance with Codex Cloud Tasks",
+      "opened_at": "2026-05-08T15:07:16Z",
+      "resolved_at": "2026-05-08T16:17:19Z",
+      "duration_minutes": 70,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KR3S3Q2RE54PVJ7GZPQNEY8Y-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Increased Error Rate for gpt-5.5 model in the API",
+      "opened_at": "2026-05-08T12:31:00Z",
+      "resolved_at": "2026-05-08T14:14:41Z",
+      "duration_minutes": 104,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KR1Q0SWZESWXQVWQRKRDJCHK-uncategorised",
+      "product_id": "openai-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated transcription failures affecting ChatGPT & Codex",
+      "opened_at": "2026-05-07T17:15:58Z",
+      "resolved_at": "2026-05-08T08:31:20Z",
+      "duration_minutes": 915,
+      "raw_severity": "degraded_performance"
+    }
+  ]
 }
