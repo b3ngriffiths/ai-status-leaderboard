@@ -1,0 +1,74 @@
+name: Full Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Scrape mode'
+        required: true
+        default: 'backfill'
+        type: choice
+        options:
+          - backfill
+          - scrape
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: scrape
+      cancel-in-progress: false
+    outputs:
+      sha: ${{ steps.push.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - name: Run scrape
+        run: |
+          if [ "${{ github.event.inputs.mode }}" = "backfill" ]; then
+            npm run scrape:backfill
+          else
+            npm run scrape
+          fi
+      - name: Commit data
+        id: push
+        run: |
+          git config user.name "uptime-bot"
+          git config user.email "bot@github-actions"
+          git add site/data/
+          if git diff --staged --quiet; then
+            echo "No data changes"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "data: ${{ github.event.inputs.mode }} $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git pull --rebase origin ${{ github.ref_name }}
+            git push origin ${{ github.ref_name }}
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: scrape
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.scrape.outputs.sha }}
+      - uses: actions/configure-pages@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+      - id: deploy
+        uses: actions/deploy-pages@v4
