@@ -1,0 +1,37 @@
+name: Backfill Incident History
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "yes" to confirm full history fetch (may take a minute per company)'
+        required: true
+        default: ''
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.confirm == 'yes' }}
+    permissions:
+      contents: write
+    concurrency:
+      group: scrape
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run scrape:backfill
+      - name: Commit backfilled data
+        run: |
+          git config user.name "uptime-bot"
+          git config user.email "bot@github-actions"
+          git add site/data/
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "data: backfill full incident history $(date -u '+%Y-%m-%d') UTC"
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin ${{ github.ref_name }}
