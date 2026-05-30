@@ -52,7 +52,9 @@ function buildIncidents(
     const fallbackProduct = company.products[0]
 
     if (matchedComponents.length === 0) {
-      if (!configured && components.length === 0) {
+      // No components matched — either no components listed, or all reference retired IDs.
+      // Always fall back to fallback product so incidents aren't silently dropped.
+      if (components.length === 0) {
         incidents.push({
           id: `${raw_inc.id}-uncategorised`,
           product_id: fallbackProduct.id,
@@ -65,9 +67,8 @@ function buildIncidents(
           raw_severity: mapSeverity(raw_inc.impact),
           status_page_incident_url: raw_inc.shortlink,
         })
-      } else if (configured && components.length > 0) {
-        // Incident references component IDs not in our configured list (retired/legacy IDs).
-        // Include under fallback product so history isn't silently dropped.
+      } else {
+        // Has components but IDs don't match configured list (legacy/retired).
         for (const component of components) {
           incidents.push({
             id: `${raw_inc.id}-${component.id}`,
