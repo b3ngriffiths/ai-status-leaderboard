@@ -1,0 +1,348 @@
+/* =========================================================
+   Base
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d1117;
+  --bg-card:   #161b22;
+  --bg-hover:  #1c2128;
+  --border:    #30363d;
+  --text:      #e6edf3;
+  --muted:     #7d8590;
+  --link:      #58a6ff;
+
+  --green:     #3fb950;
+  --amber:     #d29922;
+  --red:       #f85149;
+  --green-bg:  #0d2119;
+  --amber-bg:  #2d1d08;
+  --red-bg:    #2d0f0f;
+
+  --mono:      'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+  --sans:      -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+html { font-size: 14px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* =========================================================
+   Layout
+   ========================================================= */
+.container { max-width: 1400px; margin: 0 auto; padding: 0 16px; }
+
+/* =========================================================
+   Header
+   ========================================================= */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+.site-header .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.site-header h1 { font-size: 1.1rem; font-weight: 600; }
+.site-header .tagline { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+.site-header .meta { display: flex; gap: 16px; align-items: center; color: var(--muted); font-size: 0.8rem; }
+
+/* =========================================================
+   Summary bar
+   ========================================================= */
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+.summary-stat {
+  background: var(--bg-card);
+  padding: 12px 16px;
+}
+.summary-stat .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.summary-stat .value { font-size: 1rem; font-weight: 600; margin-top: 2px; }
+.summary-stat .value.mono { font-family: var(--mono); }
+
+/* =========================================================
+   Filter bar
+   ========================================================= */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.tab-group { display: flex; gap: 2px; }
+.tab {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  transition: background .15s, color .15s;
+}
+.tab:hover { background: var(--bg-hover); color: var(--text); }
+.tab.active { background: var(--bg-hover); border-color: var(--link); color: var(--link); }
+
+.filter-bar label { color: var(--muted); font-size: 0.8rem; }
+.filter-bar select {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 0.8rem;
+  padding: 4px 8px;
+}
+.filter-bar .spacer { flex: 1; }
+
+/* =========================================================
+   Leaderboard table
+   ========================================================= */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 900px;
+}
+thead th {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+thead th:hover { color: var(--text); }
+thead th.sort-asc::after { content: ' ↑'; }
+thead th.sort-desc::after { content: ' ↓'; }
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .1s;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg-hover); }
+
+td {
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.col-rank { color: var(--muted); font-size: 0.75rem; width: 40px; }
+.col-company { display: flex; align-items: center; gap: 8px; }
+.col-company img { width: 20px; height: 20px; border-radius: 4px; object-fit: contain; }
+.col-uptime {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.col-uptime.green { color: var(--green); }
+.col-uptime.amber { color: var(--amber); }
+.col-uptime.red   { color: var(--red); }
+
+.mono-cell { font-family: var(--mono); font-size: 0.8rem; }
+
+/* =========================================================
+   Category badge
+   ========================================================= */
+.badge {
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.badge-ai-api   { background: #0d2d4f; color: #58a6ff; }
+.badge-ai-chat  { background: #1f1b0d; color: #d29922; }
+.badge-ai-code  { background: #0d2119; color: #3fb950; }
+.badge-ai-image { background: #2d0f2d; color: #c270e5; }
+.badge-ai-other { background: #1c1c1c; color: #8b949e; }
+
+/* =========================================================
+   Status dot
+   ========================================================= */
+.status-dot {
+  display: inline-block;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+}
+.status-dot.operational { background: var(--green); }
+.status-dot.degraded {
+  background: var(--red);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .3; }
+}
+
+/* =========================================================
+   Sparkline
+   ========================================================= */
+.sparkline { display: block; }
+
+/* =========================================================
+   Skeleton loading
+   ========================================================= */
+.skeleton {
+  animation: shimmer 1.4s linear infinite;
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-hover) 50%, var(--bg-card) 75%);
+  background-size: 200% 100%;
+  border-radius: 3px;
+  display: inline-block;
+  height: 12px;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton-row td { pointer-events: none; }
+
+/* =========================================================
+   Last-incident tooltip
+   ========================================================= */
+[title] { cursor: help; }
+
+/* =========================================================
+   Company detail page
+   ========================================================= */
+.back-link { color: var(--muted); font-size: 0.85rem; padding: 12px 0; display: block; }
+.back-link:hover { color: var(--text); }
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0 16px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.company-header img { width: 48px; height: 48px; border-radius: 8px; object-fit: contain; }
+.company-header h1 { font-size: 1.4rem; }
+.company-header .overall-uptime { font-family: var(--mono); font-size: 1.6rem; font-weight: 700; }
+.company-header a.ext { color: var(--muted); font-size: 0.8rem; }
+
+.section-title {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  margin: 24px 0 10px;
+  text-transform: uppercase;
+}
+
+/* Product cards */
+.product-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+.product-card .card-title { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.product-card .card-uptime { font-family: var(--mono); font-size: 1.5rem; font-weight: 700; margin: 8px 0 4px; }
+.product-card .card-meta { color: var(--muted); font-size: 0.75rem; }
+.product-card .card-meta span + span::before { content: ' · '; }
+
+/* Uptime calendar */
+.calendar-section { margin-bottom: 28px; }
+.calendar-label { font-weight: 600; margin-bottom: 6px; font-size: 0.85rem; }
+.calendar-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(13, 12px);
+  grid-template-rows: repeat(7, 12px);
+  gap: 2px;
+  direction: rtl;
+}
+.cal-cell {
+  border-radius: 2px;
+  cursor: default;
+  height: 12px;
+  width: 12px;
+}
+.cal-cell.no-data  { background: var(--bg-hover); }
+.cal-cell.ok       { background: #1a4a2e; }
+.cal-cell.degraded { background: var(--amber); }
+.cal-cell.partial  { background: #d4500a; }
+.cal-cell.major    { background: var(--red); }
+
+/* Timeline chart */
+.timeline-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.timeline-wrap svg { display: block; width: 100%; }
+
+/* Incident table */
+.incident-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 32px;
+}
+.incident-table-wrap table { min-width: 700px; }
+
+.severity-badge {
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  text-transform: uppercase;
+}
+.sev-degraded_performance { background: var(--amber-bg); color: var(--amber); }
+.sev-partial_outage       { background: #2d1900; color: #d4500a; }
+.sev-major_outage         { background: var(--red-bg); color: var(--red); }
+.sev-operational          { background: var(--green-bg); color: var(--green); }
+
+.ongoing-badge { background: var(--red-bg); color: var(--red); border-radius: 3px; font-size: 0.7rem; font-weight: 600; padding: 2px 6px; }
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 640px) {
+  .filter-bar { gap: 8px; }
+  .summary-bar { grid-template-columns: repeat(2, 1fr); }
+  .company-header { padding: 12px 0; }
+}

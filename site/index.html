@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Status Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container inner">
+    <div>
+      <h1>AI Status Leaderboard</h1>
+      <div class="tagline">Uptime &amp; reliability tracking for AI APIs and products</div>
+    </div>
+    <div class="meta">
+      <span id="last-scraped">Loading…</span>
+      <a href="https://github.com/b3ngriffiths/ai-status-leaderboard" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Summary bar -->
+  <div class="summary-bar" id="summary-bar">
+    <div class="summary-stat"><div class="label">Total Incidents</div><div class="value mono" id="stat-total-incidents"><span class="skeleton" style="width:40px"></span></div></div>
+    <div class="summary-stat"><div class="label">Most Reliable</div><div class="value" id="stat-most-reliable"><span class="skeleton" style="width:120px"></span></div></div>
+    <div class="summary-stat"><div class="label">Least Reliable</div><div class="value" id="stat-least-reliable"><span class="skeleton" style="width:120px"></span></div></div>
+    <div class="summary-stat"><div class="label">Total Downtime</div><div class="value mono" id="stat-total-downtime"><span class="skeleton" style="width:60px"></span></div></div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-bar">
+    <div class="tab-group" id="cat-tabs">
+      <button class="tab active" data-cat="all">All</button>
+      <button class="tab" data-cat="ai-api">AI API</button>
+      <button class="tab" data-cat="ai-chat">AI Chat</button>
+      <button class="tab" data-cat="ai-other">AI Other</button>
+    </div>
+    <div class="tab-group" id="range-tabs">
+      <button class="tab" data-range="7">7d</button>
+      <button class="tab active" data-range="30">30d</button>
+      <button class="tab" data-range="90">90d</button>
+    </div>
+    <span class="spacer"></span>
+    <label>Sort:
+      <select id="sort-select">
+        <option value="uptime">Uptime %</option>
+        <option value="incidents">Incident Count</option>
+        <option value="downtime">Total Downtime</option>
+        <option value="mttr">MTTR</option>
+        <option value="alpha">Alphabetical</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table id="leaderboard">
+      <thead>
+        <tr>
+          <th class="col-rank">#</th>
+          <th data-col="company">Company</th>
+          <th data-col="product">Product</th>
+          <th data-col="category">Category</th>
+          <th data-col="uptime" class="sort-desc">Uptime %</th>
+          <th data-col="incidents">Incidents</th>
+          <th data-col="downtime">Total Downtime</th>
+          <th data-col="mttr">MTTR</th>
+          <th data-col="longest">Longest Outage</th>
+          <th data-col="last">Last Incident</th>
+          <th data-col="trend">30-day Trend</th>
+          <th data-col="status">Status</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body">
+        <!-- skeleton rows -->
+        <tr class="skeleton-row"><td><span class="skeleton" style="width:20px"></span></td><td><span class="skeleton" style="width:130px"></span></td><td><span class="skeleton" style="width:80px"></span></td><td><span class="skeleton" style="width:60px"></span></td><td><span class="skeleton" style="width:70px"></span></td><td><span class="skeleton" style="width:30px"></span></td><td><span class="skeleton" style="width:50px"></span></td><td><span class="skeleton" style="width:50px"></span></td><td><span class="skeleton" style="width:90px"></span></td><td><span class="skeleton" style="width:80px"></span></td><td><span class="skeleton" style="width:62px"></span></td><td><span class="skeleton" style="width:20px"></span></td></tr>
+        <tr class="skeleton-row"><td><span class="skeleton" style="width:20px"></span></td><td><span class="skeleton" style="width:100px"></span></td><td><span class="skeleton" style="width:90px"></span></td><td><span class="skeleton" style="width:60px"></span></td><td><span class="skeleton" style="width:70px"></span></td><td><span class="skeleton" style="width:30px"></span></td><td><span class="skeleton" style="width:50px"></span></td><td><span class="skeleton" style="width:50px"></span></td><td><span class="skeleton" style="width:90px"></span></td><td><span class="skeleton" style="width:80px"></span></td><td><span class="skeleton" style="width:62px"></span></td><td><span class="skeleton" style="width:20px"></span></td></tr>
+        <tr class="skeleton-row"><td><span class="skeleton" style="width:20px"></span></td><td><span class="skeleton" style="width:120px"></span></td><td><span class="skeleton" style="width:60px"></span></td><td><span class="skeleton" style="width:60px"></span></td><td><span class="skeleton" style="width:70px"></span></td><td><span class="skeleton" style="width:30px"></span></td><td><span class="skeleton" style="width:50px"></span></td><td><span class="skeleton" style="width:50px"></span></td><td><span class="skeleton" style="width:90px"></span></td><td><span class="skeleton" style="width:80px"></span></td><td><span class="skeleton" style="width:62px"></span></td><td><span class="skeleton" style="width:20px"></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
