@@ -24,10 +24,19 @@ function calcDuration(openedAt: string, resolvedAt: string | null): number | nul
   return Math.round(ms / 60_000)
 }
 
+const PLACEHOLDER = 'REPLACE_WITH_REAL_ID'
+
+function isConfigured(company: Company): boolean {
+  return company.products.every((p) =>
+    p.component_ids.every((id) => id !== PLACEHOLDER),
+  )
+}
+
 function buildIncidents(
   raw: AtlassianIncident[],
   company: Company,
 ): Incident[] {
+  const configured = isConfigured(company)
   const allComponentIds = new Set(
     company.products.flatMap((p) => p.component_ids),
   )
@@ -35,17 +44,37 @@ function buildIncidents(
   const incidents: Incident[] = []
 
   for (const raw_inc of raw) {
-    const matchedComponents = raw_inc.components.filter((c) =>
-      allComponentIds.has(c.id),
-    )
+    const matchedComponents = configured
+      ? raw_inc.components.filter((c) => allComponentIds.has(c.id))
+      : raw_inc.components
 
-    if (matchedComponents.length === 0) continue
+    // When not yet configured: fall back to first product so we get some data
+    const fallbackProduct = company.products[0]
+
+    if (matchedComponents.length === 0) {
+      if (!configured && raw_inc.components.length === 0) {
+        // No component info at all — attach to first product as placeholder
+        incidents.push({
+          id: `${raw_inc.id}-uncategorised`,
+          product_id: fallbackProduct.id,
+          component_id: 'uncategorised',
+          component_name: 'Uncategorised',
+          title: raw_inc.name,
+          opened_at: raw_inc.created_at,
+          resolved_at: raw_inc.resolved_at,
+          duration_minutes: calcDuration(raw_inc.created_at, raw_inc.resolved_at),
+          raw_severity: mapSeverity(raw_inc.impact),
+          status_page_incident_url: raw_inc.shortlink,
+        })
+      }
+      continue
+    }
 
     // One Incident record per matched component so per-product stats work
     for (const component of matchedComponents) {
-      const product = company.products.find((p) =>
-        p.component_ids.includes(component.id),
-      )
+      const product = configured
+        ? company.products.find((p) => p.component_ids.includes(component.id))
+        : fallbackProduct
       if (!product) continue
 
       incidents.push({

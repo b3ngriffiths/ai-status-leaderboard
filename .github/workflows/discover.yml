@@ -1,0 +1,28 @@
+name: Discover Status Page Components
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Status page URL (leave blank to run all companies)'
+        required: false
+        default: ''
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - name: Discover OpenAI components
+        if: ${{ github.event.inputs.url == '' || github.event.inputs.url == 'https://status.openai.com' }}
+        run: npm run discover -- https://status.openai.com
+      - name: Discover Anthropic components
+        if: ${{ github.event.inputs.url == '' || github.event.inputs.url == 'https://status.anthropic.com' }}
+        run: npm run discover -- https://status.anthropic.com
+      - name: Discover custom URL
+        if: ${{ github.event.inputs.url != '' && github.event.inputs.url != 'https://status.openai.com' && github.event.inputs.url != 'https://status.anthropic.com' }}
+        run: npm run discover -- ${{ github.event.inputs.url }}
