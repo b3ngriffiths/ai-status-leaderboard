@@ -32,6 +32,7 @@
           "id": "chatgpt",
           "name": "ChatGPT",
           "category": "ai-chat",
+          "rollup": true,
           "component_ids": [
             "01K8C008QVXHA6JX98PAS42VPD",
             "01JMXBNJXGV1T5GT2M9XA83XNG",

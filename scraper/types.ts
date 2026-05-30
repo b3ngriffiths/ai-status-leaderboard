@@ -16,6 +16,7 @@ export interface Product {
   name: string
   category: ProductCategory
   component_ids: string[]
+  rollup?: boolean
 }
 
 export interface Company {

@@ -86,24 +86,49 @@ function buildIncidents(
       continue
     }
 
+    // Group matched components by product
+    const byProduct = new Map<string, { product: typeof fallbackProduct; components: typeof matchedComponents }>()
     for (const component of matchedComponents) {
       const product = configured
         ? company.products.find((p) => p.component_ids.includes(component.id))
         : fallbackProduct
       if (!product) continue
+      const entry = byProduct.get(product.id)
+      if (entry) entry.components.push(component)
+      else byProduct.set(product.id, { product, components: [component] })
+    }
 
-      incidents.push({
-        id: `${raw_inc.id}-${component.id}`,
-        product_id: product.id,
-        component_id: component.id,
-        component_name: component.name,
-        title: raw_inc.name,
-        opened_at: raw_inc.created_at,
-        resolved_at: raw_inc.resolved_at,
-        duration_minutes: calcDuration(raw_inc.created_at, raw_inc.resolved_at),
-        raw_severity: mapSeverity(raw_inc.impact),
-        status_page_incident_url: raw_inc.shortlink,
-      })
+    for (const { product, components: productComponents } of byProduct.values()) {
+      if (product.rollup) {
+        // One record per product per incident regardless of how many components were affected
+        incidents.push({
+          id: `${raw_inc.id}-${product.id}`,
+          product_id: product.id,
+          component_id: product.id,
+          component_name: product.name,
+          title: raw_inc.name,
+          opened_at: raw_inc.created_at,
+          resolved_at: raw_inc.resolved_at,
+          duration_minutes: calcDuration(raw_inc.created_at, raw_inc.resolved_at),
+          raw_severity: mapSeverity(raw_inc.impact),
+          status_page_incident_url: raw_inc.shortlink,
+        })
+      } else {
+        for (const component of productComponents) {
+          incidents.push({
+            id: `${raw_inc.id}-${component.id}`,
+            product_id: product.id,
+            component_id: component.id,
+            component_name: component.name,
+            title: raw_inc.name,
+            opened_at: raw_inc.created_at,
+            resolved_at: raw_inc.resolved_at,
+            duration_minutes: calcDuration(raw_inc.created_at, raw_inc.resolved_at),
+            raw_severity: mapSeverity(raw_inc.impact),
+            status_page_incident_url: raw_inc.shortlink,
+          })
+        }
+      }
     }
   }
 
