@@ -5,7 +5,7 @@ import { scrapeAtlassian } from './atlassian'
 
 // Companies will be imported from their config files after Step 6
 // For now we load from companies.json
-const DATA_DIR = path.join(__dirname, '..', 'data')
+const DATA_DIR = path.join(__dirname, '..', 'site', 'data')
 const INCIDENTS_DIR = path.join(DATA_DIR, 'incidents')
 const COMPANIES_FILE = path.join(DATA_DIR, 'companies.json')
 

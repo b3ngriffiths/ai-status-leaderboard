@@ -65,7 +65,7 @@ npm run discover -- https://status.COMPANY.com
 
 This prints all component names and their IDs. Identify which components map to which products.
 
-**2. Add the company to `data/companies.json`**
+**2. Add the company to `site/data/companies.json`**
 
 ```json
 {
@@ -89,7 +89,7 @@ This prints all component names and their IDs. Identify which components map to 
 **3. Create an empty incidents file**
 
 ```bash
-cat > data/incidents/company-slug.json << 'EOF'
+cat > site/data/incidents/company-slug.json << 'EOF'
 {
   "company_id": "company-slug",
   "last_scraped": "1970-01-01T00:00:00Z",
@@ -117,7 +117,7 @@ npm run validate
 
 ## Data format
 
-### `data/companies.json`
+### `site/data/companies.json`
 
 | Field | Type | Description |
 |---|---|---|
@@ -129,7 +129,7 @@ npm run validate
 | `products[].category` | string | `ai-api` / `ai-chat` / `ai-code` / `ai-image` / `ai-other` |
 | `products[].component_ids` | string[] | Atlassian component IDs that map to this product |
 
-### `data/incidents/[company].json`
+### `site/data/incidents/[company].json`
 
 | Field | Type | Description |
 |---|---|---|

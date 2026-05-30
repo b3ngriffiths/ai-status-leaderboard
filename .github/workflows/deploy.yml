@@ -3,7 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'data/**']
+    paths: ['site/**']
 
 permissions:
   contents: read

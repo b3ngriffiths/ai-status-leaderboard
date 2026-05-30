@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import type { Company, CompanyIncidentFile, Incident } from '../scraper/types'
 
-const DATA_DIR = path.join(__dirname, '..', 'data')
+const DATA_DIR = path.join(__dirname, '..', 'site', 'data')
 let errors = 0
 
 function fail(msg: string) {

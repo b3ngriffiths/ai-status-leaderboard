@@ -7,12 +7,7 @@
 // Data loading
 // ---------------------------------------------------------------------------
 
-const DATA_BASE = (function () {
-  // Works both from file:// locally and from GitHub Pages
-  const loc = window.location.pathname
-  if (loc.includes('/site/')) return '../data'
-  return 'data'
-}())
+const DATA_BASE = 'data'
 
 async function loadAll () {
   const companiesRes = await fetch(`${DATA_BASE}/companies.json`)
