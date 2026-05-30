@@ -7,11 +7,16 @@ on:
         description: 'Type "yes" to confirm full history fetch (may take a minute per company)'
         required: true
         default: ''
+  workflow_call:
+    inputs:
+      confirm:
+        type: string
+        required: true
 
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.confirm == 'yes' }}
+    if: ${{ inputs.confirm == 'yes' }}
     permissions:
       contents: write
     concurrency:
