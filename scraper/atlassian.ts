@@ -65,6 +65,23 @@ function buildIncidents(
           raw_severity: mapSeverity(raw_inc.impact),
           status_page_incident_url: raw_inc.shortlink,
         })
+      } else if (configured && components.length > 0) {
+        // Incident references component IDs not in our configured list (retired/legacy IDs).
+        // Include under fallback product so history isn't silently dropped.
+        for (const component of components) {
+          incidents.push({
+            id: `${raw_inc.id}-${component.id}`,
+            product_id: fallbackProduct.id,
+            component_id: component.id,
+            component_name: component.name,
+            title: raw_inc.name,
+            opened_at: raw_inc.created_at,
+            resolved_at: raw_inc.resolved_at,
+            duration_minutes: calcDuration(raw_inc.created_at, raw_inc.resolved_at),
+            raw_severity: mapSeverity(raw_inc.impact),
+            status_page_incident_url: raw_inc.shortlink,
+          })
+        }
       }
       continue
     }
