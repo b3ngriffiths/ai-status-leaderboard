@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        description: 'Status page URL (leave blank to run all companies)'
+        description: 'Status page URL (leave blank to run all companies from companies.json)'
         required: false
         default: ''
 
@@ -17,15 +17,21 @@ jobs:
         with:
           node-version: '24'
       - run: npm ci
-      - name: Discover OpenAI components
-        if: ${{ github.event.inputs.url == '' || github.event.inputs.url == 'https://status.openai.com' }}
+      - name: Discover all companies
+        if: ${{ github.event.inputs.url == '' }}
         continue-on-error: true
-        run: npm run discover -- https://status.openai.com
-      - name: Discover Anthropic components
-        if: ${{ github.event.inputs.url == '' || github.event.inputs.url == 'https://status.anthropic.com' }}
-        continue-on-error: true
-        run: npm run discover -- https://status.anthropic.com
+        run: |
+          node -e "
+            const companies = require('./site/data/companies.json').companies;
+            const urls = companies.map(c => c.status_page_url);
+            process.stdout.write(urls.join('\n') + '\n');
+          " | while read url; do
+            echo "========================================="
+            echo "Discovering: $url"
+            echo "========================================="
+            npm run discover -- "$url" || true
+          done
       - name: Discover custom URL
-        if: ${{ github.event.inputs.url != '' && github.event.inputs.url != 'https://status.openai.com' && github.event.inputs.url != 'https://status.anthropic.com' }}
+        if: ${{ github.event.inputs.url != '' }}
         continue-on-error: true
-        run: npm run discover -- ${{ github.event.inputs.url }}
+        run: npm run discover -- "${{ github.event.inputs.url }}"
