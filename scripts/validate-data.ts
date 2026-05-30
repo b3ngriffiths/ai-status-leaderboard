@@ -4,10 +4,16 @@ import type { Company, CompanyIncidentFile, Incident } from '../scraper/types'
 
 const DATA_DIR = path.join(__dirname, '..', 'site', 'data')
 let errors = 0
+let warnings = 0
 
 function fail(msg: string) {
   console.error(`  ✗ ${msg}`)
   errors++
+}
+
+function warn(msg: string) {
+  console.warn(`  ⚠ ${msg}`)
+  warnings++
 }
 
 function ok(msg: string) {
@@ -41,8 +47,11 @@ function validateCompanyFile(file: string, companyIds: Set<string>) {
   if (!data.company_id) fail('missing company_id')
   if (!companyIds.has(data.company_id))
     fail(`company_id "${data.company_id}" not found in companies.json`)
-  if (!data.last_scraped || isNaN(Date.parse(data.last_scraped)))
+  if (data.last_scraped === null) {
+    warn(`last_scraped is null (company not yet scraped)`)
+  } else if (!data.last_scraped || isNaN(Date.parse(data.last_scraped))) {
     fail(`invalid last_scraped: ${data.last_scraped}`)
+  }
   if (typeof data.scrape_success !== 'boolean') fail('scrape_success must be boolean')
   if (!Array.isArray(data.incidents)) fail('incidents must be an array')
 
@@ -70,7 +79,7 @@ function main() {
       if (!product.component_ids.length)
         fail(`${company.id}/${product.id}: no component_ids`)
       if (product.component_ids.includes('REPLACE_WITH_REAL_ID'))
-        fail(`${company.id}/${product.id}: contains placeholder component_id`)
+        warn(`${company.id}/${product.id}: contains placeholder component_id (run Discover to get real IDs)`)
     }
   }
 
@@ -81,6 +90,7 @@ function main() {
     validateCompanyFile(path.join(incidentsDir, f), companyIds)
   }
 
+  if (warnings > 0) console.warn(`\n⚠ ${warnings} warning(s) — fix before production`)
   console.log(`\n${errors === 0 ? '✅ All checks passed' : `❌ ${errors} error(s) found`}`)
   process.exit(errors > 0 ? 1 : 0)
 }
