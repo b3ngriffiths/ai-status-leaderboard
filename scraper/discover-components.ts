@@ -14,40 +14,33 @@ if (!url) {
   process.exit(1)
 }
 
+type Component = { id: string; name: string; status: string; group: boolean; group_id: string | null }
+type Incident = { id: string; name: string; impact: string; created_at: string; resolved_at: string | null; components: Array<{ id: string; name: string }> }
+
+async function fetchJson<T>(url: string): Promise<T> {
+  const res = await fetch(url, { headers: { Accept: 'application/json' } })
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`)
+  return res.json() as Promise<T>
+}
+
 async function main() {
   const base = url.replace(/\/$/, '')
-  const res = await fetch(`${base}/api/v2/summary.json`, {
-    headers: { Accept: 'application/json' },
-  })
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
-  const data = (await res.json()) as {
-    components: Array<{
-      id: string
-      name: string
-      status: string
-      group: boolean
-      group_id: string | null
-    }>
-    incidents: Array<{
-      id: string
-      name: string
-      impact: string
-      components: Array<{ id: string; name: string }>
-    }>
-  }
+  const [summary, history] = await Promise.all([
+    fetchJson<{ components: Component[]; incidents: Incident[] | null }>(`${base}/api/v2/summary.json`),
+    fetchJson<{ incidents: Incident[] | null }>(`${base}/api/v2/incidents.json?limit=100`),
+  ])
 
+  // ── Current components ─────────────────────────────────────────────────
   console.log(`\n${'='.repeat(60)}`)
   console.log(`Components for: ${base}`)
   console.log('='.repeat(60))
 
-  // Print group headers first, then members
-  const groups = data.components.filter((c) => c.group)
-  const members = data.components.filter((c) => !c.group)
+  const groups = summary.components.filter((c) => c.group)
+  const members = summary.components.filter((c) => !c.group)
 
   for (const g of groups) {
-    console.log(`\n[GROUP] ${g.name}`)
-    console.log(`  id: ${g.id}`)
+    console.log(`\n[GROUP] ${g.name}  id: ${g.id}`)
     const children = members.filter((m) => m.group_id === g.id)
     for (const child of children) {
       console.log(`  ├─ ${child.name.padEnd(40)} id: ${child.id}  status: ${child.status}`)
@@ -62,17 +55,56 @@ async function main() {
     }
   }
 
-  if ((data.incidents ?? []).length > 0) {
+  // ── Active incidents ────────────────────────────────────────────────────
+  const active = summary.incidents ?? []
+  if (active.length > 0) {
     console.log(`\n${'='.repeat(60)}`)
     console.log('Active incidents:')
-    for (const inc of (data.incidents ?? [])) {
+    for (const inc of active) {
       console.log(`  [${inc.impact.toUpperCase()}] ${inc.name}`)
-      for (const c of inc.components) {
+      for (const c of (inc.components ?? [])) {
         console.log(`    component: ${c.id}  ${c.name}`)
       }
     }
   } else {
     console.log('\n(No active incidents)')
+  }
+
+  // ── Historical incident component IDs ───────────────────────────────────
+  const historical = history.incidents ?? []
+  console.log(`\n${'='.repeat(60)}`)
+  console.log(`Historical incidents (last ${historical.length}):`)
+  console.log('='.repeat(60))
+
+  if (historical.length === 0) {
+    console.log('  (none)')
+  } else {
+    // Collect all unique component IDs seen across incidents
+    const seen = new Map<string, { name: string; count: number }>()
+    for (const inc of historical) {
+      for (const c of (inc.components ?? [])) {
+        const entry = seen.get(c.id)
+        if (entry) entry.count++
+        else seen.set(c.id, { name: c.name, count: 1 })
+      }
+    }
+
+    console.log(`\nComponent IDs seen in incident history (${seen.size} unique):`)
+    const sorted = [...seen.entries()].sort((a, b) => b[1].count - a[1].count)
+    for (const [id, { name, count }] of sorted) {
+      const inCurrent = summary.components.some((c) => c.id === id)
+      const flag = inCurrent ? '' : '  ⚠ NOT in current component list'
+      console.log(`  ${id}  ${name.padEnd(40)}  (${count} incident${count !== 1 ? 's' : ''})${flag}`)
+    }
+
+    console.log('\nMost recent 10 incidents:')
+    for (const inc of historical.slice(0, 10)) {
+      const date = inc.created_at.slice(0, 10)
+      const resolved = inc.resolved_at ? inc.resolved_at.slice(0, 10) : 'ongoing'
+      const comps = (inc.components ?? []).map((c) => c.name).join(', ') || '(no components listed)'
+      console.log(`  [${date}→${resolved}] [${inc.impact}] ${inc.name}`)
+      console.log(`    components: ${comps}`)
+    }
   }
 
   console.log()

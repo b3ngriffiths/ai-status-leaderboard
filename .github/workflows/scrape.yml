@@ -10,8 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    # Prevent two scrapes running at once and creating merge conflicts
+    concurrency:
+      group: scrape
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Fetch full history so we can pull before push
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -22,6 +29,8 @@ jobs:
           git config user.name "uptime-bot"
           git config user.email "bot@github-actions"
           git add site/data/
-          git diff --staged --quiet || \
-            git commit -m "data: scrape $(date -u '+%Y-%m-%d %H:%M') UTC"
-          git push
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "data: scrape $(date -u '+%Y-%m-%d %H:%M') UTC"
+          # Pull with rebase in case another run committed between our scrape and now
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin ${{ github.ref_name }}
