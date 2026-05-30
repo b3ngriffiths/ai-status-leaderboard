@@ -75,13 +75,28 @@
           "id": "anthropic-api",
           "name": "API",
           "category": "ai-api",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": [
+            "k8w3r06qmzrp",
+            "0scnb50nvy53"
+          ]
         },
         {
           "id": "claude-ai",
           "name": "Claude.ai",
           "category": "ai-chat",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": [
+            "rwppv331jlwc",
+            "0qbwn08sd68x",
+            "bpp5gb3hpjcl"
+          ]
+        },
+        {
+          "id": "claude-code",
+          "name": "Claude Code",
+          "category": "ai-code",
+          "component_ids": [
+            "yyzkbfz2thpt"
+          ]
         }
       ]
     }

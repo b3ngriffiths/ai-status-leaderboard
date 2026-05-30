@@ -44,9 +44,10 @@ function buildIncidents(
   const incidents: Incident[] = []
 
   for (const raw_inc of raw) {
+    const components = raw_inc.components ?? []
     const matchedComponents = configured
-      ? raw_inc.components.filter((c) => allComponentIds.has(c.id))
-      : raw_inc.components
+      ? components.filter((c) => allComponentIds.has(c.id))
+      : components
 
     // When not yet configured: fall back to first product so we get some data
     const fallbackProduct = company.products[0]
