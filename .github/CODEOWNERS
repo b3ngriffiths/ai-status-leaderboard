@@ -1,0 +1,14 @@
+# Code owners are automatically requested for review on PRs that touch their files.
+
+# Scraper logic and types — review required for any changes
+/scraper/         @b3ngriffiths
+
+# Workflow files — always needs a human review before merging
+/.github/workflows/  @b3ngriffiths
+
+# Site code
+/site/app.js      @b3ngriffiths
+/site/style.css   @b3ngriffiths
+
+# Data files are written by the scrape bot — no owner required
+# /site/data/
