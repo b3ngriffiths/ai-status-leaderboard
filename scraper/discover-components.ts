@@ -62,10 +62,10 @@ async function main() {
     }
   }
 
-  if (data.incidents.length > 0) {
+  if ((data.incidents ?? []).length > 0) {
     console.log(`\n${'='.repeat(60)}`)
     console.log('Active incidents:')
-    for (const inc of data.incidents) {
+    for (const inc of (data.incidents ?? [])) {
       console.log(`  [${inc.impact.toUpperCase()}] ${inc.name}`)
       for (const c of inc.components) {
         console.log(`    component: ${c.id}  ${c.name}`)
