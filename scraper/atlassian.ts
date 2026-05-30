@@ -49,12 +49,10 @@ function buildIncidents(
       ? components.filter((c) => allComponentIds.has(c.id))
       : components
 
-    // When not yet configured: fall back to first product so we get some data
     const fallbackProduct = company.products[0]
 
     if (matchedComponents.length === 0) {
-      if (!configured && raw_inc.components.length === 0) {
-        // No component info at all — attach to first product as placeholder
+      if (!configured && components.length === 0) {
         incidents.push({
           id: `${raw_inc.id}-uncategorised`,
           product_id: fallbackProduct.id,
@@ -71,7 +69,6 @@ function buildIncidents(
       continue
     }
 
-    // One Incident record per matched component so per-product stats work
     for (const component of matchedComponents) {
       const product = configured
         ? company.products.find((p) => p.component_ids.includes(component.id))
@@ -105,22 +102,53 @@ async function fetchJson<T>(url: string): Promise<T> {
   return res.json() as Promise<T>
 }
 
-export async function scrapeAtlassian(company: Company): Promise<Incident[]> {
+async function fetchAllIncidentPages(
+  base: string,
+): Promise<AtlassianIncident[]> {
+  const all: AtlassianIncident[] = []
+  let page = 1
+
+  while (true) {
+    const data = await fetchJson<AtlassianIncidentsResponse>(
+      `${base}/api/v2/incidents.json?limit=100&page=${page}`,
+    )
+    const incidents = data.incidents ?? []
+    if (incidents.length === 0) break
+    all.push(...incidents)
+    console.log(`    page ${page}: ${incidents.length} incidents`)
+    if (incidents.length < 100) break  // last page
+    page++
+  }
+
+  return all
+}
+
+export async function scrapeAtlassian(
+  company: Company,
+  backfill = false,
+): Promise<Incident[]> {
   const base = company.status_page_url.replace(/\/$/, '')
 
-  const [summary, history] = await Promise.all([
-    fetchJson<AtlassianSummaryResponse>(`${base}/api/v2/summary.json`),
-    fetchJson<AtlassianIncidentsResponse>(
-      `${base}/api/v2/incidents.json?limit=100`,
-    ),
+  const summaryPromise = fetchJson<AtlassianSummaryResponse>(
+    `${base}/api/v2/summary.json`,
+  )
+
+  const historyPromise = backfill
+    ? fetchAllIncidentPages(base)
+    : fetchJson<AtlassianIncidentsResponse>(
+        `${base}/api/v2/incidents.json?limit=100`,
+      ).then((r) => r.incidents ?? [])
+
+  const [summary, historyIncidents] = await Promise.all([
+    summaryPromise,
+    historyPromise,
   ])
 
-  // Merge: history is authoritative for older incidents, summary catches
-  // any in-progress incidents not yet in the paginated history endpoint
+  // Merge summary (catches active incidents) with history, deduplicating by id
   const seen = new Set<string>()
   const merged: AtlassianIncident[] = []
 
-  for (const inc of [...(summary.incidents ?? []), ...(history.incidents ?? [])]) {
+  for (const inc of [...(summary.incidents ?? []), ...historyIncidents]) {
     if (!seen.has(inc.id)) {
       seen.add(inc.id)
       merged.push(inc)

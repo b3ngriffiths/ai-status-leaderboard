@@ -3,13 +3,12 @@ import path from 'path'
 import type { Company, CompanyIncidentFile, Incident, ScrapeResult } from './types'
 import { scrapeAtlassian } from './atlassian'
 
-// Companies will be imported from their config files after Step 6
-// For now we load from companies.json
 const DATA_DIR = path.join(__dirname, '..', 'site', 'data')
 const INCIDENTS_DIR = path.join(DATA_DIR, 'incidents')
 const COMPANIES_FILE = path.join(DATA_DIR, 'companies.json')
 
 const DRY_RUN = process.argv.includes('--dry-run')
+const BACKFILL = process.argv.includes('--backfill')
 
 function loadCompanies(): Company[] {
   const raw = fs.readFileSync(COMPANIES_FILE, 'utf8')
@@ -43,7 +42,6 @@ function mergeIncidents(
       byId.set(inc.id, inc)
       newCount++
     } else {
-      // Update resolution if it just got resolved
       if (!prev.resolved_at && inc.resolved_at) {
         prev.resolved_at = inc.resolved_at
         prev.duration_minutes = inc.duration_minutes
@@ -52,7 +50,6 @@ function mergeIncidents(
     }
   }
 
-  // Sort chronologically descending
   const merged = [...byId.values()].sort(
     (a, b) => new Date(b.opened_at).getTime() - new Date(a.opened_at).getTime(),
   )
@@ -67,7 +64,8 @@ function writeIncidents(data: CompanyIncidentFile): void {
 
 async function scrapeCompany(company: Company): Promise<ScrapeResult> {
   try {
-    const fresh = await scrapeAtlassian(company)
+    if (BACKFILL) console.log(`  📦 Backfilling ${company.name}…`)
+    const fresh = await scrapeAtlassian(company, BACKFILL)
     const existing = loadExisting(company.id)
     const { merged, newCount, resolvedCount } = mergeIncidents(
       existing.incidents,
@@ -91,7 +89,6 @@ async function scrapeCompany(company: Company): Promise<ScrapeResult> {
     }
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err)
-    // On failure: preserve existing data, mark scrape_success false
     const existing = loadExisting(company.id)
     if (existing.incidents.length > 0 && !DRY_RUN) {
       writeIncidents({
@@ -112,6 +109,7 @@ async function scrapeCompany(company: Company): Promise<ScrapeResult> {
 
 async function main(): Promise<void> {
   if (DRY_RUN) console.log('🔍 Dry run mode — no files will be written\n')
+  if (BACKFILL) console.log('📦 Backfill mode — paginating full incident history\n')
 
   const companies = loadCompanies()
   const results: ScrapeResult[] = []
