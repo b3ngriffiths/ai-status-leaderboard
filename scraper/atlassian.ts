@@ -90,7 +90,7 @@ export async function scrapeAtlassian(company: Company): Promise<Incident[]> {
   const seen = new Set<string>()
   const merged: AtlassianIncident[] = []
 
-  for (const inc of [...summary.incidents, ...history.incidents]) {
+  for (const inc of [...(summary.incidents ?? []), ...(history.incidents ?? [])]) {
     if (!seen.has(inc.id)) {
       seen.add(inc.id)
       merged.push(inc)
