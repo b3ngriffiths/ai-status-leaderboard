@@ -22,9 +22,12 @@ function mapSeverity(impact: string): IncidentSeverity {
 
 const PLACEHOLDER = 'REPLACE_WITH_REAL_ID'
 
+// A company is "configured" only if at least one product has at least one
+// real (non-placeholder) component ID. An all-empty component_ids list would
+// vacuously pass every(), so we use some() to require at least one real ID.
 function isConfigured(company: Company): boolean {
-  return company.products.every((p) =>
-    p.component_ids.every((id) => id !== PLACEHOLDER),
+  return company.products.some((p) =>
+    p.component_ids.some((id) => id !== PLACEHOLDER),
   )
 }
 
@@ -43,6 +46,30 @@ function buildIncidents(
   const titleRouted = isTitleRouted(company)
 
   const incidents: Incident[] = []
+
+  // Short-circuit: when no component IDs are configured but title routing is
+  // active, route every incident by title regardless of component links. This
+  // handles companies like OpenAI (component_ids:[]) and GitHub (status page
+  // covers many services; we only want Copilot incidents).
+  if (!configured && titleRouted) {
+    for (const raw_inc of raw) {
+      const product = routeByTitle(company, raw_inc.name)
+      if (!product) continue
+      incidents.push({
+        id: `${raw_inc.id}-${product.id}`,
+        product_id: product.id,
+        component_id: product.id,
+        component_name: product.name,
+        title: raw_inc.name,
+        opened_at: raw_inc.created_at,
+        resolved_at: raw_inc.resolved_at,
+        duration_minutes: calcDuration(raw_inc.created_at, raw_inc.resolved_at),
+        raw_severity: mapSeverity(raw_inc.impact),
+        status_page_incident_url: raw_inc.shortlink,
+      })
+    }
+    return incidents
+  }
 
   for (const raw_inc of raw) {
     const components = raw_inc.components ?? []

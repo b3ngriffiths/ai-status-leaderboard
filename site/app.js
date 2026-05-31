@@ -32,7 +32,17 @@ async function loadAll () {
 
   const incidentFiles = await Promise.all(
     companies.map(c =>
-      fetch(`${DATA_BASE}/incidents/${c.id}.json`).then(r => r.json())
+      fetch(`${DATA_BASE}/incidents/${c.id}.json`)
+        .then(r => {
+          if (!r.ok) throw new Error(`HTTP ${r.status}`)
+          return r.json()
+        })
+        .catch(() => ({
+          company_id: c.id,
+          last_scraped: null,
+          scrape_success: false,
+          incidents: []
+        }))
     )
   )
 
@@ -81,14 +91,14 @@ function downtimeInPeriod (incidents, days) {
   return Math.round(total / 60_000)
 }
 
-function uptimePct (downtimeMinutes, days) {
-  const period = days === 0 ? null : days * 1440
-  if (!period) {
-    // All time: need the oldest incident or 90 days
-    const fallback = 90 * 1440
-    return (1 - downtimeMinutes / fallback) * 100
+function uptimePct (downtimeMinutes, days, oldestMs) {
+  if (days !== 0) {
+    return Math.max(0, (1 - downtimeMinutes / (days * 1440)) * 100)
   }
-  return Math.max(0, (1 - downtimeMinutes / period) * 100)
+  // All-time: anchor to the oldest known incident; floor at 30 days
+  const windowMs = oldestMs ? Date.now() - oldestMs : 90 * 86_400_000
+  const windowMins = Math.max(30 * 1440, Math.round(windowMs / 60_000))
+  return Math.max(0, (1 - downtimeMinutes / windowMins) * 100)
 }
 
 function mttr (incidents) {
@@ -118,7 +128,10 @@ function computeProductStats (product, allIncidents, days) {
   const productIncidents = allIncidents.filter(i => i.product_id === product.id)
   const inPeriod = incidentsInPeriod(productIncidents, days)
   const dtMins = downtimeInPeriod(productIncidents, days)
-  const uptime = uptimePct(dtMins, days)
+  const oldestMs = productIncidents.length
+    ? Math.min(...productIncidents.map(i => new Date(i.opened_at).getTime()))
+    : null
+  const uptime = uptimePct(dtMins, days, oldestMs)
   return {
     product,
     incidents: inPeriod,
@@ -481,7 +494,7 @@ function buildCalendar (productIncidents, label) {
   }).join('')
 
   return `<div class="calendar-section">
-    <div class="calendar-label">${label}</div>
+    <div class="calendar-label">${escapeHtml(label)}</div>
     <div class="calendar-grid">${cells}</div>
   </div>`
 }
@@ -568,7 +581,7 @@ function buildTimeline (productsData, days, colors) {
   })
 
   const legend = lines.map(l =>
-    `<span style="color:${l.color}">─ ${l.name}</span>`
+    `<span style="color:${l.color}">─ ${escapeHtml(l.name)}</span>`
   ).join('  ')
 
   return `<div style="overflow-x:auto">
@@ -588,9 +601,13 @@ function renderCompanyPage (company, file, days) {
   // Header
   const allIncidents = file.incidents
   const allStats = company.products.map(p => computeProductStats(p, allIncidents, days))
-  const totalDt = allStats.reduce((s, r) => s + r.downtimeMinutes, 0)
+  // Use merged intervals across all products to avoid double-counting concurrent outages
+  const totalDt = downtimeInPeriod(allIncidents, days)
   const noData = !file.last_scraped
-  const overallUptime = uptimePct(totalDt, days)
+  const oldestMs = allIncidents.length
+    ? Math.min(...allIncidents.map(i => new Date(i.opened_at).getTime()))
+    : null
+  const overallUptime = uptimePct(totalDt, days, oldestMs)
   const uptimeDisplay = noData
     ? '<span style="color:var(--muted)">No data</span>'
     : `<span class="${uptimeClass(overallUptime)}">${fmtUptime(overallUptime)}</span>`
@@ -659,12 +676,13 @@ function renderCompanyPage (company, file, days) {
     const durText = inc.resolved_at
       ? fmtDuration(inc.duration_minutes)
       : `<span class="ongoing-badge">Ongoing</span>`
+    const durSort = inc.resolved_at ? (inc.duration_minutes ?? 0) : Number.MAX_SAFE_INTEGER
     return `<tr>
-      <td class="mono-cell">${fmtDate(inc.opened_at)}</td>
+      <td class="mono-cell" data-sort="${new Date(inc.opened_at).getTime()}">${fmtDate(inc.opened_at)}</td>
       <td>${escapeHtml(product ? product.name : inc.product_id)}</td>
       <td>${escapeHtml(inc.title)}</td>
-      <td class="mono-cell">${durText}</td>
-      <td><span class="severity-badge sev-${escapeHtml(inc.raw_severity)}">${escapeHtml(inc.raw_severity.replace(/_/g, ' '))}</span></td>
+      <td class="mono-cell" data-sort="${durSort}">${durText}</td>
+      <td data-sort="${escapeHtml(inc.raw_severity)}"><span class="severity-badge sev-${escapeHtml(inc.raw_severity)}">${escapeHtml(inc.raw_severity.replace(/_/g, ' '))}</span></td>
       <td><a href="${safeUrl(inc.status_page_incident_url)}" target="_blank" style="color:var(--muted)">↗</a></td>
     </tr>`
   }).join('')
@@ -712,8 +730,12 @@ function initCompanyPage (companies, incidentFiles) {
         if (t !== th) { t.classList.remove('sort-asc', 'sort-desc') }
       })
       rows.sort((a, b) => {
-        const ai = a.cells[['date', 'product', 'title', 'duration', 'severity'].indexOf(col)]?.textContent || ''
-        const bi = b.cells[['date', 'product', 'title', 'duration', 'severity'].indexOf(col)]?.textContent || ''
+        const colIdx = ['date', 'product', 'title', 'duration', 'severity'].indexOf(col)
+        const cellA = a.cells[colIdx], cellB = b.cells[colIdx]
+        const ai = cellA?.dataset?.sort ?? cellA?.textContent ?? ''
+        const bi = cellB?.dataset?.sort ?? cellB?.textContent ?? ''
+        const an = Number(ai), bn = Number(bi)
+        if (!isNaN(an) && !isNaN(bn)) return asc ? an - bn : bn - an
         return asc ? ai.localeCompare(bi) : bi.localeCompare(ai)
       })
       rows.forEach(r => tbody.appendChild(r))
@@ -744,7 +766,7 @@ function initCompanyPage (companies, incidentFiles) {
     const body = document.getElementById('leaderboard-body') || document.getElementById('incident-tbody')
     if (body) {
       body.innerHTML = `<tr><td colspan="12" style="text-align:center;color:var(--red);padding:24px">
-        Failed to load data. ${err.message}
+        Failed to load data. ${escapeHtml(err.message)}
       </td></tr>`
     }
   }

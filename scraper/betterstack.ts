@@ -26,6 +26,7 @@ interface BsIndexResponse {
     }
   }
   included: BsResource[]
+  links?: { next?: string | null }
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -39,15 +40,16 @@ function mapAggregate(state: string): IncidentSeverity | null {
   return map[state] ?? null  // null = skip (operational / unknown)
 }
 
-// ── Public scrape entry point ─────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────────────
 
-export async function scrapeBetterstack(company: Company, _backfill = false): Promise<Incident[]> {
-  const base = company.status_page_url.replace(/\/$/, '')
-  const page = await fetchJson<BsIndexResponse>(`${base}/index.json`)
-
+function buildIncidentsFromPage(
+  page: BsIndexResponse,
+  company: Company,
+  base: string,
+): Incident[] {
   // Build lookup maps from included[] resources
-  const sections = new Map<string, string>()    // id → name
-  const resourceSection = new Map<string, string>()  // resource_id → section_id
+  const sections = new Map<string, string>()          // id → name
+  const resourceSection = new Map<string, string>()   // resource_id → section_id
 
   for (const item of page.included) {
     if (item.type === 'section') {
@@ -59,7 +61,6 @@ export async function scrapeBetterstack(company: Company, _backfill = false): Pr
     }
   }
 
-  // Build product lookups
   const productByGroupName = new Map(
     company.products.filter((p) => p.group_name).map((p) => [p.group_name!, p]),
   )
@@ -67,7 +68,6 @@ export async function scrapeBetterstack(company: Company, _backfill = false): Pr
     company.products.flatMap((p) => p.component_ids.map((id) => [id, p])),
   )
   const fallbackProduct = company.products[0]
-
   const incidents: Incident[] = []
 
   for (const item of page.included) {
@@ -76,13 +76,16 @@ export async function scrapeBetterstack(company: Company, _backfill = false): Pr
     if (attrs.report_type !== 'incident') continue
 
     const severity = mapAggregate(String(attrs.aggregate_state ?? ''))
-    if (!severity) continue  // skip operational/unknown entries
+    if (!severity) continue
 
     const startsAt = String(attrs.starts_at ?? '')
     const endsAt = (attrs.ends_at as string | null) ?? null
     if (!startsAt) continue
 
-    const affectedIds = (attrs.affected_resources as string[] | undefined) ?? []
+    const rawAffected = attrs.affected_resources
+    const affectedIds: string[] = Array.isArray(rawAffected)
+      ? rawAffected.filter((x): x is string => typeof x === 'string')
+      : []
     const incidentUrl = `${base}/status-reports/${item.id}`
 
     if (affectedIds.length === 0) {
@@ -101,23 +104,16 @@ export async function scrapeBetterstack(company: Company, _backfill = false): Pr
       continue
     }
 
-    // Map each affected resource → product via section name or component_id
     const byProduct = new Map<string, typeof fallbackProduct>()
     for (const resourceId of affectedIds) {
       let product: typeof fallbackProduct | undefined
-
-      // Try component_id direct match first
       product = productByComponentId.get(resourceId)
-
-      // Then try section → group_name match
       if (!product) {
         const sectionId = resourceSection.get(resourceId)
         const sectionName = sectionId ? sections.get(sectionId) : undefined
         if (sectionName) product = productByGroupName.get(sectionName)
       }
-
-      const target = product ?? fallbackProduct
-      byProduct.set(target.id, target)
+      byProduct.set((product ?? fallbackProduct).id, product ?? fallbackProduct)
     }
 
     for (const product of byProduct.values()) {
@@ -137,4 +133,32 @@ export async function scrapeBetterstack(company: Company, _backfill = false): Pr
   }
 
   return incidents
+}
+
+// ── Public scrape entry point ─────────────────────────────────────────────────
+
+export async function scrapeBetterstack(company: Company, backfill = false): Promise<Incident[]> {
+  const base = company.status_page_url.replace(/\/$/, '')
+
+  if (backfill) {
+    // Follow links.next pagination to fetch full history
+    const all: Incident[] = []
+    const seen = new Set<string>()
+    let url: string | null = `${base}/index.json`
+    let page = 1
+    while (url) {
+      const data: BsIndexResponse = await fetchJson<BsIndexResponse>(url)
+      const batch = buildIncidentsFromPage(data, company, base)
+      for (const inc of batch) {
+        if (!seen.has(inc.id)) { seen.add(inc.id); all.push(inc) }
+      }
+      console.log(`    page ${page}: ${batch.length} incidents`)
+      url = data.links?.next ?? null
+      page++
+    }
+    return all
+  }
+
+  const data = await fetchJson<BsIndexResponse>(`${base}/index.json`)
+  return buildIncidentsFromPage(data, company, base)
 }

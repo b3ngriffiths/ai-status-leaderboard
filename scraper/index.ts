@@ -50,6 +50,9 @@ function mergeIncidents(
         prev.duration_minutes = inc.duration_minutes
         resolvedCount++
       }
+      // Refresh mutable fields the upstream may update on resolution
+      prev.title = inc.title
+      prev.raw_severity = inc.raw_severity
     }
   }
 

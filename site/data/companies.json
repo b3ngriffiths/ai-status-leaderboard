@@ -117,6 +117,100 @@
           ]
         }
       ]
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral AI",
+      "slug": "mistral",
+      "status_page_url": "https://status.mistral.ai",
+      "page_type": "feed",
+      "logo_url": "https://logo.clearbit.com/mistral.ai",
+      "products": [
+        {
+          "id": "mistral-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": []
+        },
+        {
+          "id": "le-chat",
+          "name": "Le Chat",
+          "category": "ai-chat",
+          "component_ids": [],
+          "title_keywords": ["chat", "le chat", "lechat"]
+        }
+      ]
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "slug": "cohere",
+      "status_page_url": "https://status.cohere.com",
+      "page_type": "feed",
+      "logo_url": "https://logo.clearbit.com/cohere.com",
+      "products": [
+        {
+          "id": "cohere-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": []
+        }
+      ]
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "slug": "elevenlabs",
+      "status_page_url": "https://status.elevenlabs.io",
+      "page_type": "feed",
+      "logo_url": "https://logo.clearbit.com/elevenlabs.io",
+      "products": [
+        {
+          "id": "elevenlabs-api",
+          "name": "API",
+          "category": "ai-other",
+          "component_ids": [],
+          "title_keywords": []
+        }
+      ]
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "slug": "github",
+      "status_page_url": "https://www.githubstatus.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/github.com",
+      "products": [
+        {
+          "id": "github-copilot",
+          "name": "Copilot",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": ["Copilot"],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "slug": "cursor",
+      "status_page_url": "https://status.cursor.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/cursor.com",
+      "products": [
+        {
+          "id": "cursor",
+          "name": "Cursor",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
     }
   ]
 }
