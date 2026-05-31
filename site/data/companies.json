@@ -34,30 +34,6 @@
       ]
     },
     {
-      "id": "xai",
-      "name": "xAI",
-      "slug": "xai",
-      "status_page_url": "https://status.x.ai",
-      "page_type": "atlassian",
-      "logo_url": "https://logo.clearbit.com/x.ai",
-      "products": [
-        {
-          "id": "xai-api",
-          "name": "API",
-          "category": "ai-api",
-          "component_ids": [],
-          "title_keywords": []
-        },
-        {
-          "id": "grok",
-          "name": "Grok",
-          "category": "ai-chat",
-          "component_ids": [],
-          "title_keywords": ["Grok"]
-        }
-      ]
-    },
-    {
       "id": "deepseek",
       "name": "DeepSeek",
       "slug": "deepseek",
