@@ -5,62 +5,30 @@
       "name": "OpenAI",
       "slug": "openai",
       "status_page_url": "https://status.openai.com",
-      "page_type": "atlassian",
+      "page_type": "incident_io",
       "logo_url": "https://logo.clearbit.com/openai.com",
       "products": [
         {
           "id": "openai-api",
           "name": "API",
           "category": "ai-api",
-          "component_ids": [
-            "01JP8CD9JR3HR6Y7G4Q75N4DVW",
-            "01JMXBRMFEMZK0HPK19RYET250",
-            "01JMXBRMFE5ESNNV8JDHVCGSRD",
-            "01JMXBRMFEVZ7E0X9GD9FWR9WX",
-            "01JMXBRMFESJCBGJR10PDD3WCQ",
-            "01JMXBNJXG1YMQPPCPCQX3MPA2",
-            "01JMXBRMFEV0AJ0VVS68N9CD6R",
-            "01JNKS9D9S72PMP1938PVFFQN4",
-            "01JMXBRMFEQW613TFE89F45035",
-            "01JMXBRMFEKVBWKK82B44QFMCE",
-            "01KMP3KP5MGE23B80K1EK4S8PV",
-            "01JMXBNJXGKKP51D4DEJ2HZJ8Q",
-            "01KKAD7C71MCCH3FTREMJH4AAS"
-          ]
+          "component_ids": [],
+          "group_name": "APIs"
         },
         {
           "id": "chatgpt",
           "name": "ChatGPT",
           "category": "ai-chat",
           "rollup": true,
-          "component_ids": [
-            "01K8C008QVXHA6JX98PAS42VPD",
-            "01JMXBNJXGV1T5GT2M9XA83XNG",
-            "01JSM5RTJWHRWDTS6Q604VEW3B",
-            "01JSFK5QX36ZRW0TW0ZV0ZYFXQ",
-            "01JSYVYQSWMJ9QG35XHP08BHA7",
-            "01K6TVGGGDCP0PPGCHXAG3AQX8",
-            "01JSG1XMJ9RVJJQ0E85NVSJ2AZ"
-          ]
+          "component_ids": [],
+          "group_name": "ChatGPT"
         },
         {
-          "id": "openai-labs",
-          "name": "Images & Video",
-          "category": "ai-image",
-          "component_ids": [
-            "01JMXBRMFE4MAP2BHSJNZ787WX",
-            "01JQ7EKW990MSPSWVXC7VPV2ZJ",
-            "01K9G527YRPY1EFRMHTKB5BKT5"
-          ]
-        },
-        {
-          "id": "openai-tools",
-          "name": "Tools",
-          "category": "ai-other",
-          "component_ids": [
-            "01KMKFAMWKNQ84Z1766MV08ZDE",
-            "01KMP3KP5M8X0EBTVW6KN327EE"
-          ]
+          "id": "codex",
+          "name": "Codex",
+          "category": "ai-code",
+          "component_ids": [],
+          "group_name": "Codex"
         }
       ]
     },
@@ -98,13 +66,15 @@
           "id": "deepseek-api",
           "name": "API",
           "category": "ai-api",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "group_name": "API"
         },
         {
           "id": "deepseek-chat",
           "name": "DeepSeek Chat",
           "category": "ai-chat",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "group_name": "Chat"
         }
       ]
     },
@@ -120,13 +90,15 @@
           "id": "perplexity-api",
           "name": "API",
           "category": "ai-api",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "group_name": "API"
         },
         {
           "id": "perplexity-chat",
           "name": "Perplexity Chat",
           "category": "ai-chat",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "group_name": "Perplexity"
         }
       ]
     },
