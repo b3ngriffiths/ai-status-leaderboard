@@ -62,7 +62,12 @@ function periodMinutes (days) {
 function incidentsInPeriod (incidents, days) {
   if (days === 0) return incidents
   const cutoff = Date.now() - days * 86_400_000
-  return incidents.filter(i => new Date(i.opened_at).getTime() >= cutoff)
+  // Include any incident that has time within the window: started in it, or
+  // started before but still ongoing / resolved within the window.
+  return incidents.filter(i => {
+    const end = i.resolved_at ? new Date(i.resolved_at).getTime() : Date.now()
+    return end >= cutoff
+  })
 }
 
 function downtimeInPeriod (incidents, days) {
