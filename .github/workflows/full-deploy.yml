@@ -18,17 +18,19 @@ permissions:
   id-token: write
 
 jobs:
+  # scrape mode: scrape.yml handles scrape + deploy internally
   run-scrape:
     if: ${{ inputs.mode == 'scrape' }}
     uses: ./.github/workflows/scrape.yml
 
+  # backfill mode: backfill then deploy explicitly
   run-backfill:
     if: ${{ inputs.mode == 'backfill' }}
     uses: ./.github/workflows/backfill.yml
     with:
       confirm: 'yes'
 
-  deploy:
-    needs: [run-scrape, run-backfill]
-    if: ${{ always() && !failure() && !cancelled() }}
+  deploy-after-backfill:
+    needs: run-backfill
+    if: ${{ inputs.mode == 'backfill' && !failure() && !cancelled() }}
     uses: ./.github/workflows/deploy.yml

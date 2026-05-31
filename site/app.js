@@ -58,13 +58,26 @@ function incidentsInPeriod (incidents, days) {
 function downtimeInPeriod (incidents, days) {
   const now = Date.now()
   const cutoff = days === 0 ? 0 : now - days * 86_400_000
-  let total = 0
+  // Build non-overlapping intervals then sum, so concurrent incidents don't double-count.
+  const intervals = []
   for (const inc of incidents) {
-    const start = new Date(inc.opened_at).getTime()
-    if (start < cutoff) continue
+    const start = Math.max(new Date(inc.opened_at).getTime(), cutoff)
     const end = inc.resolved_at ? new Date(inc.resolved_at).getTime() : now
-    total += Math.max(0, end - start)
+    if (end > start) intervals.push([start, end])
   }
+  // Merge overlapping intervals
+  intervals.sort((a, b) => a[0] - b[0])
+  let total = 0
+  let mergeStart = -1, mergeEnd = -1
+  for (const [s, e] of intervals) {
+    if (s > mergeEnd) {
+      if (mergeEnd > mergeStart) total += mergeEnd - mergeStart
+      mergeStart = s; mergeEnd = e
+    } else {
+      mergeEnd = Math.max(mergeEnd, e)
+    }
+  }
+  if (mergeEnd > mergeStart) total += mergeEnd - mergeStart
   return Math.round(total / 60_000)
 }
 
