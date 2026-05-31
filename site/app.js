@@ -542,9 +542,11 @@ function buildTimeline (productsData, days, colors) {
     // Build path: starts at 100%, drops at each incident start, recovers at resolve
     const events = []
     for (const inc of inRange) {
-      events.push({ t: new Date(inc.opened_at).getTime(), type: 'start', dur: inc.duration_minutes })
+      // For ongoing incidents duration_minutes is null; use elapsed time instead of a magic constant
+      const dur = inc.duration_minutes ?? Math.round((now - new Date(inc.opened_at).getTime()) / 60_000)
+      events.push({ t: new Date(inc.opened_at).getTime(), type: 'start', dur })
       if (inc.resolved_at) {
-        events.push({ t: new Date(inc.resolved_at).getTime(), type: 'end', dur: inc.duration_minutes })
+        events.push({ t: new Date(inc.resolved_at).getTime(), type: 'end' })
       }
     }
     events.sort((a, b) => a.t - b.t)
@@ -560,7 +562,7 @@ function buildTimeline (productsData, days, colors) {
         const y = padT + chartH - ((upPct - 94) / 6) * chartH
         pts.push(`${x},${y}`)
         // drop
-        cumDowntime += ev.dur ?? 30
+        cumDowntime += ev.dur
         const newPct = Math.max(94, 100 - (cumDowntime / totalPeriod) * 100)
         const y2 = padT + chartH - ((newPct - 94) / 6) * chartH
         pts.push(`${x},${y2}`)

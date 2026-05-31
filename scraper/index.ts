@@ -45,7 +45,8 @@ function mergeIncidents(
       byId.set(inc.id, inc)
       newCount++
     } else {
-      if (!prev.resolved_at && inc.resolved_at) {
+      if (!prev.resolved_at && inc.resolved_at &&
+          new Date(inc.resolved_at) > new Date(prev.opened_at)) {
         prev.resolved_at = inc.resolved_at
         prev.duration_minutes = inc.duration_minutes
         resolvedCount++
