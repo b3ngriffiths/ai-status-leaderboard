@@ -8,6 +8,7 @@ import { routeByTitle, isTitleRouted } from './routing'
 
 function decodeEntities(s: string): string {
   return s
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1') // strip CDATA wrapper first
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
@@ -16,6 +17,11 @@ function decodeEntities(s: string): string {
     .replace(/&apos;/g, "'")
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&') // must run last
+}
+
+// Some feeds (e.g. Cohere/incident.io) emit double-slash paths: https://host//path
+function normalizeUrl(url: string): string {
+  return url.replace(/^(https?:\/\/[^/]+)\/\/+/, '$1/')
 }
 
 function tag(block: string, name: string): string | null {
@@ -35,7 +41,13 @@ function linkHref(block: string): string | null {
 // A resolved incident's log contains a "Resolved" / "Completed" update.
 // DeepSeek also prefixes titles with [已恢复] / [已解决] / [Resolved].
 function isResolved(title: string, content: string): boolean {
-  if (/<strong>\s*(resolved|completed)\s*<\/strong>/i.test(content)) return true
+  // Bold/strong status label (Atlassian, DeepSeek, incident.io)
+  if (/<(?:strong|b)>\s*(resolved|completed)\s*<\/(?:strong|b)>/i.test(content)) return true
+  // incident.io: plain-text resolution phrases
+  if (/this incident (?:has been|is now) resolved/i.test(content)) return true
+  if (/we have (?:fully )?resolved/i.test(content)) return true
+  // Status field: `"status":"resolved"` in JSON-in-HTML or feed metadata
+  if (/"status"\s*:\s*"resolved"/i.test(content)) return true
   // Chinese: 已恢复 = recovered, 已解决 = solved; also plain [Resolved]
   if (/[【\[](已恢复|已解决|resolved)[】\]]/i.test(title)) return true
   return false
@@ -93,7 +105,7 @@ export function parseAtom(xml: string, company: Company): Incident[] {
       resolved_at,
       duration_minutes: calcDuration(opened_at, resolved_at),
       raw_severity: inferSeverity(title + ' ' + content),
-      status_page_incident_url: linkHref(entry) ?? `${company.status_page_url.replace(/\/$/, '')}/`,
+      status_page_incident_url: normalizeUrl(linkHref(entry) ?? `${company.status_page_url.replace(/\/$/, '')}/`),
     })
   }
 
