@@ -147,7 +147,7 @@
       "name": "Cohere",
       "slug": "cohere",
       "status_page_url": "https://status.cohere.com",
-      "page_type": "feed",
+      "page_type": "incident_io",
       "logo_url": "https://logo.clearbit.com/cohere.com",
       "products": [
         {
@@ -164,7 +164,7 @@
       "name": "ElevenLabs",
       "slug": "elevenlabs",
       "status_page_url": "https://status.elevenlabs.io",
-      "page_type": "feed",
+      "page_type": "incident_io",
       "logo_url": "https://logo.clearbit.com/elevenlabs.io",
       "products": [
         {
