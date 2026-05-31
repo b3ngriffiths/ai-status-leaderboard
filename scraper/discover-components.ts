@@ -14,14 +14,10 @@ if (!url) {
   process.exit(1)
 }
 
+import { fetchJson } from './http'
+
 type Component = { id: string; name: string; status: string; group: boolean; group_id: string | null }
 type Incident = { id: string; name: string; impact: string; created_at: string; resolved_at: string | null; components: Array<{ id: string; name: string }> }
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: { Accept: 'application/json' } })
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`)
-  return res.json() as Promise<T>
-}
 
 async function main() {
   const base = url.replace(/\/$/, '')

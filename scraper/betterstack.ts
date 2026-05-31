@@ -1,4 +1,5 @@
 import type { Company, Incident, IncidentSeverity } from './types'
+import { fetchJson, calcDuration } from './http'
 
 // ── BetterStack public status page JSON:API types ────────────────────────────
 // Endpoint: GET {status_page_url}/index.json
@@ -36,21 +37,6 @@ function mapAggregate(state: string): IncidentSeverity | null {
     maintenance: 'degraded_performance',
   }
   return map[state] ?? null  // null = skip (operational / unknown)
-}
-
-function calcDuration(startsAt: string, endsAt: string | null): number | null {
-  if (!endsAt) return null
-  const ms = new Date(endsAt).getTime() - new Date(startsAt).getTime()
-  return Math.round(ms / 60_000)
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, {
-    headers: { Accept: 'application/json' },
-    signal: AbortSignal.timeout(30_000),
-  })
-  if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`)
-  return res.json() as Promise<T>
 }
 
 // ── Public scrape entry point ─────────────────────────────────────────────────

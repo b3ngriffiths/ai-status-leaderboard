@@ -18,6 +18,7 @@ export interface Product {
   component_ids: string[]
   rollup?: boolean
   group_name?: string  // incident.io / BetterStack: match by parent section/group name
+  title_keywords?: string[]  // when incidents carry no component links, route by case-insensitive title match
 }
 
 export interface Company {
@@ -27,6 +28,9 @@ export interface Company {
   status_page_url: string
   page_type: PageType
   logo_url: string
+  // Incidents whose title matches any of these (case-insensitive) are dropped
+  // entirely (e.g. "FedRAMP" — a product line we don't track).
+  title_skip?: string[]
   products: Product[]
 }
 

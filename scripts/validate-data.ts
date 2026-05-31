@@ -74,10 +74,18 @@ function main() {
     if (!company.slug) fail(`${company.id}: missing slug`)
     if (!['atlassian', 'incident_io', 'betterstack', 'custom'].includes(company.page_type))
       fail(`${company.id}: invalid page_type`)
+    const titleRouted =
+      !!company.title_skip?.length ||
+      company.products.some((p) => p.title_keywords?.length)
     for (const product of company.products) {
       if (!product.id) fail(`${company.id}: product missing id`)
-      if (!product.component_ids.length && !product.group_name)
-        fail(`${company.id}/${product.id}: no component_ids and no group_name`)
+      if (
+        !product.component_ids.length &&
+        !product.group_name &&
+        !product.title_keywords &&
+        !titleRouted
+      )
+        fail(`${company.id}/${product.id}: no component_ids, group_name, or title_keywords`)
       if (product.component_ids.includes('REPLACE_WITH_REAL_ID'))
         warn(`${company.id}/${product.id}: contains placeholder component_id (run Discover to get real IDs)`)
     }
