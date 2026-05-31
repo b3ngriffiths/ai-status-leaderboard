@@ -4,6 +4,7 @@ import type { Company, CompanyIncidentFile, Incident, ScrapeResult } from './typ
 import { scrapeAtlassian } from './atlassian'
 import { scrapeIncidentIo } from './incident-io'
 import { scrapeBetterstack } from './betterstack'
+import { scrapeFeed } from './feed'
 
 const DATA_DIR = path.join(__dirname, '..', 'site', 'data')
 const INCIDENTS_DIR = path.join(DATA_DIR, 'incidents')
@@ -82,6 +83,8 @@ async function scrapeCompany(company: Company): Promise<ScrapeResult> {
       fresh = await scrapeIncidentIo(company, BACKFILL)
     } else if (page_type === 'betterstack') {
       fresh = await scrapeBetterstack(company, BACKFILL)
+    } else if (page_type === 'feed') {
+      fresh = await scrapeFeed(company, BACKFILL)
     } else {
       throw new Error(`Unknown page_type: ${page_type}`)
     }

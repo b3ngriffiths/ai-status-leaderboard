@@ -1,4 +1,4 @@
-export type PageType = 'atlassian' | 'incident_io' | 'betterstack' | 'custom'
+export type PageType = 'atlassian' | 'incident_io' | 'betterstack' | 'feed' | 'custom'
 export type IncidentSeverity =
   | 'operational'
   | 'degraded_performance'

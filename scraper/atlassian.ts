@@ -1,6 +1,5 @@
 import type {
   Company,
-  Product,
   Incident,
   IncidentSeverity,
   AtlassianIncident,
@@ -8,6 +7,7 @@ import type {
   AtlassianIncidentsResponse,
 } from './types'
 import { fetchJson, calcDuration } from './http'
+import { routeByTitle, isTitleRouted } from './routing'
 
 const IMPACT_TO_SEVERITY: Record<string, IncidentSeverity> = {
   none: 'operational',
@@ -28,20 +28,6 @@ function isConfigured(company: Company): boolean {
   )
 }
 
-// Some providers (notably OpenAI) publish incidents with no component links at
-// all. For those we fall back to matching the incident title against each
-// product's configured keywords, so we can still split e.g. ChatGPT vs Codex.
-function routeByTitle(company: Company, title: string): Product | null {
-  const haystack = title.toLowerCase()
-  if (company.title_skip?.some((kw) => haystack.includes(kw.toLowerCase()))) {
-    return null // explicitly excluded product line (e.g. FedRAMP)
-  }
-  const match = company.products.find((p) =>
-    p.title_keywords?.some((kw) => haystack.includes(kw.toLowerCase())),
-  )
-  return match ?? company.products[0]
-}
-
 function buildIncidents(
   raw: AtlassianIncident[],
   company: Company,
@@ -54,9 +40,7 @@ function buildIncidents(
   // When a company configures title routing, incidents with no component links
   // are attributed to a product (and rolled up under it) rather than dumped as
   // a generic "Uncategorised" entry.
-  const titleRouted =
-    !!company.title_skip?.length ||
-    company.products.some((p) => p.title_keywords?.length)
+  const titleRouted = isTitleRouted(company)
 
   const incidents: Incident[] = []
 
