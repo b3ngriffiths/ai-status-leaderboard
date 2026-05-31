@@ -1,6 +1,6 @@
 {
   "company_id": "cohere",
-  "last_scraped": "2026-05-31T11:18:25.563Z",
+  "last_scraped": "2026-05-31T11:31:58.569Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -8,7 +8,7 @@
       "product_id": "cohere-api",
       "component_id": "cohere-api",
       "component_name": "API",
-      "title": "<![CDATA[Docs Platform Degraded Performance]]>",
+      "title": "Docs Platform Degraded Performance",
       "opened_at": "2026-04-20T22:28:56.134Z",
       "resolved_at": null,
       "duration_minutes": null,
@@ -20,7 +20,7 @@
       "product_id": "cohere-api",
       "component_id": "cohere-api",
       "component_name": "API",
-      "title": "<![CDATA[Multiple Model Disruptions]]>",
+      "title": "Multiple Model Disruptions",
       "opened_at": "2026-04-13T21:00:44.184Z",
       "resolved_at": null,
       "duration_minutes": null,
