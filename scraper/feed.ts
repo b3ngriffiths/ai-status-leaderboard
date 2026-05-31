@@ -104,8 +104,11 @@ export async function scrapeFeed(company: Company, _backfill = false): Promise<I
   const base = company.status_page_url.replace(/\/$/, '')
   const xml = await fetchText(`${base}/history.atom`)
   const incidents = parseAtom(xml, company)
-  if (incidents.length === 0) {
-    throw new Error('history.atom returned no parseable incidents')
+  // Only error when entries exist but failed to parse — a service with no
+  // incidents yet produces a valid empty feed and should not fail the scrape.
+  const entryCount = (xml.match(/<entry[\s>]/gi) ?? []).length
+  if (incidents.length === 0 && entryCount > 0) {
+    throw new Error(`history.atom has ${entryCount} entries but none parsed — check feed format`)
   }
   return incidents
 }
