@@ -1,0 +1,17 @@
+{
+  "name": "ai-status-leaderboard",
+  "version": "0.1.0",
+  "scripts": {
+    "scrape": "ts-node scraper/index.ts",
+    "scrape:dry": "ts-node scraper/index.ts --dry-run",
+    "scrape:backfill": "ts-node scraper/index.ts --backfill",
+    "discover": "ts-node scraper/discover-components.ts",
+    "validate": "ts-node scripts/validate-data.ts",
+    "dev": "npx serve site -p 3000"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

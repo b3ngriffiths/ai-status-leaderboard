@@ -1,0 +1,55 @@
+{
+  "company_id": "github",
+  "last_scraped": "2026-05-31T18:05:39.117Z",
+  "scrape_success": true,
+  "incidents": [
+    {
+      "id": "ykb44v068g8v-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Incident with Copilot",
+      "opened_at": "2026-05-19T05:30:00.000Z",
+      "resolved_at": "2026-05-19T05:30:00.000Z",
+      "duration_minutes": 0,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/933s0plq1vyv"
+    },
+    {
+      "id": "8790jgb3ky6t-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Disruption with Copilot chat and Copilot Coding Agent",
+      "opened_at": "2026-04-22T15:35:45.298Z",
+      "resolved_at": "2026-04-22T19:18:26.916Z",
+      "duration_minutes": 223,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/0m0g0r5htdxy"
+    },
+    {
+      "id": "j3sgbdw2lw3c-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Copilot Coding Agent failing to start some jobs",
+      "opened_at": "2026-04-02T16:18:04.776Z",
+      "resolved_at": "2026-04-02T16:30:05.082Z",
+      "duration_minutes": 12,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/qrn1lx3vp2cn"
+    },
+    {
+      "id": "tstkmx7pcs5d-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Incident with Copilot",
+      "opened_at": "2026-04-01T09:58:13.543Z",
+      "resolved_at": "2026-04-01T12:41:38.233Z",
+      "duration_minutes": 163,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/2xwjn4t1r8jy"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+name: Discover Status Page Components
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Status page URL (leave blank to run all companies from companies.json)'
+        required: false
+        default: ''
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      - run: npm ci
+      - name: Discover all companies
+        if: ${{ github.event.inputs.url == '' }}
+        continue-on-error: true
+        run: |
+          node -e "
+            const companies = require('./site/data/companies.json').companies;
+            const urls = companies.map(c => c.status_page_url);
+            process.stdout.write(urls.join('\n') + '\n');
+          " | while read url; do
+            echo "========================================="
+            echo "Discovering: $url"
+            echo "========================================="
+            npm run discover -- "$url" || true
+          done
+      - name: Discover custom URL
+        if: ${{ github.event.inputs.url != '' }}
+        continue-on-error: true
+        # Pass the untrusted input via env, never interpolate it into the shell.
+        env:
+          DISCOVER_URL: ${{ github.event.inputs.url }}
+        run: npm run discover -- "$DISCOVER_URL"

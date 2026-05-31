@@ -1,0 +1,46 @@
+name: Full Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Scrape mode'
+        required: true
+        default: 'backfill'
+        type: choice
+        options:
+          - backfill
+          - scrape
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  # scrape mode: scrape.yml handles scrape + deploy internally
+  run-scrape:
+    if: ${{ inputs.mode == 'scrape' }}
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/scrape.yml
+
+  # backfill mode: backfill then deploy explicitly
+  run-backfill:
+    if: ${{ inputs.mode == 'backfill' }}
+    permissions:
+      contents: write
+    uses: ./.github/workflows/backfill.yml
+    with:
+      confirm: 'yes'
+
+  deploy-after-backfill:
+    needs: run-backfill
+    if: ${{ inputs.mode == 'backfill' && !failure() && !cancelled() }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml

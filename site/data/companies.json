@@ -1,0 +1,270 @@
+{
+  "companies": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "slug": "openai",
+      "status_page_url": "https://status.openai.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/openai.com",
+      "title_skip": ["FedRAMP"],
+      "products": [
+        {
+          "id": "openai-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": []
+        },
+        {
+          "id": "codex",
+          "name": "Codex",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": ["Codex"]
+        },
+        {
+          "id": "chatgpt",
+          "name": "ChatGPT",
+          "category": "ai-chat",
+          "rollup": true,
+          "component_ids": [],
+          "title_keywords": ["ChatGPT", "conversation", "workspace", "Sora"]
+        }
+      ]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "slug": "deepseek",
+      "status_page_url": "https://status.deepseek.com",
+      "page_type": "feed",
+      "logo_url": "https://logo.clearbit.com/deepseek.com",
+      "products": [
+        {
+          "id": "deepseek-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": []
+        },
+        {
+          "id": "deepseek-chat",
+          "name": "Web/App",
+          "category": "ai-chat",
+          "component_ids": [],
+          "title_keywords": ["web", "app", "chat", "platform"]
+        }
+      ]
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "slug": "perplexity",
+      "status_page_url": "https://status.perplexity.com",
+      "page_type": "feed",
+      "logo_url": "https://logo.clearbit.com/perplexity.ai",
+      "products": [
+        {
+          "id": "perplexity-chat",
+          "name": "Search/App",
+          "category": "ai-chat",
+          "component_ids": [],
+          "title_keywords": []
+        },
+        {
+          "id": "perplexity-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": ["api", "sonar"]
+        }
+      ]
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "slug": "anthropic",
+      "status_page_url": "https://status.anthropic.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/anthropic.com",
+      "products": [
+        {
+          "id": "anthropic-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [
+            "k8w3r06qmzrp",
+            "0scnb50nvy53"
+          ]
+        },
+        {
+          "id": "claude-ai",
+          "name": "Claude.ai",
+          "category": "ai-chat",
+          "component_ids": [
+            "rwppv331jlwc",
+            "0qbwn08sd68x",
+            "bpp5gb3hpjcl"
+          ]
+        },
+        {
+          "id": "claude-code",
+          "name": "Claude Code",
+          "category": "ai-code",
+          "component_ids": [
+            "yyzkbfz2thpt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral AI",
+      "slug": "mistral",
+      "status_page_url": "https://status.mistral.ai",
+      "page_type": "custom",
+      "logo_url": "https://logo.clearbit.com/mistral.ai",
+      "products": [
+        {
+          "id": "mistral-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": []
+        },
+        {
+          "id": "le-chat",
+          "name": "Le Chat",
+          "category": "ai-chat",
+          "component_ids": [],
+          "title_keywords": ["chat", "le chat", "lechat"]
+        }
+      ]
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "slug": "cohere",
+      "status_page_url": "https://status.cohere.com",
+      "page_type": "incident_io",
+      "logo_url": "https://logo.clearbit.com/cohere.com",
+      "products": [
+        {
+          "id": "cohere-api",
+          "name": "API",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": []
+        }
+      ]
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "slug": "elevenlabs",
+      "status_page_url": "https://status.elevenlabs.io",
+      "page_type": "incident_io",
+      "logo_url": "https://logo.clearbit.com/elevenlabs.io",
+      "products": [
+        {
+          "id": "elevenlabs-api",
+          "name": "API",
+          "category": "ai-other",
+          "component_ids": [],
+          "title_keywords": []
+        }
+      ]
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "slug": "github",
+      "status_page_url": "https://www.githubstatus.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/github.com",
+      "products": [
+        {
+          "id": "github-copilot",
+          "name": "Copilot",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": ["Copilot"],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "slug": "cursor",
+      "status_page_url": "https://status.cursor.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/cursor.com",
+      "products": [
+        {
+          "id": "cursor",
+          "name": "Cursor",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf",
+      "slug": "windsurf",
+      "status_page_url": "https://status.windsurf.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/windsurf.com",
+      "products": [
+        {
+          "id": "windsurf",
+          "name": "Windsurf",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "jetbrains-ai",
+      "name": "JetBrains AI",
+      "slug": "jetbrains-ai",
+      "status_page_url": "https://status.jetbrains.ai",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/jetbrains.com",
+      "products": [
+        {
+          "id": "jetbrains-ai",
+          "name": "JetBrains AI",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "slug": "groq",
+      "status_page_url": "https://groqstatus.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/groq.com",
+      "products": [
+        {
+          "id": "groq-api",
+          "name": "GroqCloud",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    }
+  ]
+}
