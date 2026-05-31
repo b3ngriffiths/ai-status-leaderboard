@@ -1,4 +1,5 @@
 import type { Company, Incident, IncidentSeverity } from './types'
+import { fetchJson, calcDuration } from './http'
 
 // ── incident.io status page public API types ────────────────────────────────
 
@@ -47,21 +48,6 @@ function mapSeverity(incidentStatus: string, componentStatus?: string): Incident
   }
   if (incidentStatus === 'monitoring') return 'degraded_performance'
   return 'partial_outage'
-}
-
-function calcDuration(openedAt: string, resolvedAt: string | null | undefined): number | null {
-  if (!resolvedAt) return null
-  const ms = new Date(resolvedAt).getTime() - new Date(openedAt).getTime()
-  return Math.round(ms / 60_000)
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, {
-    headers: { Accept: 'application/json' },
-    signal: AbortSignal.timeout(30_000),
-  })
-  if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`)
-  return res.json() as Promise<T>
 }
 
 // ── Incident building ─────────────────────────────────────────────────────────

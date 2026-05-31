@@ -9,6 +9,23 @@
 
 const DATA_BASE = 'data'
 
+// ---------------------------------------------------------------------------
+// Security helpers — incident titles/URLs come from external status pages and
+// must never be injected into the DOM as raw HTML.
+// ---------------------------------------------------------------------------
+
+const _ESCAPE_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }
+
+function escapeHtml (value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => _ESCAPE_MAP[c])
+}
+
+// Only allow http(s) links; anything else (e.g. javascript:) collapses to '#'.
+function safeUrl (value) {
+  const s = String(value ?? '')
+  return /^https?:\/\//i.test(s) ? s : '#'
+}
+
 async function loadAll () {
   const companiesRes = await fetch(`${DATA_BASE}/companies.json`)
   const companies = (await companiesRes.json()).companies
@@ -209,9 +226,13 @@ function flatRows () {
   for (const company of _state.companies) {
     const file = _state.incidentFiles.find(f => f.company_id === company.id)
     if (!file) continue
+    // A company that has never been scraped successfully has no basis for an
+    // uptime figure — surface "No data" rather than a misleading 100%.
+    const noData = !file.last_scraped
     for (const product of company.products) {
       rows.push({
         company,
+        noData,
         ...computeProductStats(product, file.incidents, _state.days)
       })
     }
@@ -230,6 +251,8 @@ function sortRows (rows) {
   const dir = _state.sortDir === 'desc' ? -1 : 1
 
   return [...rows].sort((a, b) => {
+    // Always keep "No data" rows at the bottom regardless of sort column/dir.
+    if (a.noData !== b.noData) return a.noData ? 1 : -1
     let va, vb
     switch (col) {
       case 'uptime': va = a.uptime; vb = b.uptime; break
@@ -273,24 +296,50 @@ function renderLeaderboard () {
   }
 
   tbody.innerHTML = sorted.map((row, idx) => {
+    const companyId = encodeURIComponent(row.company.id)
+    const logo = escapeHtml(row.company.logo_url)
+    const name = escapeHtml(row.company.name)
+    const productName = escapeHtml(row.product.name)
+    const category = escapeHtml(row.product.category)
+
+    if (row.noData) {
+      return `<tr onclick="window.location='company.html?id=${companyId}'">
+        <td class="col-rank">${idx + 1}</td>
+        <td><div class="col-company">
+          <img src="${logo}" alt="${name}" onerror="this.style.display='none'">
+          <strong>${name}</strong>
+        </div></td>
+        <td>${productName}</td>
+        <td><span class="badge badge-${category}">${escapeHtml(categoryLabel(row.product.category))}</span></td>
+        <td class="col-uptime" style="color:var(--muted)">No data</td>
+        <td class="mono-cell">—</td>
+        <td class="mono-cell">—</td>
+        <td class="mono-cell">—</td>
+        <td class="mono-cell">—</td>
+        <td class="mono-cell">—</td>
+        <td></td>
+        <td><span class="status-dot" style="background:var(--muted)" title="Not yet monitored"></span></td>
+      </tr>`
+    }
+
     const cls = uptimeClass(row.uptime)
     const longestInc = row.longest
     const longestText = longestInc
       ? `${fmtDuration(longestInc.duration_minutes)} <span style="color:var(--muted);font-size:0.75rem">${fmtDate(longestInc.opened_at)}</span>`
       : '—'
     const lastInc = row.last
-    const lastAttr = lastInc ? ` title="${lastInc.title}"` : ''
+    const lastAttr = lastInc ? ` title="${escapeHtml(lastInc.title)}"` : ''
     const spark = buildSparkline(row.allIncidents)
     const dotClass = row.affected ? 'degraded' : 'operational'
 
-    return `<tr onclick="window.location='company.html?id=${row.company.id}'">
+    return `<tr onclick="window.location='company.html?id=${companyId}'">
       <td class="col-rank">${idx + 1}</td>
       <td><div class="col-company">
-        <img src="${row.company.logo_url}" alt="${row.company.name}" onerror="this.style.display='none'">
-        <strong>${row.company.name}</strong>
+        <img src="${logo}" alt="${name}" onerror="this.style.display='none'">
+        <strong>${name}</strong>
       </div></td>
-      <td>${row.product.name}</td>
-      <td><span class="badge badge-${row.product.category}">${categoryLabel(row.product.category)}</span></td>
+      <td>${productName}</td>
+      <td><span class="badge badge-${category}">${escapeHtml(categoryLabel(row.product.category))}</span></td>
       <td class="col-uptime ${cls}">${fmtUptime(row.uptime)}</td>
       <td class="mono-cell">${row.incidents.length}</td>
       <td class="mono-cell">${fmtDuration(row.downtimeMinutes)}</td>
@@ -313,9 +362,11 @@ function renderLeaderboard () {
 
 function updateSummary (rows, days) {
   const filtered = filterRows(rows)
-  const totalInc = filtered.reduce((s, r) => s + r.incidents.length, 0)
-  const totalDt = filtered.reduce((s, r) => s + r.downtimeMinutes, 0)
-  const byUptime = [...filtered].sort((a, b) => b.uptime - a.uptime)
+  // Exclude never-scraped rows: they have no real incident/uptime figures.
+  const withData = filtered.filter(r => !r.noData)
+  const totalInc = withData.reduce((s, r) => s + r.incidents.length, 0)
+  const totalDt = withData.reduce((s, r) => s + r.downtimeMinutes, 0)
+  const byUptime = [...withData].sort((a, b) => b.uptime - a.uptime)
 
   document.getElementById('stat-total-incidents').textContent = totalInc
   document.getElementById('stat-total-downtime').textContent = fmtDuration(totalDt)
@@ -324,9 +375,9 @@ function updateSummary (rows, days) {
     const best = byUptime[0]
     const worst = byUptime[byUptime.length - 1]
     document.getElementById('stat-most-reliable').innerHTML =
-      `<span style="color:var(--green)">${best.company.name} ${best.product.name}</span> <span class="mono-cell" style="font-size:0.8rem">${fmtUptime(best.uptime)}</span>`
+      `<span style="color:var(--green)">${escapeHtml(best.company.name)} ${escapeHtml(best.product.name)}</span> <span class="mono-cell" style="font-size:0.8rem">${fmtUptime(best.uptime)}</span>`
     document.getElementById('stat-least-reliable').innerHTML =
-      `<span style="color:var(--red)">${worst.company.name} ${worst.product.name}</span> <span class="mono-cell" style="font-size:0.8rem">${fmtUptime(worst.uptime)}</span>`
+      `<span style="color:var(--red)">${escapeHtml(worst.company.name)} ${escapeHtml(worst.product.name)}</span> <span class="mono-cell" style="font-size:0.8rem">${fmtUptime(worst.uptime)}</span>`
   } else {
     document.getElementById('stat-most-reliable').textContent = '—'
     document.getElementById('stat-least-reliable').textContent = '—'
@@ -525,27 +576,33 @@ function renderCompanyPage (company, file, days) {
   const allIncidents = file.incidents
   const allStats = company.products.map(p => computeProductStats(p, allIncidents, days))
   const totalDt = allStats.reduce((s, r) => s + r.downtimeMinutes, 0)
+  const noData = !file.last_scraped
   const overallUptime = uptimePct(totalDt, days)
+  const uptimeDisplay = noData
+    ? '<span style="color:var(--muted)">No data</span>'
+    : `<span class="${uptimeClass(overallUptime)}">${fmtUptime(overallUptime)}</span>`
   const anyAffected = allStats.some(s => s.affected)
 
   document.getElementById('company-header').innerHTML = `
-    <img src="${company.logo_url}" alt="${company.name}" onerror="this.style.display='none'">
+    <img src="${escapeHtml(company.logo_url)}" alt="${escapeHtml(company.name)}" onerror="this.style.display='none'">
     <div>
-      <h1>${company.name}</h1>
-      <a class="ext" href="${company.status_page_url}" target="_blank">Official status page ↗</a>
+      <h1>${escapeHtml(company.name)}</h1>
+      <a class="ext" href="${safeUrl(company.status_page_url)}" target="_blank">Official status page ↗</a>
     </div>
     <div style="margin-left:auto;text-align:right">
-      <div class="overall-uptime ${uptimeClass(overallUptime)}">${fmtUptime(overallUptime)}</div>
+      <div class="overall-uptime">${uptimeDisplay}</div>
       <div style="color:var(--muted);font-size:0.8rem">overall uptime (${days === 0 ? 'all time' : days + ' days'})</div>
-      <div style="margin-top:4px"><span class="status-dot ${anyAffected ? 'degraded' : 'operational'}"></span> ${anyAffected ? '<span style="color:var(--red)">Degraded</span>' : '<span style="color:var(--green)">Operational</span>'}</div>
+      ${noData
+        ? '<div style="margin-top:4px"><span class="status-dot" style="background:var(--muted)"></span> <span style="color:var(--muted)">Not yet monitored</span></div>'
+        : `<div style="margin-top:4px"><span class="status-dot ${anyAffected ? 'degraded' : 'operational'}"></span> ${anyAffected ? '<span style="color:var(--red)">Degraded</span>' : '<span style="color:var(--green)">Operational</span>'}</div>`}
     </div>`
 
   // Product cards
   document.getElementById('product-cards').innerHTML = allStats.map(s => `
     <div class="product-card">
       <div class="card-title">
-        ${s.product.name}
-        <span class="badge badge-${s.product.category}">${categoryLabel(s.product.category)}</span>
+        ${escapeHtml(s.product.name)}
+        <span class="badge badge-${escapeHtml(s.product.category)}">${escapeHtml(categoryLabel(s.product.category))}</span>
         <span class="status-dot ${s.affected ? 'degraded' : 'operational'}" style="margin-left:auto"></span>
       </div>
       <div class="card-uptime ${uptimeClass(s.uptime)}">${fmtUptime(s.uptime)}</div>
@@ -591,11 +648,11 @@ function renderCompanyPage (company, file, days) {
       : `<span class="ongoing-badge">Ongoing</span>`
     return `<tr>
       <td class="mono-cell">${fmtDate(inc.opened_at)}</td>
-      <td>${product ? product.name : inc.product_id}</td>
-      <td>${inc.title}</td>
+      <td>${escapeHtml(product ? product.name : inc.product_id)}</td>
+      <td>${escapeHtml(inc.title)}</td>
       <td class="mono-cell">${durText}</td>
-      <td><span class="severity-badge sev-${inc.raw_severity}">${inc.raw_severity.replace(/_/g, ' ')}</span></td>
-      <td><a href="${inc.status_page_incident_url}" target="_blank" style="color:var(--muted)">↗</a></td>
+      <td><span class="severity-badge sev-${escapeHtml(inc.raw_severity)}">${escapeHtml(inc.raw_severity.replace(/_/g, ' '))}</span></td>
+      <td><a href="${safeUrl(inc.status_page_incident_url)}" target="_blank" style="color:var(--muted)">↗</a></td>
     </tr>`
   }).join('')
 }

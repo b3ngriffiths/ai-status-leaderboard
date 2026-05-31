@@ -1,11 +1,13 @@
 import type {
   Company,
+  Product,
   Incident,
   IncidentSeverity,
   AtlassianIncident,
   AtlassianSummaryResponse,
   AtlassianIncidentsResponse,
 } from './types'
+import { fetchJson, calcDuration } from './http'
 
 const IMPACT_TO_SEVERITY: Record<string, IncidentSeverity> = {
   none: 'operational',
@@ -18,18 +20,26 @@ function mapSeverity(impact: string): IncidentSeverity {
   return IMPACT_TO_SEVERITY[impact] ?? 'degraded_performance'
 }
 
-function calcDuration(openedAt: string, resolvedAt: string | null): number | null {
-  if (!resolvedAt) return null
-  const ms = new Date(resolvedAt).getTime() - new Date(openedAt).getTime()
-  return Math.round(ms / 60_000)
-}
-
 const PLACEHOLDER = 'REPLACE_WITH_REAL_ID'
 
 function isConfigured(company: Company): boolean {
   return company.products.every((p) =>
     p.component_ids.every((id) => id !== PLACEHOLDER),
   )
+}
+
+// Some providers (notably OpenAI) publish incidents with no component links at
+// all. For those we fall back to matching the incident title against each
+// product's configured keywords, so we can still split e.g. ChatGPT vs Codex.
+function routeByTitle(company: Company, title: string): Product | null {
+  const haystack = title.toLowerCase()
+  if (company.title_skip?.some((kw) => haystack.includes(kw.toLowerCase()))) {
+    return null // explicitly excluded product line (e.g. FedRAMP)
+  }
+  const match = company.products.find((p) =>
+    p.title_keywords?.some((kw) => haystack.includes(kw.toLowerCase())),
+  )
+  return match ?? company.products[0]
 }
 
 function buildIncidents(
@@ -40,6 +50,13 @@ function buildIncidents(
   const allComponentIds = new Set(
     company.products.flatMap((p) => p.component_ids),
   )
+
+  // When a company configures title routing, incidents with no component links
+  // are attributed to a product (and rolled up under it) rather than dumped as
+  // a generic "Uncategorised" entry.
+  const titleRouted =
+    !!company.title_skip?.length ||
+    company.products.some((p) => p.title_keywords?.length)
 
   const incidents: Incident[] = []
 
@@ -55,11 +72,15 @@ function buildIncidents(
       // No components matched — either no components listed, or all reference retired IDs.
       // Always fall back to fallback product so incidents aren't silently dropped.
       if (components.length === 0) {
+        // No component links at all — route by title keywords (or drop if the
+        // title matches the company's skip list, e.g. FedRAMP).
+        const product = routeByTitle(company, raw_inc.name)
+        if (!product) continue
         incidents.push({
-          id: `${raw_inc.id}-uncategorised`,
-          product_id: fallbackProduct.id,
-          component_id: 'uncategorised',
-          component_name: 'Uncategorised',
+          id: titleRouted ? `${raw_inc.id}-${product.id}` : `${raw_inc.id}-uncategorised`,
+          product_id: product.id,
+          component_id: titleRouted ? product.id : 'uncategorised',
+          component_name: titleRouted ? product.name : 'Uncategorised',
           title: raw_inc.name,
           opened_at: raw_inc.created_at,
           resolved_at: raw_inc.resolved_at,
@@ -134,15 +155,6 @@ function buildIncidents(
   }
 
   return incidents
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, {
-    headers: { Accept: 'application/json' },
-    signal: AbortSignal.timeout(30_000),
-  })
-  if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`)
-  return res.json() as Promise<T>
 }
 
 async function fetchAllIncidentPages(

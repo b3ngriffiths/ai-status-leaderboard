@@ -5,15 +5,23 @@
       "name": "OpenAI",
       "slug": "openai",
       "status_page_url": "https://status.openai.com",
-      "page_type": "incident_io",
+      "page_type": "atlassian",
       "logo_url": "https://logo.clearbit.com/openai.com",
+      "title_skip": ["FedRAMP"],
       "products": [
         {
           "id": "openai-api",
           "name": "API",
           "category": "ai-api",
           "component_ids": [],
-          "group_name": "APIs"
+          "title_keywords": []
+        },
+        {
+          "id": "codex",
+          "name": "Codex",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": ["Codex"]
         },
         {
           "id": "chatgpt",
@@ -21,14 +29,7 @@
           "category": "ai-chat",
           "rollup": true,
           "component_ids": [],
-          "group_name": "ChatGPT"
-        },
-        {
-          "id": "codex",
-          "name": "Codex",
-          "category": "ai-code",
-          "component_ids": [],
-          "group_name": "Codex"
+          "title_keywords": ["ChatGPT", "conversation", "workspace", "Sora"]
         }
       ]
     },
@@ -44,13 +45,15 @@
           "id": "xai-api",
           "name": "API",
           "category": "ai-api",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": [],
+          "title_keywords": []
         },
         {
           "id": "grok",
           "name": "Grok",
           "category": "ai-chat",
-          "component_ids": ["REPLACE_WITH_REAL_ID"]
+          "component_ids": [],
+          "title_keywords": ["Grok"]
         }
       ]
     },
@@ -59,21 +62,21 @@
       "name": "DeepSeek",
       "slug": "deepseek",
       "status_page_url": "https://status.deepseek.com",
-      "page_type": "atlassian",
+      "page_type": "betterstack",
       "logo_url": "https://logo.clearbit.com/deepseek.com",
       "products": [
         {
           "id": "deepseek-api",
           "name": "API",
           "category": "ai-api",
-          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "component_ids": [],
           "group_name": "API"
         },
         {
           "id": "deepseek-chat",
           "name": "DeepSeek Chat",
           "category": "ai-chat",
-          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "component_ids": [],
           "group_name": "Chat"
         }
       ]
@@ -83,21 +86,21 @@
       "name": "Perplexity",
       "slug": "perplexity",
       "status_page_url": "https://status.perplexity.com",
-      "page_type": "atlassian",
+      "page_type": "betterstack",
       "logo_url": "https://logo.clearbit.com/perplexity.ai",
       "products": [
         {
           "id": "perplexity-api",
           "name": "API",
           "category": "ai-api",
-          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "component_ids": [],
           "group_name": "API"
         },
         {
           "id": "perplexity-chat",
           "name": "Perplexity Chat",
           "category": "ai-chat",
-          "component_ids": ["REPLACE_WITH_REAL_ID"],
+          "component_ids": [],
           "group_name": "Perplexity"
         }
       ]

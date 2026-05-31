@@ -34,4 +34,7 @@ jobs:
       - name: Discover custom URL
         if: ${{ github.event.inputs.url != '' }}
         continue-on-error: true
-        run: npm run discover -- "${{ github.event.inputs.url }}"
+        # Pass the untrusted input via env, never interpolate it into the shell.
+        env:
+          DISCOVER_URL: ${{ github.event.inputs.url }}
+        run: npm run discover -- "$DISCOVER_URL"
