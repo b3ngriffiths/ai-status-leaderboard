@@ -1,8 +1,32 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-05-30T21:34:15.340Z",
+  "last_scraped": "2026-05-31T02:40:25.512Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "694jznhm6tsl-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "opus 4.7 elevated errors",
+      "opened_at": "2026-05-30T22:58:03.318Z",
+      "resolved_at": "2026-05-31T00:16:20.528Z",
+      "duration_minutes": 78,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/5sy83gs4ytbw"
+    },
+    {
+      "id": "694jznhm6tsl-0qbwn08sd68x",
+      "product_id": "claude-ai",
+      "component_id": "0qbwn08sd68x",
+      "component_name": "Claude Console (platform.claude.com)",
+      "title": "opus 4.7 elevated errors",
+      "opened_at": "2026-05-30T22:58:03.318Z",
+      "resolved_at": "2026-05-31T00:16:20.528Z",
+      "duration_minutes": 78,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/5sy83gs4ytbw"
+    },
     {
       "id": "2zr0rkdxjdtc-uncategorised",
       "product_id": "anthropic-api",
