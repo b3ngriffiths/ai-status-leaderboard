@@ -123,7 +123,7 @@
       "name": "Mistral AI",
       "slug": "mistral",
       "status_page_url": "https://status.mistral.ai",
-      "page_type": "feed",
+      "page_type": "custom",
       "logo_url": "https://logo.clearbit.com/mistral.ai",
       "products": [
         {
@@ -263,41 +263,6 @@
           "component_ids": [],
           "title_keywords": [],
           "rollup": true
-        }
-      ]
-    },
-    {
-      "id": "modal",
-      "name": "Modal",
-      "slug": "modal",
-      "status_page_url": "https://status.modal.com",
-      "page_type": "atlassian",
-      "logo_url": "https://logo.clearbit.com/modal.com",
-      "products": [
-        {
-          "id": "modal",
-          "name": "Modal",
-          "category": "ai-api",
-          "component_ids": [],
-          "title_keywords": [],
-          "rollup": true
-        }
-      ]
-    },
-    {
-      "id": "midjourney",
-      "name": "Midjourney",
-      "slug": "midjourney",
-      "status_page_url": "https://status.midjourney.com",
-      "page_type": "custom",
-      "logo_url": "https://logo.clearbit.com/midjourney.com",
-      "products": [
-        {
-          "id": "midjourney",
-          "name": "Midjourney",
-          "category": "ai-image",
-          "component_ids": [],
-          "title_keywords": []
         }
       ]
     }

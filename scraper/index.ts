@@ -51,6 +51,11 @@ function mergeIncidents(
         prev.duration_minutes = inc.duration_minutes
         resolvedCount++
       }
+      // If pairing corrected an earlier start time, propagate it
+      if (new Date(inc.opened_at) < new Date(prev.opened_at)) {
+        prev.opened_at = inc.opened_at
+        prev.duration_minutes = inc.duration_minutes
+      }
       // Refresh mutable fields the upstream may update on resolution
       prev.title = inc.title
       prev.raw_severity = inc.raw_severity

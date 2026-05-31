@@ -53,6 +53,60 @@ function isResolved(title: string, content: string): boolean {
   return false
 }
 
+// Strip resolution status prefixes so we can match start and resolved entries by title.
+// DeepSeek uses [已恢复]/[已解决]; most English feeds use [Resolved]/[Completed].
+function stripStatusPrefix(title: string): string {
+  return title
+    .replace(/^\s*[【\[](已恢复|已解决|resolved|completed)[】\]]\s*/gi, '')
+    .trim()
+    .toLowerCase()
+}
+
+// Some feeds (e.g. DeepSeek, Perplexity) emit a separate entry for each status
+// update: one when the incident opens (unresolved) and another when it closes
+// (title prefixed with [Resolved]).  The resolved entry's <published> is the
+// resolution time, not the start time — so pairing them gives us the real duration.
+function pairEntries(incidents: Incident[]): Incident[] {
+  const unresolved = incidents.filter(i => !i.resolved_at)
+  const resolved = incidents.filter(i => i.resolved_at)
+
+  if (unresolved.length === 0) return incidents
+
+  const matchedUnresolved = new Set<string>()
+  const result: Incident[] = []
+
+  for (const resolvedInc of resolved) {
+    const base = stripStatusPrefix(resolvedInc.title)
+    // Find the earliest unresolved entry whose title matches and that started
+    // before this resolution timestamp.
+    const match = unresolved
+      .filter(u =>
+        !matchedUnresolved.has(u.id) &&
+        stripStatusPrefix(u.title) === base &&
+        new Date(u.opened_at) <= new Date(resolvedInc.resolved_at!),
+      )
+      .sort((a, b) => new Date(a.opened_at).getTime() - new Date(b.opened_at).getTime())[0]
+
+    if (match) {
+      matchedUnresolved.add(match.id)
+      result.push({
+        ...resolvedInc,
+        opened_at: match.opened_at,
+        duration_minutes: calcDuration(match.opened_at, resolvedInc.resolved_at),
+      })
+    } else {
+      result.push(resolvedInc)
+    }
+  }
+
+  // Keep unmatched unresolved entries (genuinely ongoing incidents)
+  for (const inc of unresolved) {
+    if (!matchedUnresolved.has(inc.id)) result.push(inc)
+  }
+
+  return result
+}
+
 function inferSeverity(text: string): IncidentSeverity {
   const t = text.toLowerCase()
   if (/major outage|major service outage/.test(t)) return 'major_outage'
@@ -109,7 +163,7 @@ export function parseAtom(xml: string, company: Company): Incident[] {
     })
   }
 
-  return incidents
+  return pairEntries(incidents)
 }
 
 export async function scrapeFeed(company: Company, _backfill = false): Promise<Incident[]> {
