@@ -211,6 +211,95 @@
           "rollup": true
         }
       ]
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf",
+      "slug": "windsurf",
+      "status_page_url": "https://status.windsurf.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/windsurf.com",
+      "products": [
+        {
+          "id": "windsurf",
+          "name": "Windsurf",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "jetbrains-ai",
+      "name": "JetBrains AI",
+      "slug": "jetbrains-ai",
+      "status_page_url": "https://status.jetbrains.ai",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/jetbrains.com",
+      "products": [
+        {
+          "id": "jetbrains-ai",
+          "name": "JetBrains AI",
+          "category": "ai-code",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "slug": "groq",
+      "status_page_url": "https://groqstatus.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/groq.com",
+      "products": [
+        {
+          "id": "groq-api",
+          "name": "GroqCloud",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "modal",
+      "name": "Modal",
+      "slug": "modal",
+      "status_page_url": "https://status.modal.com",
+      "page_type": "atlassian",
+      "logo_url": "https://logo.clearbit.com/modal.com",
+      "products": [
+        {
+          "id": "modal",
+          "name": "Modal",
+          "category": "ai-api",
+          "component_ids": [],
+          "title_keywords": [],
+          "rollup": true
+        }
+      ]
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "slug": "midjourney",
+      "status_page_url": "https://status.midjourney.com",
+      "page_type": "custom",
+      "logo_url": "https://logo.clearbit.com/midjourney.com",
+      "products": [
+        {
+          "id": "midjourney",
+          "name": "Midjourney",
+          "category": "ai-image",
+          "component_ids": [],
+          "title_keywords": []
+        }
+      ]
     }
   ]
 }

@@ -164,9 +164,7 @@ export async function scrapeIncidentIo(company: Company, backfill = false): Prom
         if (items.length < 100) break
         page++
       } catch (e) {
-        if (page === 1) {
-          console.warn(`  ⚠ History endpoint not available: ${e instanceof Error ? e.message : e}`)
-        }
+        console.warn(`  ⚠ History page ${page} fetch failed: ${e instanceof Error ? e.message : e}`)
         break
       }
     }

@@ -10,7 +10,7 @@ import { fetchJson, calcDuration } from './http'
 import { routeByTitle, isTitleRouted } from './routing'
 
 const IMPACT_TO_SEVERITY: Record<string, IncidentSeverity> = {
-  none: 'operational',
+  none: 'degraded_performance',
   minor: 'degraded_performance',
   major: 'partial_outage',
   critical: 'major_outage',

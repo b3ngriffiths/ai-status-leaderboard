@@ -28,11 +28,10 @@ function validateIncident(inc: Incident, idx: number) {
     fail(`incident[${idx}]: invalid opened_at: ${inc.opened_at}`)
   if (inc.resolved_at !== null && isNaN(Date.parse(inc.resolved_at)))
     fail(`incident[${idx}]: invalid resolved_at: ${inc.resolved_at}`)
-  // A resolved incident with null duration is a legitimate signal that the
-  // upstream timestamps were malformed (resolved_at before opened_at), which
-  // calcDuration clamps to null. Warn rather than fail.
+  if (inc.resolved_at && new Date(inc.resolved_at) < new Date(inc.opened_at))
+    warn(`incident[${idx}]: resolved_at is before opened_at — malformed upstream timestamps`)
   if (inc.resolved_at && inc.duration_minutes === null)
-    warn(`incident[${idx}]: resolved_at set but duration_minutes is null (malformed upstream timestamps)`)
+    warn(`incident[${idx}]: resolved_at set but duration_minutes is null`)
   const validSeverities = [
     'operational',
     'degraded_performance',

@@ -1,71 +1,105 @@
 # AI Status Leaderboard
 
-A fully static, open-source leaderboard tracking the reliability of AI company products and services. Data is scraped from public status pages via GitHub Actions, stored as JSON in this repo, and visualised as an interactive GitHub Pages site. No backend, no database, no external services — everything lives here.
+A static, open-source leaderboard tracking the reliability of AI services. Incident data is scraped from public status pages every 6 hours via GitHub Actions, stored as JSON in this repo, and rendered as a GitHub Pages site. No backend, no database.
 
 **Live site:** `https://b3ngriffiths.github.io/ai-status-leaderboard`
 
----
-
-## How data is collected
-
-A GitHub Actions workflow runs every 6 hours and fetches incident data from each company's public Atlassian Statuspage API (`/api/v2/summary.json` and `/api/v2/incidents.json`). Results are merged into the existing JSON files and committed to the repo. **This is passive collection from self-reported status pages — it is not active uptime monitoring.**
-
-> ⚠️ **Self-reporting caveat:** All data comes from the companies' own status pages. Incidents that a company does not report (or under-reports) will not appear here. Uptime figures reflect what each company publicly acknowledges, not independently verified availability.
+> **Self-reporting caveat:** All data comes from companies' own status pages. Incidents that aren't publicly reported won't appear here. Uptime figures reflect what each company acknowledges, not independently verified availability.
 
 ---
 
-## How uptime is calculated
+## Architecture
 
 ```
-uptime % = (1 - total_downtime_minutes / period_minutes) × 100
-
-period_minutes:
-  7 days  = 10,080
-  30 days = 43,200
-  90 days = 129,600
+┌─────────────────────────────────────────────────────────────────┐
+│  GitHub Actions (every 6 hours)                                 │
+│                                                                 │
+│   scraper/index.ts                                              │
+│     ├── atlassian.ts   → /api/v2/summary.json + incidents.json  │
+│     ├── incident-io.ts → /api/widget + /api/v1/incidents        │
+│     ├── betterstack.ts → BetterStack Status API                 │
+│     └── feed.ts        → /history.atom (Atom/RSS feed)          │
+│                                                                 │
+│   Merges fresh incidents into existing JSON, commits & deploys  │
+└─────────────────────────────────────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────┐
+│  site/data/                 │
+│    companies.json           │  Company + product definitions
+│    incidents/               │
+│      openai.json            │  One file per company
+│      anthropic.json         │
+│      ...                    │
+└─────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────┐
+│  site/ (GitHub Pages)       │
+│    index.html  → leaderboard│
+│    company.html → detail    │
+│    app.js  ← all logic      │  Fetches JSON at runtime, renders
+└─────────────────────────────┘
 ```
 
-Only incidents whose `opened_at` falls within the selected period are counted. For ongoing incidents (no `resolved_at`), downtime accrues until the current time. Calculations happen in the browser at render time — no pre-computed uptime values are stored.
+## Data flow
+
+1. **Scrape** — each company's status page is fetched; raw incidents are normalised into a common `Incident` shape with `opened_at`, `resolved_at`, `raw_severity`, and `product_id`.
+2. **Merge** — fresh incidents are merged into the existing file: new ones are appended, resolved ones get their `resolved_at` stamped, mutable fields (`title`, `raw_severity`) are refreshed.
+3. **Commit** — changed JSON files are committed directly to `main` with `[skip ci]` to avoid triggering a TypeScript build.
+4. **Deploy** — GitHub Pages serves the `site/` directory. `app.js` fetches all JSON at page load and computes uptime, MTTR, and downtime entirely in the browser.
+
+Uptime is calculated as:
+
+```
+uptime % = (1 − total_downtime_minutes / period_minutes) × 100
+```
+
+Concurrent incidents are merged into non-overlapping intervals before summing to avoid double-counting. For "all time", the window is anchored to the oldest known incident, floored at 30 days.
+
+---
+
+## Supported status page types
+
+| `page_type` | Platform | How scraped |
+|---|---|---|
+| `atlassian` | Atlassian Statuspage | REST API v2 |
+| `incident_io` | incident.io | Widget API + paginated history |
+| `betterstack` | BetterStack | Status API with pagination |
+| `feed` | Atom feed | `/history.atom` parsed with regex |
+| `custom` | Anything else | Tracked in UI as "No data"; no scraper |
 
 ---
 
 ## Running locally
 
 ```bash
-# Install dependencies
 npm install
 
-# Discover component IDs for a status page (run this before first scrape)
+# Probe a status page to find component IDs
 npm run discover -- https://status.openai.com
-npm run discover -- https://status.anthropic.com
 
-# Run the scraper
+# Scrape all companies (writes to site/data/incidents/)
 npm run scrape
 
-# Dry run (no files written)
+# Dry run — no files written
 npm run scrape:dry
 
-# Validate data files
+# Full backfill — paginate entire incident history
+npm run scrape:backfill
+
+# Validate all data files
 npm run validate
 
-# Serve the site locally
-npm run dev
-# → http://localhost:3000
+# Serve the site
+npm run dev   # → http://localhost:3000
 ```
 
 ---
 
-## Adding a new company
+## Adding a company
 
-**1. Discover component IDs**
-
-```bash
-npm run discover -- https://status.COMPANY.com
-```
-
-This prints all component names and their IDs. Identify which components map to which products.
-
-**2. Add the company to `site/data/companies.json`**
+**1.** Add an entry to `site/data/companies.json`:
 
 ```json
 {
@@ -80,75 +114,55 @@ This prints all component names and their IDs. Identify which components map to 
       "id": "company-api",
       "name": "API",
       "category": "ai-api",
-      "component_ids": ["real-component-id-from-step-1"]
+      "component_ids": ["abc123"]
     }
   ]
 }
 ```
 
-**3. Create an empty incidents file**
+Run `npm run discover -- https://status.company.com` to find real component IDs.
+
+For companies where the whole status page maps to one product, use `"component_ids": [], "title_keywords": [], "rollup": true` — all incidents roll up to that product.
+
+For pages covering many services where you only want specific incidents (e.g. GitHub → Copilot only), set `"title_keywords": ["Copilot"]` on that product — unmatched incidents are dropped.
+
+**2.** Create a stub incidents file:
 
 ```bash
-cat > site/data/incidents/company-slug.json << 'EOF'
-{
-  "company_id": "company-slug",
-  "last_scraped": "1970-01-01T00:00:00Z",
-  "scrape_success": false,
-  "incidents": []
-}
-EOF
+echo '{"company_id":"company-slug","last_scraped":null,"scrape_success":false,"incidents":[]}' \
+  > site/data/incidents/company-slug.json
 ```
 
-**4. Run the scraper**
-
-```bash
-npm run scrape
-```
-
-**5. Validate**
-
-```bash
-npm run validate
-```
-
-**6. Open a PR** — the site updates automatically when merged to `main`.
+**3.** Run `npm run validate` — all checks must pass before opening a PR.
 
 ---
 
-## Data format
+## Data schema
 
-### `site/data/companies.json`
+### `companies.json` — product config
 
-| Field | Type | Description |
-|---|---|---|
-| `id` | string | Unique identifier (slug) |
-| `name` | string | Display name |
-| `status_page_url` | string | Root URL of the Atlassian Statuspage |
-| `page_type` | `"atlassian"` | Only Atlassian is supported currently |
-| `products[].id` | string | Unique product identifier |
-| `products[].category` | string | `ai-api` / `ai-chat` / `ai-code` / `ai-image` / `ai-other` |
-| `products[].component_ids` | string[] | Atlassian component IDs that map to this product |
+| Field | Description |
+|---|---|
+| `id` / `slug` | Unique identifier used in URLs and file names |
+| `page_type` | See table above |
+| `products[].category` | `ai-api` · `ai-chat` · `ai-code` · `ai-image` · `ai-other` |
+| `products[].component_ids` | Status page component IDs that belong to this product |
+| `products[].title_keywords` | Match incident titles (case-insensitive); empty array = catch-all |
+| `products[].rollup` | `true` → one record per incident regardless of component count |
+| `title_skip` | Incident title substrings to drop entirely (e.g. `"FedRAMP"`) |
 
-### `site/data/incidents/[company].json`
+### `incidents/[company].json` — scraped data
 
-| Field | Type | Description |
-|---|---|---|
-| `company_id` | string | Matches `companies.json` id |
-| `last_scraped` | ISO 8601 | Timestamp of last scrape attempt |
-| `scrape_success` | boolean | Whether the last scrape succeeded |
-| `incidents[].id` | string | `{atlassian_incident_id}-{component_id}` |
-| `incidents[].opened_at` | ISO 8601 | When the incident started |
-| `incidents[].resolved_at` | ISO 8601 \| null | Null if ongoing |
-| `incidents[].duration_minutes` | number \| null | Null if ongoing |
-| `incidents[].raw_severity` | string | As reported by the status page |
+| Field | Description |
+|---|---|
+| `incidents[].id` | `{incident_id}-{product_id}` — stable across scrapes |
+| `incidents[].opened_at` | ISO 8601 start time |
+| `incidents[].resolved_at` | ISO 8601 end time, or `null` if ongoing |
+| `incidents[].duration_minutes` | `null` if ongoing or timestamps are malformed |
+| `incidents[].raw_severity` | `degraded_performance` · `partial_outage` · `major_outage` · `operational` |
 
 ---
 
 ## Contributing
 
-1. Fork the repo
-2. Add a company following the steps above
-3. Run `npm run validate` — all checks must pass
-4. Open a PR with a brief description of what you added
-
-Issues and PRs welcome. Please don't add companies whose status pages aren't public.
+PRs welcome. Run `npm run validate` before submitting. Please only add companies with publicly accessible status pages.
