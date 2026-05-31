@@ -1,4 +1,4 @@
-export type PageType = 'atlassian' | 'custom'
+export type PageType = 'atlassian' | 'incident_io' | 'betterstack' | 'custom'
 export type IncidentSeverity =
   | 'operational'
   | 'degraded_performance'
@@ -17,6 +17,7 @@ export interface Product {
   category: ProductCategory
   component_ids: string[]
   rollup?: boolean
+  group_name?: string  // incident.io / BetterStack: match by parent section/group name
 }
 
 export interface Company {

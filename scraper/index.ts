@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import type { Company, CompanyIncidentFile, Incident, ScrapeResult } from './types'
 import { scrapeAtlassian } from './atlassian'
+import { scrapeIncidentIo } from './incident-io'
+import { scrapeBetterstack } from './betterstack'
 
 const DATA_DIR = path.join(__dirname, '..', 'site', 'data')
 const INCIDENTS_DIR = path.join(DATA_DIR, 'incidents')
@@ -63,9 +65,26 @@ function writeIncidents(data: CompanyIncidentFile): void {
 }
 
 async function scrapeCompany(company: Company): Promise<ScrapeResult> {
+  const { page_type } = company
+
+  if (page_type === 'custom') {
+    console.log(`⏭️  ${company.name}: skipped (page_type=custom, no scraper implemented)`)
+    return { company_id: company.id, success: false, new_incidents: 0, resolved_incidents: 0, error: `no scraper for page_type=${page_type}` }
+  }
+
   try {
     if (BACKFILL) console.log(`  📦 Backfilling ${company.name}…`)
-    const fresh = await scrapeAtlassian(company, BACKFILL)
+
+    let fresh: Incident[]
+    if (page_type === 'atlassian') {
+      fresh = await scrapeAtlassian(company, BACKFILL)
+    } else if (page_type === 'incident_io') {
+      fresh = await scrapeIncidentIo(company, BACKFILL)
+    } else if (page_type === 'betterstack') {
+      fresh = await scrapeBetterstack(company, BACKFILL)
+    } else {
+      throw new Error(`Unknown page_type: ${page_type}`)
+    }
     const existing = loadExisting(company.id)
     const { merged, newCount, resolvedCount } = mergeIncidents(
       existing.incidents,

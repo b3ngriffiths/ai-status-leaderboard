@@ -72,12 +72,12 @@ function main() {
   for (const company of companiesData.companies) {
     if (!company.id) fail('company missing id')
     if (!company.slug) fail(`${company.id}: missing slug`)
-    if (!['atlassian', 'custom'].includes(company.page_type))
+    if (!['atlassian', 'incident_io', 'betterstack', 'custom'].includes(company.page_type))
       fail(`${company.id}: invalid page_type`)
     for (const product of company.products) {
       if (!product.id) fail(`${company.id}: product missing id`)
-      if (!product.component_ids.length)
-        fail(`${company.id}/${product.id}: no component_ids`)
+      if (!product.component_ids.length && !product.group_name)
+        fail(`${company.id}/${product.id}: no component_ids and no group_name`)
       if (product.component_ids.includes('REPLACE_WITH_REAL_ID'))
         warn(`${company.id}/${product.id}: contains placeholder component_id (run Discover to get real IDs)`)
     }
