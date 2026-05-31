@@ -23,6 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+          cache: 'npm'
       - run: npm ci
       - run: npm run scrape
       - name: Commit updated data
@@ -31,7 +32,11 @@ jobs:
           git config user.email "bot@github-actions"
           git add site/data/
           git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git commit -m "data: scrape $(date -u '+%Y-%m-%d %H:%M') UTC"
+          git commit -m "data: scrape $(date -u '+%Y-%m-%d %H:%M') UTC [skip ci]"
           # Pull with rebase in case another run committed between our scrape and now
           git pull --rebase origin ${{ github.ref_name }}
           git push origin ${{ github.ref_name }}
+
+  deploy:
+    needs: scrape
+    uses: ./.github/workflows/deploy.yml
