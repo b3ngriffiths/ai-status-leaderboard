@@ -1,7 +1,7 @@
 {
   "company_id": "elevenlabs",
-  "last_scraped": "2026-05-31T17:12:31.467Z",
-  "scrape_success": true,
+  "last_scraped": "2026-05-31T17:21:10.435Z",
+  "scrape_success": false,
   "incidents": [
     {
       "id": "01KSQAMVB5HMHCFTGECZZB1PYP-elevenlabs-api",

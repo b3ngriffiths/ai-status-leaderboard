@@ -1,7 +1,7 @@
 {
   "company_id": "cohere",
-  "last_scraped": "2026-05-31T17:12:31.344Z",
-  "scrape_success": true,
+  "last_scraped": "2026-05-31T17:21:09.675Z",
+  "scrape_success": false,
   "incidents": [
     {
       "id": "01KPPFEB2PM2SV9VD1EMYS8X4K-cohere-api",
