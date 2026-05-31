@@ -1,6 +1,6 @@
 {
   "company_id": "perplexity",
-  "last_scraped": "2026-05-31T07:44:44.935Z",
+  "last_scraped": "2026-05-31T11:18:24.852Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -48,7 +48,7 @@
       "opened_at": "2025-12-05T09:06:41.352Z",
       "resolved_at": "2025-12-05T09:06:41.352Z",
       "duration_minutes": 0,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.perplexity.com/incident/cmisn4u30004czxetcottiflf"
     },
     {
@@ -84,7 +84,7 @@
       "opened_at": "2025-10-20T06:54:10.779Z",
       "resolved_at": "2025-10-20T06:54:10.798Z",
       "duration_minutes": 0,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.perplexity.com/incident/cmgys58bg00phtnwejry53dud"
     },
     {
@@ -96,7 +96,7 @@
       "opened_at": "2025-09-05T16:30:00.000Z",
       "resolved_at": "2025-09-05T17:25:07.314Z",
       "duration_minutes": 55,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.perplexity.com/incident/cmf74zs6j001y3rwly4wymq3c"
     },
     {
@@ -180,7 +180,7 @@
       "opened_at": "2025-03-28T16:03:00.000Z",
       "resolved_at": "2025-03-28T16:03:00.000Z",
       "duration_minutes": 0,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.perplexity.com/incident/cm8t22p39002dg69u0yxplqiq"
     },
     {
@@ -192,7 +192,7 @@
       "opened_at": "2025-03-28T10:03:00.000Z",
       "resolved_at": "2025-03-28T10:03:00.000Z",
       "duration_minutes": 0,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.perplexity.com/incident/cm8t2cwgg000rb2m32uc5jnal"
     },
     {

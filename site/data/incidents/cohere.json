@@ -1,6 +1,31 @@
 {
   "company_id": "cohere",
-  "last_scraped": null,
-  "scrape_success": false,
-  "incidents": []
+  "last_scraped": "2026-05-31T11:18:25.563Z",
+  "scrape_success": true,
+  "incidents": [
+    {
+      "id": "01KPPFEB2PM2SV9VD1EMYS8X4K-cohere-api",
+      "product_id": "cohere-api",
+      "component_id": "cohere-api",
+      "component_name": "API",
+      "title": "<![CDATA[Docs Platform Degraded Performance]]>",
+      "opened_at": "2026-04-20T22:28:56.134Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://status.cohere.com//incidents/01KPPFEB2PM2SV9VD1EMYS8X4K"
+    },
+    {
+      "id": "01KP45GATY2N5A4TF5Y5KPJ2QG-cohere-api",
+      "product_id": "cohere-api",
+      "component_id": "cohere-api",
+      "component_name": "API",
+      "title": "<![CDATA[Multiple Model Disruptions]]>",
+      "opened_at": "2026-04-13T21:00:44.184Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://status.cohere.com//incidents/01KP45GATY2N5A4TF5Y5KPJ2QG"
+    }
+  ]
 }

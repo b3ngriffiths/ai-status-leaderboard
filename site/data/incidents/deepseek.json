@@ -1,6 +1,6 @@
 {
   "company_id": "deepseek",
-  "last_scraped": "2026-05-31T07:44:44.757Z",
+  "last_scraped": "2026-05-31T11:18:24.769Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -36,7 +36,7 @@
       "opened_at": "2026-05-24T07:23:06.000Z",
       "resolved_at": null,
       "duration_minutes": null,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.deepseek.com/incidents/6480608319287"
     },
     {
@@ -60,7 +60,7 @@
       "opened_at": "2026-05-08T10:05:48.000Z",
       "resolved_at": "2026-05-08T10:05:48.000Z",
       "duration_minutes": 0,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.deepseek.com/incidents/6410630567287"
     },
     {
@@ -180,7 +180,7 @@
       "opened_at": "2026-03-10T08:10:56.000Z",
       "resolved_at": "2026-03-10T08:10:56.000Z",
       "duration_minutes": 0,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.deepseek.com/incidents/710098072344287"
     },
     {
@@ -192,7 +192,7 @@
       "opened_at": "2026-03-05T04:35:01.000Z",
       "resolved_at": "2026-03-05T04:35:01.000Z",
       "duration_minutes": 0,
-      "raw_severity": "degraded_performance",
+      "raw_severity": "partial_outage",
       "status_page_incident_url": "https://status.deepseek.com/incidents/780466816521287"
     }
   ]
