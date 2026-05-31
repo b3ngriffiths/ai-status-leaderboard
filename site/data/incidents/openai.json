@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-05-31T11:31:55.438Z",
+  "last_scraped": "2026-05-31T17:01:29.292Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -45,7 +45,7 @@
       "opened_at": "2026-05-28T20:46:17Z",
       "resolved_at": "2026-05-29T01:29:51Z",
       "duration_minutes": 284,
-      "raw_severity": "operational"
+      "raw_severity": "degraded_performance"
     },
     {
       "id": "01KSPYYC11CCY3KKXEK4E03CBG-openai-api",
@@ -155,7 +155,7 @@
       "opened_at": "2026-05-15T16:11:01Z",
       "resolved_at": "2026-05-17T00:15:05Z",
       "duration_minutes": 1924,
-      "raw_severity": "operational"
+      "raw_severity": "degraded_performance"
     },
     {
       "id": "01KRM4H2T37TNSS7BCSGXVS8RQ-codex",
@@ -166,7 +166,7 @@
       "opened_at": "2026-05-14T20:58:23Z",
       "resolved_at": "2026-05-14T21:28:20Z",
       "duration_minutes": 30,
-      "raw_severity": "operational"
+      "raw_severity": "degraded_performance"
     },
     {
       "id": "01KRHSDQP7DZPAVANG3R1RCNVW-chatgpt",

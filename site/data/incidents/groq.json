@@ -1,6 +1,282 @@
 {
   "company_id": "groq",
-  "last_scraped": null,
-  "scrape_success": false,
-  "incidents": []
+  "last_scraped": "2026-05-31T17:01:33.378Z",
+  "scrape_success": true,
+  "incidents": [
+    {
+      "id": "01KM32CYZ56PGADEJ94BTVWJH4-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "openai/gpt-oss-120b Performance Issue",
+      "opened_at": "2026-03-19T12:51:18Z",
+      "resolved_at": "2026-03-19T13:50:25Z",
+      "duration_minutes": 59,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KGVRTHAJMBC5F3M2KH4WX21C-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "meta-llama/llama-4-scout-17b-16e-instruct Degraded Performance",
+      "opened_at": "2026-02-07T10:02:11Z",
+      "resolved_at": "2026-02-07T11:34:59Z",
+      "duration_minutes": 93,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KGQFXHTZXMDX343SYCGZERYD-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "meta-llama/llama-4-scout-17b-16e-instruct Degraded Performance",
+      "opened_at": "2026-02-05T18:09:35Z",
+      "resolved_at": "2026-02-05T18:32:49Z",
+      "duration_minutes": 23,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KGPZHG23VN9WN5BW3P9B7XYQ-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "meta-llama/llama-4-scout-17b-16e-instruct Degraded Performance",
+      "opened_at": "2026-02-05T13:23:22Z",
+      "resolved_at": "2026-02-05T15:07:23Z",
+      "duration_minutes": 104,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KFY9JPGP9MXGF8Q302E1ZPRG-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "meta-llama/llama-4-scout-17b-16e-instruct Degraded Performance",
+      "opened_at": "2026-01-26T23:17:47Z",
+      "resolved_at": "2026-01-27T01:11:17Z",
+      "duration_minutes": 114,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KFQ5JHB7J3PN1FJRVCFJ60NR-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Data Center Failure Impacting Model Latency - SYD",
+      "opened_at": "2026-01-24T04:53:06Z",
+      "resolved_at": "2026-01-24T07:23:39Z",
+      "duration_minutes": 151,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KD99GZ8D8KKBW1TDDRP9D2KJ-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Model Performance or Availability Issue: llama-3.3-70b-versatile",
+      "opened_at": "2025-12-24T23:01:23Z",
+      "resolved_at": "2025-12-25T00:16:33Z",
+      "duration_minutes": 75,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KCNJCXJRRZB6WJE7A844VE3Q-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Data Center Failure Impacting Capacity - DMM1",
+      "opened_at": "2025-12-17T07:11:39Z",
+      "resolved_at": "2025-12-14T13:30:00Z",
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KBTGF16X8GQMQQB9Z5Z3Z1R4-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "meta-llama/llama-4-scout-17b-16e-instruct Degraded Performance",
+      "opened_at": "2025-12-06T18:58:22Z",
+      "resolved_at": "2025-12-06T20:23:49Z",
+      "duration_minutes": 85,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KBG270TN3DR6P2PKTPXNN09Z-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "meta-llama/llama-4-scout-17b-16e-instruct & groq/compound Degraded Performance",
+      "opened_at": "2025-12-02T17:36:55Z",
+      "resolved_at": "2025-12-02T20:02:31Z",
+      "duration_minutes": 146,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KABCZ1QN9SA5AYR73FZKVH46-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Console, Website, & API Availability Issues: Global Cloudflare Outage",
+      "opened_at": "2025-11-18T11:52:54Z",
+      "resolved_at": "2025-11-18T15:26:04Z",
+      "duration_minutes": 213,
+      "raw_severity": "partial_outage"
+    },
+    {
+      "id": "01K9ASV40Q6E0REQHZ0NWDDRKV-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Cloud API Degradation",
+      "opened_at": "2025-11-05T20:03:00Z",
+      "resolved_at": "2025-11-05T20:37:51Z",
+      "duration_minutes": 35,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K96A493K976D1XXJXVE1PTBG-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Model Performance Issue: llama-3.1-8b-instant",
+      "opened_at": "2025-11-04T02:11:25Z",
+      "resolved_at": "2025-11-04T02:47:59Z",
+      "duration_minutes": 37,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K869W285DXBXXGP8CCS2YTE1-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "openai/gpt-oss-120b Degraded Performance",
+      "opened_at": "2025-10-22T15:51:14Z",
+      "resolved_at": "2025-10-22T17:59:33Z",
+      "duration_minutes": 128,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K83NN6QVV96GKVPMNRMH1KC3-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "openai/gpt-oss-120b Degraded Performance",
+      "opened_at": "2025-10-21T15:19:29Z",
+      "resolved_at": "2025-10-21T17:12:36Z",
+      "duration_minutes": 113,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K7J99P12S0FVPMK1133H4PWK-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "meta-llama/llama-4-scout-17b-16e-instruct  & groq/compound Degraded Performance",
+      "opened_at": "2025-10-14T21:16:23Z",
+      "resolved_at": "2025-10-14T23:18:25Z",
+      "duration_minutes": 122,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K6XZD73A9X733YSGWEX1GC9T-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "  Llama-3.1-8b-instant model Degraded Performance",
+      "opened_at": "2025-10-06T23:58:45Z",
+      "resolved_at": "2025-10-07T00:48:04Z",
+      "duration_minutes": 49,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K6XDYJ0ZVK2DN64SXD0TVY09-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "llama-3.3-70b-versatile and llama-3.1-8b-instant Degraded Performance",
+      "opened_at": "2025-10-06T18:53:39Z",
+      "resolved_at": "2025-10-06T19:42:33Z",
+      "duration_minutes": 49,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K5D7HK6GG0ZM6FXB0CJFK5BE-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Degraded login via Vercel",
+      "opened_at": "2025-09-18T01:38:10Z",
+      "resolved_at": "2025-09-18T17:45:33Z",
+      "duration_minutes": 967,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K4T9C1ATHRC6ZYWF09DEZBWR-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated Latency on Search Tooling ",
+      "opened_at": "2025-09-10T17:04:31Z",
+      "resolved_at": "2025-09-10T17:45:00Z",
+      "duration_minutes": 40,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K4NJHZYYP2XG1DKRPWGMCGK1-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "llama-3.3-70b-versatile Performance Issue",
+      "opened_at": "2025-09-08T21:08:51Z",
+      "resolved_at": "2025-09-08T23:01:21Z",
+      "duration_minutes": 113,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K4CPRHXPY9MXXK40126KCXTC-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "moonshotai/kimi-k2-instruct Unavailable or Degraded Performance",
+      "opened_at": "2025-09-05T10:29:10Z",
+      "resolved_at": "2025-09-05T11:06:24Z",
+      "duration_minutes": 37,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K4B4P8XDJW1KRYGZ2RWJ6F40-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "me-central-1 Data Center Failure Impacting Capacity",
+      "opened_at": "2025-09-04T19:54:07Z",
+      "resolved_at": "2025-09-04T21:29:32Z",
+      "duration_minutes": 95,
+      "raw_severity": "partial_outage"
+    },
+    {
+      "id": "01K484T84K30D2T802S5ZM5GDE-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "API Errors Affecting Multiple Regions",
+      "opened_at": "2025-09-03T15:58:34Z",
+      "resolved_at": "2025-09-03T16:40:12Z",
+      "duration_minutes": 42,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01K3HMPMPX027M83KAEVC9V0V7-uncategorised",
+      "product_id": "groq-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Latency Issues Across Various Models",
+      "opened_at": "2025-08-25T22:13:41Z",
+      "resolved_at": "2025-08-25T23:42:50Z",
+      "duration_minutes": 89,
+      "raw_severity": "degraded_performance"
+    }
+  ]
 }
