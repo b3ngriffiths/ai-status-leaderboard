@@ -33,15 +33,19 @@ function linkHref(block: string): string | null {
 
 // Status pages render the incident's update log inside <content>, newest first.
 // A resolved incident's log contains a "Resolved" / "Completed" update.
-function isResolved(content: string): boolean {
-  return /<strong>\s*(resolved|completed)\s*<\/strong>/i.test(content)
+// DeepSeek also prefixes titles with [已恢复] / [已解决] / [Resolved].
+function isResolved(title: string, content: string): boolean {
+  if (/<strong>\s*(resolved|completed)\s*<\/strong>/i.test(content)) return true
+  // Chinese: 已恢复 = recovered, 已解决 = solved; also plain [Resolved]
+  if (/[【\[](已恢复|已解决|resolved)[】\]]/i.test(title)) return true
+  return false
 }
 
 function inferSeverity(text: string): IncidentSeverity {
   const t = text.toLowerCase()
   if (/major outage|major service outage/.test(t)) return 'major_outage'
-  if (/partial outage/.test(t)) return 'partial_outage'
-  if (/degraded|performance|elevated|latency|error/.test(t)) return 'degraded_performance'
+  if (/partial outage|unavailable|not available|service not available|\boutage\b/.test(t)) return 'partial_outage'
+  if (/degraded|performance|elevated|latency|error|abnormal/.test(t)) return 'degraded_performance'
   return 'degraded_performance'
 }
 
@@ -68,7 +72,7 @@ export function parseAtom(xml: string, company: Company): Incident[] {
     const content = decodeEntities(rawContent)
     if (isMaintenance(title, content)) continue
 
-    const resolved = isResolved(content)
+    const resolved = isResolved(title, content)
     const opened_at = new Date(published).toISOString()
     const resolved_at = resolved && updated ? new Date(updated).toISOString() : null
 
