@@ -38,7 +38,7 @@
       "name": "DeepSeek",
       "slug": "deepseek",
       "status_page_url": "https://status.deepseek.com",
-      "page_type": "betterstack",
+      "page_type": "feed",
       "logo_url": "https://logo.clearbit.com/deepseek.com",
       "products": [
         {
@@ -46,14 +46,14 @@
           "name": "API",
           "category": "ai-api",
           "component_ids": [],
-          "group_name": "API"
+          "title_keywords": []
         },
         {
           "id": "deepseek-chat",
-          "name": "DeepSeek Chat",
+          "name": "Web/App",
           "category": "ai-chat",
           "component_ids": [],
-          "group_name": "Chat"
+          "title_keywords": ["web", "app", "chat", "platform"]
         }
       ]
     },
@@ -62,22 +62,22 @@
       "name": "Perplexity",
       "slug": "perplexity",
       "status_page_url": "https://status.perplexity.com",
-      "page_type": "betterstack",
+      "page_type": "feed",
       "logo_url": "https://logo.clearbit.com/perplexity.ai",
       "products": [
+        {
+          "id": "perplexity-chat",
+          "name": "Search/App",
+          "category": "ai-chat",
+          "component_ids": [],
+          "title_keywords": []
+        },
         {
           "id": "perplexity-api",
           "name": "API",
           "category": "ai-api",
           "component_ids": [],
-          "group_name": "API"
-        },
-        {
-          "id": "perplexity-chat",
-          "name": "Perplexity Chat",
-          "category": "ai-chat",
-          "component_ids": [],
-          "group_name": "Perplexity"
+          "title_keywords": ["api", "sonar"]
         }
       ]
     },

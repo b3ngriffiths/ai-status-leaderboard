@@ -75,7 +75,7 @@ function main() {
   for (const company of companiesData.companies) {
     if (!company.id) fail('company missing id')
     if (!company.slug) fail(`${company.id}: missing slug`)
-    if (!['atlassian', 'incident_io', 'betterstack', 'custom'].includes(company.page_type))
+    if (!['atlassian', 'incident_io', 'betterstack', 'feed', 'custom'].includes(company.page_type))
       fail(`${company.id}: invalid page_type`)
     const titleRouted =
       !!company.title_skip?.length ||
