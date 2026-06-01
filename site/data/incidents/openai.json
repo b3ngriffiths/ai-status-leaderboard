@@ -1,8 +1,18 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-01T11:12:57.835Z",
+  "last_scraped": "2026-06-01T17:20:53.280Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KT204M76EYZYJX7WYG1B2QPH-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "Decreased ChatGPT availability for Free users",
+      "opened_at": "2026-06-01T16:26:44Z",
+      "duration_minutes": null,
+      "raw_severity": "partial_outage"
+    },
     {
       "id": "01KSSY9D28AM92BCDXRTS4CDKZ-chatgpt",
       "product_id": "chatgpt",
