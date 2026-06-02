@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-02T16:05:36.788Z",
+  "last_scraped": "2026-06-02T20:37:01.019Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "7f4dhrvj9ppt-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Degraded Performance for Agent Sessions",
+      "opened_at": "2026-06-02T18:02:36.572Z",
+      "resolved_at": "2026-06-02T18:42:01.416Z",
+      "duration_minutes": 39,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/6pstwhg2h9bf"
+    },
     {
       "id": "sl0gh26ml3g7-cursor",
       "product_id": "cursor",
