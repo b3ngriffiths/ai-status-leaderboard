@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-02T10:07:55.829Z",
+  "last_scraped": "2026-06-02T16:05:33.027Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KT43GBSRNH7HG9YE93GPNG63-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "Guest users are experiencing elevated error rate when using ChatGPT conversations.",
+      "opened_at": "2026-06-02T12:04:04Z",
+      "resolved_at": "2026-06-02T13:16:09Z",
+      "duration_minutes": 72,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KT204M76EYZYJX7WYG1B2QPH-chatgpt",
       "product_id": "chatgpt",

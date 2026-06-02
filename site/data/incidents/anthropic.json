@@ -1,6 +1,6 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-02T10:07:58.086Z",
+  "last_scraped": "2026-06-02T16:05:35.149Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -8,10 +8,10 @@
       "product_id": "claude-ai",
       "component_id": "rwppv331jlwc",
       "component_name": "claude.ai",
-      "title": "Elevated errors on Opus 4.6",
+      "title": "Elevated errors on multiple models",
       "opened_at": "2026-06-02T06:04:59.243Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-02T11:49:06.139Z",
+      "duration_minutes": 344,
       "raw_severity": "partial_outage",
       "status_page_incident_url": "https://stspg.io/j1r06qml3bvy"
     },
@@ -20,10 +20,10 @@
       "product_id": "claude-ai",
       "component_id": "0qbwn08sd68x",
       "component_name": "Claude Console (platform.claude.com)",
-      "title": "Elevated errors on Opus 4.6",
+      "title": "Elevated errors on multiple models",
       "opened_at": "2026-06-02T06:04:59.243Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-02T11:49:06.139Z",
+      "duration_minutes": 344,
       "raw_severity": "partial_outage",
       "status_page_incident_url": "https://stspg.io/j1r06qml3bvy"
     },
@@ -32,10 +32,10 @@
       "product_id": "anthropic-api",
       "component_id": "k8w3r06qmzrp",
       "component_name": "Claude API (api.anthropic.com)",
-      "title": "Elevated errors on Opus 4.6",
+      "title": "Elevated errors on multiple models",
       "opened_at": "2026-06-02T06:04:59.243Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-02T11:49:06.139Z",
+      "duration_minutes": 344,
       "raw_severity": "partial_outage",
       "status_page_incident_url": "https://stspg.io/j1r06qml3bvy"
     },
@@ -44,10 +44,10 @@
       "product_id": "claude-code",
       "component_id": "yyzkbfz2thpt",
       "component_name": "Claude Code",
-      "title": "Elevated errors on Opus 4.6",
+      "title": "Elevated errors on multiple models",
       "opened_at": "2026-06-02T06:04:59.243Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-02T11:49:06.139Z",
+      "duration_minutes": 344,
       "raw_severity": "partial_outage",
       "status_page_incident_url": "https://stspg.io/j1r06qml3bvy"
     },
