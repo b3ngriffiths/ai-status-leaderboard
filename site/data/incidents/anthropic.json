@@ -1,8 +1,68 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-03T02:55:44.126Z",
+  "last_scraped": "2026-06-03T10:45:06.756Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "thp2kyjx60qn-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated errors on Opus 4.7",
+      "opened_at": "2026-06-03T07:10:01.269Z",
+      "resolved_at": "2026-06-03T07:38:04.935Z",
+      "duration_minutes": 28,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/g64x0s4kk5bg"
+    },
+    {
+      "id": "thp2kyjx60qn-0qbwn08sd68x",
+      "product_id": "claude-ai",
+      "component_id": "0qbwn08sd68x",
+      "component_name": "Claude Console (platform.claude.com)",
+      "title": "Elevated errors on Opus 4.7",
+      "opened_at": "2026-06-03T07:10:01.269Z",
+      "resolved_at": "2026-06-03T07:38:04.935Z",
+      "duration_minutes": 28,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/g64x0s4kk5bg"
+    },
+    {
+      "id": "thp2kyjx60qn-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated errors on Opus 4.7",
+      "opened_at": "2026-06-03T07:10:01.269Z",
+      "resolved_at": "2026-06-03T07:38:04.935Z",
+      "duration_minutes": 28,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/g64x0s4kk5bg"
+    },
+    {
+      "id": "thp2kyjx60qn-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated errors on Opus 4.7",
+      "opened_at": "2026-06-03T07:10:01.269Z",
+      "resolved_at": "2026-06-03T07:38:04.935Z",
+      "duration_minutes": 28,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/g64x0s4kk5bg"
+    },
+    {
+      "id": "0w1blp7cngrr-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Issue affecting some Claude Code services",
+      "opened_at": "2026-06-03T04:17:04.989Z",
+      "resolved_at": "2026-06-03T07:36:48.555Z",
+      "duration_minutes": 200,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/26bl9ymsst7p"
+    },
     {
       "id": "zkr25thltwc9-rwppv331jlwc",
       "product_id": "claude-ai",
