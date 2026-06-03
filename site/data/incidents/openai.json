@@ -1,8 +1,30 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-02T20:36:56.555Z",
+  "last_scraped": "2026-06-03T02:55:42.435Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KT5B2V94YX1T1M88BVQHB58J-codex",
+      "product_id": "codex",
+      "component_id": "codex",
+      "component_name": "Codex",
+      "title": "codex-gpt-image-2-does-not-exist-errors",
+      "opened_at": "2026-06-02T23:35:44Z",
+      "resolved_at": "2026-06-03T00:13:15Z",
+      "duration_minutes": 38,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KT5AMWGKRTMQW2BAHD70PC4X-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "Elevated errors for ChatGPT Pro",
+      "opened_at": "2026-06-02T23:28:06Z",
+      "resolved_at": "2026-06-03T00:14:31Z",
+      "duration_minutes": 46,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KT43GBSRNH7HG9YE93GPNG63-chatgpt",
       "product_id": "chatgpt",
