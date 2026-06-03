@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-03T10:45:05.052Z",
+  "last_scraped": "2026-06-03T16:21:20.618Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,9 @@
       "component_name": "Codex",
       "title": "Elevated error rates on Codex, ChatGPT and Responses API",
       "opened_at": "2026-06-03T04:58:40Z",
-      "duration_minutes": null,
-      "raw_severity": "partial_outage"
+      "duration_minutes": 371,
+      "raw_severity": "partial_outage",
+      "resolved_at": "2026-06-03T11:09:42Z"
     },
     {
       "id": "01KT5B2V94YX1T1M88BVQHB58J-codex",
