@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-04T02:50:49.326Z",
+  "last_scraped": "2026-06-04T09:44:52.817Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KT890WC7YQYMX39GY5VG9QAB-codex",
+      "product_id": "codex",
+      "component_id": "codex",
+      "component_name": "Codex",
+      "title": "Increased latency for Codex compaction for a subset of users",
+      "opened_at": "2026-06-04T02:57:25Z",
+      "resolved_at": "2026-06-04T04:37:16Z",
+      "duration_minutes": 100,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KT5XJ5ATD6RMYP908WS69FVD-codex",
       "product_id": "codex",
