@@ -1,8 +1,20 @@
 {
   "company_id": "github",
-  "last_scraped": "2026-06-04T14:39:44.883Z",
+  "last_scraped": "2026-06-04T19:55:50.408Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "5h5lmbffp07c-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Copilot Code Review Failing",
+      "opened_at": "2026-06-04T18:02:54.000Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/jssh5k7mdbtp"
+    },
     {
       "id": "ykb44v068g8v-github-copilot",
       "product_id": "github-copilot",

@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-04T14:39:40.563Z",
+  "last_scraped": "2026-06-04T19:55:46.724Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KTA0V0N4KT7VV50DTJZ85XTA-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "Image API requests failing with 401s",
+      "opened_at": "2026-06-04T19:12:53Z",
+      "resolved_at": "2026-06-04T19:52:18Z",
+      "duration_minutes": 39,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KT890WC7YQYMX39GY5VG9QAB-codex",
       "product_id": "codex",
