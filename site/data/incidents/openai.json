@@ -1,8 +1,28 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-05T09:33:28.607Z",
+  "last_scraped": "2026-06-05T14:28:16.676Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KTC1ZHEQGEYJR6W372KNW3WF-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "Elevated error rates for Free users in conversations",
+      "opened_at": "2026-06-05T14:11:19Z",
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KTBZDS20E3PZ53DH2SCKXN49-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "Some users may experience issues accessing OpenAI accounts",
+      "opened_at": "2026-06-05T13:26:40Z",
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KTA0V0N4KT7VV50DTJZ85XTA-openai-api",
       "product_id": "openai-api",
