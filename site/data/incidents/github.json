@@ -1,6 +1,6 @@
 {
   "company_id": "github",
-  "last_scraped": "2026-06-04T19:55:50.408Z",
+  "last_scraped": "2026-06-05T02:37:56.281Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,8 @@
       "component_name": "Copilot",
       "title": "Copilot Code Review Failing",
       "opened_at": "2026-06-04T18:02:54.000Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-04T19:59:27.372Z",
+      "duration_minutes": 117,
       "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/jssh5k7mdbtp"
     },

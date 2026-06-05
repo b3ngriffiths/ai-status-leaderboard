@@ -1,8 +1,20 @@
 {
   "company_id": "perplexity",
-  "last_scraped": "2026-06-04T19:55:48.673Z",
+  "last_scraped": "2026-06-05T02:37:54.048Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "cmq08wkuw02waqmn6yt1kdgej-perplexity-chat",
+      "product_id": "perplexity-chat",
+      "component_id": "perplexity-chat",
+      "component_name": "Search/App",
+      "title": "Connector connectivity issues",
+      "opened_at": "2026-06-04T21:10:00.000Z",
+      "resolved_at": "2026-06-05T01:00:00.000Z",
+      "duration_minutes": 230,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://status.perplexity.com/incident/cmq08wkuw02waqmn6yt1kdgej"
+    },
     {
       "id": "cmow64ygu00nssas2uxewm3ur-perplexity-api",
       "product_id": "perplexity-api",
