@@ -1,8 +1,20 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-05T14:28:18.540Z",
+  "last_scraped": "2026-06-05T19:43:25.014Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "fprlnsvdnr2k-uncategorised",
+      "product_id": "anthropic-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "Elevated errors on many Claude models",
+      "opened_at": "2026-06-05T15:19:26.634Z",
+      "resolved_at": "2026-06-05T18:28:04.170Z",
+      "duration_minutes": 189,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/14frvys1dj2g"
+    },
     {
       "id": "thp2kyjx60qn-rwppv331jlwc",
       "product_id": "claude-ai",

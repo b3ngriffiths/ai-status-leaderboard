@@ -1,8 +1,30 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-05T14:28:16.676Z",
+  "last_scraped": "2026-06-05T19:43:23.493Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KTCF0M9HQ04JB48EXMMJVX5J-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "Voice mode availability impacted",
+      "opened_at": "2026-06-05T17:59:06Z",
+      "resolved_at": "2026-06-05T19:04:32Z",
+      "duration_minutes": 65,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KTC44AD7928NC4HHQWW9XE5F-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "Users unable to sign in using Microsoft personal accounts",
+      "opened_at": "2026-06-05T14:48:53Z",
+      "resolved_at": "2026-06-05T15:58:28Z",
+      "duration_minutes": 70,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KTC1ZHEQGEYJR6W372KNW3WF-chatgpt",
       "product_id": "chatgpt",
@@ -10,8 +32,9 @@
       "component_name": "ChatGPT",
       "title": "Elevated error rates for Free users in conversations",
       "opened_at": "2026-06-05T14:11:19Z",
-      "duration_minutes": null,
-      "raw_severity": "degraded_performance"
+      "duration_minutes": 86,
+      "raw_severity": "degraded_performance",
+      "resolved_at": "2026-06-05T15:37:16Z"
     },
     {
       "id": "01KTBZDS20E3PZ53DH2SCKXN49-openai-api",
