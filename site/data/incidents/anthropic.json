@@ -1,8 +1,56 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-06T08:25:23.983Z",
+  "last_scraped": "2026-06-06T13:11:43.080Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "b1gzqlnpxxxk-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Opus 4.8 degraded service",
+      "opened_at": "2026-06-06T09:27:59.685Z",
+      "resolved_at": "2026-06-06T10:14:41.534Z",
+      "duration_minutes": 47,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/qczg788px29n"
+    },
+    {
+      "id": "b1gzqlnpxxxk-0qbwn08sd68x",
+      "product_id": "claude-ai",
+      "component_id": "0qbwn08sd68x",
+      "component_name": "Claude Console (platform.claude.com)",
+      "title": "Opus 4.8 degraded service",
+      "opened_at": "2026-06-06T09:27:59.685Z",
+      "resolved_at": "2026-06-06T10:14:41.534Z",
+      "duration_minutes": 47,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/qczg788px29n"
+    },
+    {
+      "id": "b1gzqlnpxxxk-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Opus 4.8 degraded service",
+      "opened_at": "2026-06-06T09:27:59.685Z",
+      "resolved_at": "2026-06-06T10:14:41.534Z",
+      "duration_minutes": 47,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/qczg788px29n"
+    },
+    {
+      "id": "b1gzqlnpxxxk-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Opus 4.8 degraded service",
+      "opened_at": "2026-06-06T09:27:59.685Z",
+      "resolved_at": "2026-06-06T10:14:41.534Z",
+      "duration_minutes": 47,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/qczg788px29n"
+    },
     {
       "id": "fprlnsvdnr2k-uncategorised",
       "product_id": "anthropic-api",
