@@ -1,7 +1,7 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-06T13:11:44.825Z",
-  "scrape_success": true,
+  "last_scraped": "2026-06-06T19:07:41.320Z",
+  "scrape_success": false,
   "incidents": [
     {
       "id": "7f4dhrvj9ppt-cursor",
