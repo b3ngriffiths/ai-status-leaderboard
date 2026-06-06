@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-06T02:26:25.166Z",
+  "last_scraped": "2026-06-06T08:25:22.120Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -43,8 +43,9 @@
       "component_name": "API",
       "title": "Some users may experience issues accessing OpenAI accounts",
       "opened_at": "2026-06-05T13:26:40Z",
-      "duration_minutes": null,
-      "raw_severity": "degraded_performance"
+      "duration_minutes": 163,
+      "raw_severity": "degraded_performance",
+      "resolved_at": "2026-06-05T16:09:19Z"
     },
     {
       "id": "01KTA0V0N4KT7VV50DTJZ85XTA-openai-api",
