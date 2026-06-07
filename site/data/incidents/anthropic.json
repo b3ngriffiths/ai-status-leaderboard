@@ -1,8 +1,56 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-07T02:44:15.839Z",
+  "last_scraped": "2026-06-07T08:46:27.442Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "s4pq658bt69h-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Degraded performance for multiple models",
+      "opened_at": "2026-06-07T03:31:30.653Z",
+      "resolved_at": "2026-06-07T04:28:29.254Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/j020f82m0mg8"
+    },
+    {
+      "id": "s4pq658bt69h-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Degraded performance for multiple models",
+      "opened_at": "2026-06-07T03:31:30.653Z",
+      "resolved_at": "2026-06-07T04:28:29.254Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/j020f82m0mg8"
+    },
+    {
+      "id": "s4pq658bt69h-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Degraded performance for multiple models",
+      "opened_at": "2026-06-07T03:31:30.653Z",
+      "resolved_at": "2026-06-07T04:28:29.254Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/j020f82m0mg8"
+    },
+    {
+      "id": "s4pq658bt69h-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Degraded performance for multiple models",
+      "opened_at": "2026-06-07T03:31:30.653Z",
+      "resolved_at": "2026-06-07T04:28:29.254Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/j020f82m0mg8"
+    },
     {
       "id": "6ptd5skgmy3v-rwppv331jlwc",
       "product_id": "claude-ai",
