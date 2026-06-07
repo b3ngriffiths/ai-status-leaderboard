@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-07T13:24:40.580Z",
+  "last_scraped": "2026-06-07T19:08:31.711Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KTHA1XMAS77H4GMQBKSNPK71-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "Disruption in service availabilty for Free and Go users",
+      "opened_at": "2026-06-07T15:08:38Z",
+      "resolved_at": "2026-06-07T18:06:11Z",
+      "duration_minutes": 178,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KTCF0M9HQ04JB48EXMMJVX5J-openai-api",
       "product_id": "openai-api",
