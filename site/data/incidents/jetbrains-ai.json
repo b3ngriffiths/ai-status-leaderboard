@@ -1,6 +1,6 @@
 {
   "company_id": "jetbrains-ai",
-  "last_scraped": "2026-06-08T15:33:02.391Z",
+  "last_scraped": "2026-06-08T20:03:25.227Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,8 @@
       "component_name": "JetBrains AI",
       "title": "Auth & licensing service issues",
       "opened_at": "2026-06-08T09:39:29.831Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-08T17:43:29.296Z",
+      "duration_minutes": 484,
       "raw_severity": "degraded_performance",
       "status_page_incident_url": "https://stspg.io/rxqhp7k04nmt"
     },
