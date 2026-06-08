@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-07T19:08:31.711Z",
+  "last_scraped": "2026-06-08T02:47:36.538Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KTHRCXQCANBBY5JTGEQ1XTPK-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "Disruption in service availabilty for Go users",
+      "opened_at": "2026-06-07T19:19:19Z",
+      "resolved_at": "2026-06-07T19:25:47Z",
+      "duration_minutes": 6,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KTHA1XMAS77H4GMQBKSNPK71-openai-api",
       "product_id": "openai-api",
