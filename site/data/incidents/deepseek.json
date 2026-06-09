@@ -1,8 +1,20 @@
 {
   "company_id": "deepseek",
-  "last_scraped": "2026-06-09T02:14:31.497Z",
+  "last_scraped": "2026-06-09T09:26:33.725Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "urn:flashduty:change:6551550194287-deepseek-chat",
+      "product_id": "deepseek-chat",
+      "component_id": "deepseek-chat",
+      "component_name": "Web/App",
+      "title": "DeepSeek 网页 性能下降（DeepSeek Web Degraded Performance）",
+      "opened_at": "2026-06-09T08:47:07.000Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://status.deepseek.com/incidents/6551550194287"
+    },
     {
       "id": "urn:flashduty:change:6499101276287-deepseek-api",
       "product_id": "deepseek-api",
