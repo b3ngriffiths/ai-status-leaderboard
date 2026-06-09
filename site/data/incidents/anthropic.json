@@ -1,8 +1,20 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-09T14:30:24.576Z",
+  "last_scraped": "2026-06-09T19:58:06.922Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "wtcn4knnnfzc-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Fable not available in the model picker in Claude Code Desktop",
+      "opened_at": "2026-06-09T18:24:06.706Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/jb2jyj5prfmm"
+    },
     {
       "id": "cmsxwks3fzd9-rwppv331jlwc",
       "product_id": "claude-ai",
