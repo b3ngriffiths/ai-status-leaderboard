@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-08T20:03:24.668Z",
+  "last_scraped": "2026-06-09T02:15:04.908Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "5n05xzm7z3w9-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Investigating service degradation — Cloud Agents",
+      "opened_at": "2026-06-08T23:43:28.530Z",
+      "resolved_at": "2026-06-09T01:31:13.187Z",
+      "duration_minutes": 108,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/8sywws7t4lws"
+    },
     {
       "id": "7f4dhrvj9ppt-cursor",
       "product_id": "cursor",
