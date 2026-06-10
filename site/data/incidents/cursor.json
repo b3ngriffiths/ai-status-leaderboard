@@ -1,8 +1,32 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-10T14:56:55.093Z",
+  "last_scraped": "2026-06-10T20:14:59.724Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "ck7f7rhhnxp4-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Investigating service outage",
+      "opened_at": "2026-06-10T19:09:27.533Z",
+      "resolved_at": "2026-06-10T19:46:52.668Z",
+      "duration_minutes": 37,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/rv845m6hr10p"
+    },
+    {
+      "id": "xkfk32psrcnr-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Investigating service degradation — Cloud Agents",
+      "opened_at": "2026-06-10T15:49:04.000Z",
+      "resolved_at": "2026-06-10T18:14:10.519Z",
+      "duration_minutes": 145,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/t69nrzwgs5jy"
+    },
     {
       "id": "5n05xzm7z3w9-cursor",
       "product_id": "cursor",

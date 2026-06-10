@@ -1,6 +1,6 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-10T14:56:50.600Z",
+  "last_scraped": "2026-06-10T20:14:57.666Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,8 @@
       "component_name": "claude.ai",
       "title": "Elevated errors on Claude Haiku 4.5",
       "opened_at": "2026-06-10T13:06:47.552Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-10T17:21:33.620Z",
+      "duration_minutes": 255,
       "raw_severity": "degraded_performance",
       "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
     },
@@ -22,8 +22,8 @@
       "component_name": "Claude Cowork",
       "title": "Elevated errors on Claude Haiku 4.5",
       "opened_at": "2026-06-10T13:06:47.552Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-10T17:21:33.620Z",
+      "duration_minutes": 255,
       "raw_severity": "degraded_performance",
       "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
     },
@@ -34,8 +34,8 @@
       "component_name": "Claude API (api.anthropic.com)",
       "title": "Elevated errors on Claude Haiku 4.5",
       "opened_at": "2026-06-10T13:06:47.552Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-10T17:21:33.620Z",
+      "duration_minutes": 255,
       "raw_severity": "degraded_performance",
       "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
     },
@@ -46,8 +46,8 @@
       "component_name": "Claude Code",
       "title": "Elevated errors on Claude Haiku 4.5",
       "opened_at": "2026-06-10T13:06:47.552Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-06-10T17:21:33.620Z",
+      "duration_minutes": 255,
       "raw_severity": "degraded_performance",
       "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
     },
