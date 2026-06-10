@@ -1,8 +1,56 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-10T09:42:27.836Z",
+  "last_scraped": "2026-06-10T14:56:50.600Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "32lyxmplb5wz-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated errors on Claude Haiku 4.5",
+      "opened_at": "2026-06-10T13:06:47.552Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
+    },
+    {
+      "id": "32lyxmplb5wz-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Elevated errors on Claude Haiku 4.5",
+      "opened_at": "2026-06-10T13:06:47.552Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
+    },
+    {
+      "id": "32lyxmplb5wz-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated errors on Claude Haiku 4.5",
+      "opened_at": "2026-06-10T13:06:47.552Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
+    },
+    {
+      "id": "32lyxmplb5wz-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated errors on Claude Haiku 4.5",
+      "opened_at": "2026-06-10T13:06:47.552Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/hrq9j1llp424"
+    },
     {
       "id": "xwrtmlm3tnxf-rwppv331jlwc",
       "product_id": "claude-ai",
