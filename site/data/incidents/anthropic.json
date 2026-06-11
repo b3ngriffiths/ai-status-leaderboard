@@ -1,8 +1,56 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-11T10:09:25.318Z",
+  "last_scraped": "2026-06-11T15:38:36.847Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "sp7cf0cghqsk-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated errors on Claude Opus 4.6",
+      "opened_at": "2026-06-11T14:37:07.546Z",
+      "resolved_at": "2026-06-11T15:01:51.449Z",
+      "duration_minutes": 25,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/r2r8c96brb9n"
+    },
+    {
+      "id": "sp7cf0cghqsk-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Elevated errors on Claude Opus 4.6",
+      "opened_at": "2026-06-11T14:37:07.546Z",
+      "resolved_at": "2026-06-11T15:01:51.449Z",
+      "duration_minutes": 25,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/r2r8c96brb9n"
+    },
+    {
+      "id": "sp7cf0cghqsk-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated errors on Claude Opus 4.6",
+      "opened_at": "2026-06-11T14:37:07.546Z",
+      "resolved_at": "2026-06-11T15:01:51.449Z",
+      "duration_minutes": 25,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/r2r8c96brb9n"
+    },
+    {
+      "id": "sp7cf0cghqsk-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated errors on Claude Opus 4.6",
+      "opened_at": "2026-06-11T14:37:07.546Z",
+      "resolved_at": "2026-06-11T15:01:51.449Z",
+      "duration_minutes": 25,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/r2r8c96brb9n"
+    },
     {
       "id": "32lyxmplb5wz-rwppv331jlwc",
       "product_id": "claude-ai",
