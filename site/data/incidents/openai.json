@@ -1,8 +1,30 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-11T20:11:25.865Z",
+  "last_scraped": "2026-06-12T02:44:26.612Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KTWCER83NNKE698QXNXJG11M-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "Elevated 431 Errors",
+      "opened_at": "2026-06-11T22:22:14Z",
+      "resolved_at": "2026-06-12T00:47:57Z",
+      "duration_minutes": 146,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KTW7QY5W9DDYT0ETXX6MPVSY-codex",
+      "product_id": "codex",
+      "component_id": "codex",
+      "component_name": "Codex",
+      "title": "Elevated error rates for GPT 5.5 in Codex",
+      "opened_at": "2026-06-11T20:59:52Z",
+      "resolved_at": "2026-06-11T22:28:09Z",
+      "duration_minutes": 88,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KTVCFSN91M935M3MD3Z9W7C9-openai-api",
       "product_id": "openai-api",
