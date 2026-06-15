@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-15T17:04:31.983Z",
+  "last_scraped": "2026-06-15T20:47:27.263Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KV67B3HB2B6JKHAMHCCYS0KZ-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "OAuth Account Creation / Login Error",
+      "opened_at": "2026-06-15T18:05:16Z",
+      "resolved_at": "2026-06-15T20:12:26Z",
+      "duration_minutes": 127,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KTWCER83NNKE698QXNXJG11M-openai-api",
       "product_id": "openai-api",
