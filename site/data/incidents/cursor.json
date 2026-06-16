@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-16T16:26:38.639Z",
+  "last_scraped": "2026-06-16T20:41:12.957Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "73l6395lw69p-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Elevated errors across many models on Anthropic",
+      "opened_at": "2026-06-16T18:00:10.766Z",
+      "resolved_at": "2026-06-16T19:41:19.610Z",
+      "duration_minutes": 101,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/fpzxfn68znhc"
+    },
     {
       "id": "1fqzvthv5hxl-cursor",
       "product_id": "cursor",

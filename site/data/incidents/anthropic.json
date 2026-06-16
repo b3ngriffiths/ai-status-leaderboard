@@ -1,8 +1,80 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-16T16:26:36.662Z",
+  "last_scraped": "2026-06-16T20:41:11.127Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "8q88rrz9rjd0-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Opus 4.8 errors",
+      "opened_at": "2026-06-16T19:59:26.511Z",
+      "resolved_at": "2026-06-16T20:16:07.194Z",
+      "duration_minutes": 17,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/0qxpsl8p5gr7"
+    },
+    {
+      "id": "8q88rrz9rjd0-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Opus 4.8 errors",
+      "opened_at": "2026-06-16T19:59:26.511Z",
+      "resolved_at": "2026-06-16T20:16:07.194Z",
+      "duration_minutes": 17,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/0qxpsl8p5gr7"
+    },
+    {
+      "id": "xmhsglsz3h3w-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated errors across many models",
+      "opened_at": "2026-06-16T17:29:52.486Z",
+      "resolved_at": "2026-06-16T19:32:23.759Z",
+      "duration_minutes": 123,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/1tl45njm4dyl"
+    },
+    {
+      "id": "xmhsglsz3h3w-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Elevated errors across many models",
+      "opened_at": "2026-06-16T17:29:52.486Z",
+      "resolved_at": "2026-06-16T19:32:23.759Z",
+      "duration_minutes": 123,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/1tl45njm4dyl"
+    },
+    {
+      "id": "xmhsglsz3h3w-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated errors across many models",
+      "opened_at": "2026-06-16T17:29:52.486Z",
+      "resolved_at": "2026-06-16T19:32:23.759Z",
+      "duration_minutes": 123,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/1tl45njm4dyl"
+    },
+    {
+      "id": "xmhsglsz3h3w-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated errors across many models",
+      "opened_at": "2026-06-16T17:29:52.486Z",
+      "resolved_at": "2026-06-16T19:32:23.759Z",
+      "duration_minutes": 123,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/1tl45njm4dyl"
+    },
     {
       "id": "slm0mhv6r1pf-rwppv331jlwc",
       "product_id": "claude-ai",
