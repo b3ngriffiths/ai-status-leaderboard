@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-16T10:56:47.287Z",
+  "last_scraped": "2026-06-16T16:26:34.437Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,9 @@
       "component_name": "Codex",
       "title": "Codex \"Selected Model is at Capacity\" Error",
       "opened_at": "2026-06-16T10:32:11Z",
-      "duration_minutes": null,
-      "raw_severity": "degraded_performance"
+      "duration_minutes": 196,
+      "raw_severity": "degraded_performance",
+      "resolved_at": "2026-06-16T13:48:12Z"
     },
     {
       "id": "01KV6W1JX2T4T1455777Q1R2W5-codex",

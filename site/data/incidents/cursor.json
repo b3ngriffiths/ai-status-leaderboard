@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-16T10:56:51.721Z",
+  "last_scraped": "2026-06-16T16:26:38.639Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "1fqzvthv5hxl-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Investigating service degradation of the Auto model",
+      "opened_at": "2026-06-16T13:04:58.572Z",
+      "resolved_at": "2026-06-16T13:38:48.898Z",
+      "duration_minutes": 34,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/fpgp88mnxxl5"
+    },
     {
       "id": "ck7f7rhhnxp4-cursor",
       "product_id": "cursor",
