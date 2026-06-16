@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-15T20:47:27.263Z",
+  "last_scraped": "2026-06-16T02:54:09.838Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KV6W1JX2T4T1455777Q1R2W5-codex",
+      "product_id": "codex",
+      "component_id": "codex",
+      "component_name": "Codex",
+      "title": "Users may experience issue with Codex Cloud tasks",
+      "opened_at": "2026-06-16T00:07:04Z",
+      "resolved_at": "2026-06-16T00:55:57Z",
+      "duration_minutes": 49,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KV67B3HB2B6JKHAMHCCYS0KZ-openai-api",
       "product_id": "openai-api",
