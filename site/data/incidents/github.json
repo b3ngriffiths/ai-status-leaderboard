@@ -1,8 +1,20 @@
 {
   "company_id": "github",
-  "last_scraped": "2026-06-17T02:51:32.977Z",
+  "last_scraped": "2026-06-17T10:28:11.537Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "rfmjwng33vjf-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Incident with Copilot Availability",
+      "opened_at": "2026-06-17T03:50:22.910Z",
+      "resolved_at": "2026-06-17T04:44:07.904Z",
+      "duration_minutes": 54,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/nhj5lsy4gbzz"
+    },
     {
       "id": "5h5lmbffp07c-github-copilot",
       "product_id": "github-copilot",

@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-17T02:51:33.411Z",
+  "last_scraped": "2026-06-17T10:28:11.791Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "00k0vjsxgbk9-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Investigating service degradation — Composer 2.5",
+      "opened_at": "2026-06-17T09:28:20.303Z",
+      "resolved_at": "2026-06-17T10:20:09.656Z",
+      "duration_minutes": 52,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/7v04czdbqxzv"
+    },
     {
       "id": "73l6395lw69p-cursor",
       "product_id": "cursor",
