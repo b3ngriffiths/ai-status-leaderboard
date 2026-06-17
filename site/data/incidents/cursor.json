@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-17T14:54:54.926Z",
+  "last_scraped": "2026-06-17T20:02:17.594Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "d495545zkd58-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Degraded Performance for Composer 2.5",
+      "opened_at": "2026-06-17T16:29:19.590Z",
+      "resolved_at": "2026-06-17T17:19:45.887Z",
+      "duration_minutes": 50,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/pmtcxqh6g6z3"
+    },
     {
       "id": "00k0vjsxgbk9-cursor",
       "product_id": "cursor",

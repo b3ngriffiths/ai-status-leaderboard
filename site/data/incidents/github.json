@@ -1,8 +1,20 @@
 {
   "company_id": "github",
-  "last_scraped": "2026-06-17T14:54:54.532Z",
+  "last_scraped": "2026-06-17T20:02:17.072Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "5t81zk0vrk3z-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Disruption with Copilot next edit suggestions",
+      "opened_at": "2026-06-17T17:57:49.168Z",
+      "resolved_at": "2026-06-17T19:28:16.628Z",
+      "duration_minutes": 90,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/7tn8k5v6kzjj"
+    },
     {
       "id": "rfmjwng33vjf-github-copilot",
       "product_id": "github-copilot",

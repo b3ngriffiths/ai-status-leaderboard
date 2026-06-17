@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-17T14:54:50.153Z",
+  "last_scraped": "2026-06-17T20:02:13.017Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KVB9JAB1PP9GS4A6AZ52TT5Y-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "Errors with conversations on Android and iOS devices",
+      "opened_at": "2026-06-17T17:20:22Z",
+      "resolved_at": "2026-06-17T18:23:18Z",
+      "duration_minutes": 63,
+      "raw_severity": "partial_outage"
+    },
     {
       "id": "01KV7ZT644J4V94GSXMFPY2ANR-codex",
       "product_id": "codex",
