@@ -1,8 +1,20 @@
 {
   "company_id": "jetbrains-ai",
-  "last_scraped": "2026-06-17T10:28:12.384Z",
+  "last_scraped": "2026-06-17T14:54:55.687Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "9tvvnwsb2y93-jetbrains-ai",
+      "product_id": "jetbrains-ai",
+      "component_id": "jetbrains-ai",
+      "component_name": "JetBrains AI",
+      "title": "Raised error rates from NLP services",
+      "opened_at": "2026-06-17T10:48:56.167Z",
+      "resolved_at": "2026-06-17T12:02:43.627Z",
+      "duration_minutes": 74,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/y7fv2gc5pcb8"
+    },
     {
       "id": "ywf5c7rlxmhy-jetbrains-ai",
       "product_id": "jetbrains-ai",
