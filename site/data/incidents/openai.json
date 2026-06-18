@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-18T10:08:12.227Z",
+  "last_scraped": "2026-06-18T14:50:17.312Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,9 @@
       "component_name": "ChatGPT",
       "title": "SSO login errors for some ChatGPT Enterprise workspaces",
       "opened_at": "2026-06-18T08:55:52Z",
-      "duration_minutes": null,
-      "raw_severity": "degraded_performance"
+      "duration_minutes": 179,
+      "raw_severity": "degraded_performance",
+      "resolved_at": "2026-06-18T11:55:12Z"
     },
     {
       "id": "01KVCC8P5XTCA7H7W7E6A2MYJS-chatgpt",

@@ -1,7 +1,7 @@
 {
   "company_id": "github",
-  "last_scraped": "2026-06-18T10:08:16.276Z",
-  "scrape_success": true,
+  "last_scraped": "2026-06-18T14:50:21.196Z",
+  "scrape_success": false,
   "incidents": [
     {
       "id": "5t81zk0vrk3z-github-copilot",

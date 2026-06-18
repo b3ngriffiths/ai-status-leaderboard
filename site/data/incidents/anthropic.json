@@ -1,7 +1,7 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-18T10:08:14.496Z",
-  "scrape_success": true,
+  "last_scraped": "2026-06-18T14:50:20.157Z",
+  "scrape_success": false,
   "incidents": [
     {
       "id": "jlbvcpfwwq8z-rwppv331jlwc",
