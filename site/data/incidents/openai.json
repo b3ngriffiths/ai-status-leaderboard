@@ -1,8 +1,29 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-18T02:46:30.139Z",
+  "last_scraped": "2026-06-18T10:08:12.227Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KVCZ38K0RJZTSX7Y70RQMV2D-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "SSO login errors for some ChatGPT Enterprise workspaces",
+      "opened_at": "2026-06-18T08:55:52Z",
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance"
+    },
+    {
+      "id": "01KVCC8P5XTCA7H7W7E6A2MYJS-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "ChatGPT failing to load or save",
+      "opened_at": "2026-06-18T03:26:46Z",
+      "resolved_at": "2026-06-18T03:55:02Z",
+      "duration_minutes": 28,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KVB9JAB1PP9GS4A6AZ52TT5Y-chatgpt",
       "product_id": "chatgpt",

@@ -1,8 +1,20 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-18T02:46:36.677Z",
+  "last_scraped": "2026-06-18T10:08:14.496Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "jlbvcpfwwq8z-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Service disruption on Claude services",
+      "opened_at": "2026-06-18T07:41:30.336Z",
+      "resolved_at": "2026-06-18T08:19:22.116Z",
+      "duration_minutes": 38,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/0hjwxjxbpdfz"
+    },
     {
       "id": "s107yx224p9r-rwppv331jlwc",
       "product_id": "claude-ai",
