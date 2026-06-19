@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-19T03:31:40.144Z",
+  "last_scraped": "2026-06-19T10:14:41.146Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KVEZD06ZFM2CMDZQMQYDV9RK-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "chatgpt.com access issues",
+      "opened_at": "2026-06-19T03:39:40Z",
+      "resolved_at": "2026-06-19T05:23:27Z",
+      "duration_minutes": 104,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KVCZ38K0RJZTSX7Y70RQMV2D-chatgpt",
       "product_id": "chatgpt",
