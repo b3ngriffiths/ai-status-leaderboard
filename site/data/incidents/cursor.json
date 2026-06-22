@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-22T02:54:37.249Z",
+  "last_scraped": "2026-06-22T11:37:45.448Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "jygvg6pxzqvp-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Investigating service degradation — Automations",
+      "opened_at": "2026-06-22T04:44:12.430Z",
+      "resolved_at": "2026-06-22T04:53:19.975Z",
+      "duration_minutes": 9,
+      "raw_severity": "partial_outage",
+      "status_page_incident_url": "https://stspg.io/mg0wd7htkss8"
+    },
     {
       "id": "d495545zkd58-cursor",
       "product_id": "cursor",
