@@ -1,8 +1,68 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-23T02:29:48.862Z",
+  "last_scraped": "2026-06-23T09:24:11.003Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "2stpj60m2fr9-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated errors for Claude Opus 4.8",
+      "opened_at": "2026-06-23T06:28:56.197Z",
+      "resolved_at": "2026-06-23T08:45:58.019Z",
+      "duration_minutes": 137,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/7tlhvndrdpm9"
+    },
+    {
+      "id": "2stpj60m2fr9-0qbwn08sd68x",
+      "product_id": "claude-ai",
+      "component_id": "0qbwn08sd68x",
+      "component_name": "Claude Console (platform.claude.com)",
+      "title": "Elevated errors for Claude Opus 4.8",
+      "opened_at": "2026-06-23T06:28:56.197Z",
+      "resolved_at": "2026-06-23T08:45:58.019Z",
+      "duration_minutes": 137,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/7tlhvndrdpm9"
+    },
+    {
+      "id": "2stpj60m2fr9-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Elevated errors for Claude Opus 4.8",
+      "opened_at": "2026-06-23T06:28:56.197Z",
+      "resolved_at": "2026-06-23T08:45:58.019Z",
+      "duration_minutes": 137,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/7tlhvndrdpm9"
+    },
+    {
+      "id": "2stpj60m2fr9-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated errors for Claude Opus 4.8",
+      "opened_at": "2026-06-23T06:28:56.197Z",
+      "resolved_at": "2026-06-23T08:45:58.019Z",
+      "duration_minutes": 137,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/7tlhvndrdpm9"
+    },
+    {
+      "id": "2stpj60m2fr9-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated errors for Claude Opus 4.8",
+      "opened_at": "2026-06-23T06:28:56.197Z",
+      "resolved_at": "2026-06-23T08:45:58.019Z",
+      "duration_minutes": 137,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/7tlhvndrdpm9"
+    },
     {
       "id": "bbcpk0t2cj4p-rwppv331jlwc",
       "product_id": "claude-ai",
