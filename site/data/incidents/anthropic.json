@@ -1,8 +1,80 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-23T14:30:58.508Z",
-  "scrape_success": false,
+  "last_scraped": "2026-06-23T19:51:14.022Z",
+  "scrape_success": true,
   "incidents": [
+    {
+      "id": "18bq2kw867g5-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Claude.ai is experiencing elevated error rates",
+      "opened_at": "2026-06-23T18:24:12.291Z",
+      "resolved_at": "2026-06-23T18:32:57.379Z",
+      "duration_minutes": 9,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/hl3355csbyxv"
+    },
+    {
+      "id": "jbhf20wjmzrf-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated error rate across multiple models",
+      "opened_at": "2026-06-23T14:19:06.033Z",
+      "resolved_at": "2026-06-23T16:44:28.022Z",
+      "duration_minutes": 145,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/kx1ygc7qfvx1"
+    },
+    {
+      "id": "jbhf20wjmzrf-0qbwn08sd68x",
+      "product_id": "claude-ai",
+      "component_id": "0qbwn08sd68x",
+      "component_name": "Claude Console (platform.claude.com)",
+      "title": "Elevated error rate across multiple models",
+      "opened_at": "2026-06-23T14:19:06.033Z",
+      "resolved_at": "2026-06-23T16:44:28.022Z",
+      "duration_minutes": 145,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/kx1ygc7qfvx1"
+    },
+    {
+      "id": "jbhf20wjmzrf-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Elevated error rate across multiple models",
+      "opened_at": "2026-06-23T14:19:06.033Z",
+      "resolved_at": "2026-06-23T16:44:28.022Z",
+      "duration_minutes": 145,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/kx1ygc7qfvx1"
+    },
+    {
+      "id": "jbhf20wjmzrf-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated error rate across multiple models",
+      "opened_at": "2026-06-23T14:19:06.033Z",
+      "resolved_at": "2026-06-23T16:44:28.022Z",
+      "duration_minutes": 145,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/kx1ygc7qfvx1"
+    },
+    {
+      "id": "jbhf20wjmzrf-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated error rate across multiple models",
+      "opened_at": "2026-06-23T14:19:06.033Z",
+      "resolved_at": "2026-06-23T16:44:28.022Z",
+      "duration_minutes": 145,
+      "raw_severity": "major_outage",
+      "status_page_incident_url": "https://stspg.io/kx1ygc7qfvx1"
+    },
     {
       "id": "2stpj60m2fr9-rwppv331jlwc",
       "product_id": "claude-ai",
@@ -876,7 +948,7 @@
       "opened_at": "2026-06-13T00:50:43.835Z",
       "resolved_at": null,
       "duration_minutes": null,
-      "raw_severity": "partial_outage",
+      "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
     {
@@ -888,7 +960,7 @@
       "opened_at": "2026-06-13T00:50:43.835Z",
       "resolved_at": null,
       "duration_minutes": null,
-      "raw_severity": "partial_outage",
+      "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
     {
@@ -900,7 +972,7 @@
       "opened_at": "2026-06-13T00:50:43.835Z",
       "resolved_at": null,
       "duration_minutes": null,
-      "raw_severity": "partial_outage",
+      "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
     {
@@ -912,7 +984,7 @@
       "opened_at": "2026-06-13T00:50:43.835Z",
       "resolved_at": null,
       "duration_minutes": null,
-      "raw_severity": "partial_outage",
+      "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
     {

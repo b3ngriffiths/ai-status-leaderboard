@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-23T14:30:26.763Z",
+  "last_scraped": "2026-06-23T19:51:12.782Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,9 @@
       "component_name": "ChatGPT",
       "title": "Users may experience elevated errors in ChatGPT uploading and downloading files ",
       "opened_at": "2026-06-23T14:24:16Z",
-      "duration_minutes": null,
-      "raw_severity": "partial_outage"
+      "duration_minutes": 134,
+      "raw_severity": "partial_outage",
+      "resolved_at": "2026-06-23T16:38:19Z"
     },
     {
       "id": "01KVEZD06ZFM2CMDZQMQYDV9RK-chatgpt",

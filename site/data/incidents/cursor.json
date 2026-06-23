@@ -1,8 +1,20 @@
 {
   "company_id": "cursor",
-  "last_scraped": "2026-06-23T14:31:57.109Z",
-  "scrape_success": false,
+  "last_scraped": "2026-06-23T19:51:15.582Z",
+  "scrape_success": true,
   "incidents": [
+    {
+      "id": "yfdwf8w91gqc-cursor",
+      "product_id": "cursor",
+      "component_id": "cursor",
+      "component_name": "Cursor",
+      "title": "Elevated errors across Anthropic models",
+      "opened_at": "2026-06-23T14:26:14.720Z",
+      "resolved_at": "2026-06-23T16:47:03.408Z",
+      "duration_minutes": 141,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/s022bwcp1253"
+    },
     {
       "id": "jygvg6pxzqvp-cursor",
       "product_id": "cursor",
