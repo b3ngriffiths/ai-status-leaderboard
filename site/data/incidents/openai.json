@@ -1,8 +1,19 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-24T02:30:53.643Z",
+  "last_scraped": "2026-06-24T08:54:26.500Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KVW3CQQ51SWCV4A1SWA6ATVM-openai-api",
+      "product_id": "openai-api",
+      "component_id": "openai-api",
+      "component_name": "API",
+      "title": "gpt-4o-mini high error rate",
+      "opened_at": "2026-06-24T05:59:33Z",
+      "resolved_at": "2026-06-24T06:07:32Z",
+      "duration_minutes": 8,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KVTDW6E1PXBTY2A9XEBT4MY4-chatgpt",
       "product_id": "chatgpt",
