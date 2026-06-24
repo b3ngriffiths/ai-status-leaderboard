@@ -1,8 +1,68 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-24T08:54:28.806Z",
+  "last_scraped": "2026-06-24T14:09:43.918Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "8b0rggdfh1hv-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated error rate on Claude Opus 4.8",
+      "opened_at": "2026-06-24T13:16:17.545Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/wnw8wdn9sfwm"
+    },
+    {
+      "id": "8b0rggdfh1hv-0qbwn08sd68x",
+      "product_id": "claude-ai",
+      "component_id": "0qbwn08sd68x",
+      "component_name": "Claude Console (platform.claude.com)",
+      "title": "Elevated error rate on Claude Opus 4.8",
+      "opened_at": "2026-06-24T13:16:17.545Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/wnw8wdn9sfwm"
+    },
+    {
+      "id": "8b0rggdfh1hv-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Elevated error rate on Claude Opus 4.8",
+      "opened_at": "2026-06-24T13:16:17.545Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/wnw8wdn9sfwm"
+    },
+    {
+      "id": "8b0rggdfh1hv-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated error rate on Claude Opus 4.8",
+      "opened_at": "2026-06-24T13:16:17.545Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/wnw8wdn9sfwm"
+    },
+    {
+      "id": "8b0rggdfh1hv-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated error rate on Claude Opus 4.8",
+      "opened_at": "2026-06-24T13:16:17.545Z",
+      "resolved_at": null,
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/wnw8wdn9sfwm"
+    },
     {
       "id": "18bq2kw867g5-rwppv331jlwc",
       "product_id": "claude-ai",
