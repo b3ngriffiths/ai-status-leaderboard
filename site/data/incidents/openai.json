@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-25T08:49:23.580Z",
+  "last_scraped": "2026-06-25T14:06:51.763Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,9 @@
       "component_name": "Codex",
       "title": "Users may encounter issues using access token with Codex",
       "opened_at": "2026-06-25T05:51:27Z",
-      "duration_minutes": null,
-      "raw_severity": "degraded_performance"
+      "duration_minutes": 312,
+      "raw_severity": "degraded_performance",
+      "resolved_at": "2026-06-25T11:03:38Z"
     },
     {
       "id": "01KVW3CQQ51SWCV4A1SWA6ATVM-openai-api",
