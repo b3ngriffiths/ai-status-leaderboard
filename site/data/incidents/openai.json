@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-25T19:46:48.588Z",
+  "last_scraped": "2026-06-26T02:34:51.792Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -10,8 +10,9 @@
       "component_name": "API",
       "title": "Small Number of Users Have Incorrectly Cancelled Subscription",
       "opened_at": "2026-06-25T16:02:50Z",
-      "duration_minutes": null,
-      "raw_severity": "degraded_performance"
+      "duration_minutes": 615,
+      "raw_severity": "degraded_performance",
+      "resolved_at": "2026-06-26T02:18:06Z"
     },
     {
       "id": "01KVYNAMMJ7AMF94YBECG6JG6Q-codex",
