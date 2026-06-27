@@ -1,8 +1,20 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-27T13:14:21.412Z",
+  "last_scraped": "2026-06-27T19:05:55.970Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "9284yk6xxd0h-uncategorised",
+      "product_id": "anthropic-api",
+      "component_id": "uncategorised",
+      "component_name": "Uncategorised",
+      "title": "elevated errors on Opus 48",
+      "opened_at": "2026-06-27T18:00:00.000Z",
+      "resolved_at": "2026-06-27T18:00:00.000Z",
+      "duration_minutes": 0,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/86p1g659mdnm"
+    },
     {
       "id": "wkzf38t1yh8z-uncategorised",
       "product_id": "anthropic-api",
