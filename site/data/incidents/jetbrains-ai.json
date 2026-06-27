@@ -1,8 +1,20 @@
 {
   "company_id": "jetbrains-ai",
-  "last_scraped": "2026-06-26T19:29:11.523Z",
+  "last_scraped": "2026-06-27T02:28:14.080Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "ptmmqdhfjmgp-jetbrains-ai",
+      "product_id": "jetbrains-ai",
+      "component_id": "jetbrains-ai",
+      "component_name": "JetBrains AI",
+      "title": "Degraded performance for Gemini models",
+      "opened_at": "2026-06-26T20:06:44.636Z",
+      "resolved_at": "2026-06-26T20:48:47.792Z",
+      "duration_minutes": 42,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/v33w7hy8ydkd"
+    },
     {
       "id": "9tvvnwsb2y93-jetbrains-ai",
       "product_id": "jetbrains-ai",
