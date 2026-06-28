@@ -1,8 +1,18 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-27T19:05:53.504Z",
+  "last_scraped": "2026-06-28T02:40:36.092Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "01KW5HJAH5X1A2V62HP4ZST1V7-chatgpt",
+      "product_id": "chatgpt",
+      "component_id": "chatgpt",
+      "component_name": "ChatGPT",
+      "title": "Issues with ChatGPT Windows desktop app",
+      "opened_at": "2026-06-27T22:00:26Z",
+      "duration_minutes": null,
+      "raw_severity": "degraded_performance"
+    },
     {
       "id": "01KW2E6W0503W4NXJNCVAG8V6T-codex",
       "product_id": "codex",
