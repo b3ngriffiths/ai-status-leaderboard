@@ -1,7 +1,7 @@
 {
   "company_id": "jetbrains-ai",
-  "last_scraped": "2026-06-29T15:32:40.288Z",
-  "scrape_success": true,
+  "last_scraped": "2026-06-29T19:44:56.883Z",
+  "scrape_success": false,
   "incidents": [
     {
       "id": "ptmmqdhfjmgp-jetbrains-ai",

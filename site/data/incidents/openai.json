@@ -1,6 +1,6 @@
 {
   "company_id": "openai",
-  "last_scraped": "2026-06-29T15:32:35.816Z",
+  "last_scraped": "2026-06-29T19:44:53.859Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -21,8 +21,9 @@
       "component_name": "Codex",
       "title": "Codex Usage Limits Depleting Faster Than Expected",
       "opened_at": "2026-06-26T17:04:02Z",
-      "duration_minutes": null,
-      "raw_severity": "degraded_performance"
+      "duration_minutes": 4323,
+      "raw_severity": "degraded_performance",
+      "resolved_at": "2026-06-29T17:06:33Z"
     },
     {
       "id": "01KVZRA3Z551H993JHJ9P2TW9E-openai-api",
