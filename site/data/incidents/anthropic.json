@@ -1,8 +1,20 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-29T10:25:39.737Z",
+  "last_scraped": "2026-06-29T15:32:37.800Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "lxpx271gkx7p-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated errors on Opus 4.5",
+      "opened_at": "2026-06-29T13:35:42.801Z",
+      "resolved_at": "2026-06-29T14:27:35.715Z",
+      "duration_minutes": 52,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/t354swgk93v0"
+    },
     {
       "id": "9284yk6xxd0h-uncategorised",
       "product_id": "anthropic-api",
