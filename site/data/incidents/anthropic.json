@@ -1,8 +1,80 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-06-30T13:59:53.404Z",
+  "last_scraped": "2026-06-30T19:44:04.806Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "7ykkywg6yln4-rwppv331jlwc",
+      "product_id": "claude-ai",
+      "component_id": "rwppv331jlwc",
+      "component_name": "claude.ai",
+      "title": "Elevated error rates on Opus 4.8",
+      "opened_at": "2026-06-30T14:31:04.516Z",
+      "resolved_at": "2026-06-30T15:28:26.509Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/f2wj8x9fk5c5"
+    },
+    {
+      "id": "7ykkywg6yln4-0qbwn08sd68x",
+      "product_id": "claude-ai",
+      "component_id": "0qbwn08sd68x",
+      "component_name": "Claude Console (platform.claude.com)",
+      "title": "Elevated error rates on Opus 4.8",
+      "opened_at": "2026-06-30T14:31:04.516Z",
+      "resolved_at": "2026-06-30T15:28:26.509Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/f2wj8x9fk5c5"
+    },
+    {
+      "id": "7ykkywg6yln4-bpp5gb3hpjcl",
+      "product_id": "claude-ai",
+      "component_id": "bpp5gb3hpjcl",
+      "component_name": "Claude Cowork",
+      "title": "Elevated error rates on Opus 4.8",
+      "opened_at": "2026-06-30T14:31:04.516Z",
+      "resolved_at": "2026-06-30T15:28:26.509Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/f2wj8x9fk5c5"
+    },
+    {
+      "id": "7ykkywg6yln4-k8w3r06qmzrp",
+      "product_id": "anthropic-api",
+      "component_id": "k8w3r06qmzrp",
+      "component_name": "Claude API (api.anthropic.com)",
+      "title": "Elevated error rates on Opus 4.8",
+      "opened_at": "2026-06-30T14:31:04.516Z",
+      "resolved_at": "2026-06-30T15:28:26.509Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/f2wj8x9fk5c5"
+    },
+    {
+      "id": "7ykkywg6yln4-0scnb50nvy53",
+      "product_id": "anthropic-api",
+      "component_id": "0scnb50nvy53",
+      "component_name": "Claude for Government",
+      "title": "Elevated error rates on Opus 4.8",
+      "opened_at": "2026-06-30T14:31:04.516Z",
+      "resolved_at": "2026-06-30T15:28:26.509Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/f2wj8x9fk5c5"
+    },
+    {
+      "id": "7ykkywg6yln4-yyzkbfz2thpt",
+      "product_id": "claude-code",
+      "component_id": "yyzkbfz2thpt",
+      "component_name": "Claude Code",
+      "title": "Elevated error rates on Opus 4.8",
+      "opened_at": "2026-06-30T14:31:04.516Z",
+      "resolved_at": "2026-06-30T15:28:26.509Z",
+      "duration_minutes": 57,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/f2wj8x9fk5c5"
+    },
     {
       "id": "lxpx271gkx7p-k8w3r06qmzrp",
       "product_id": "anthropic-api",
