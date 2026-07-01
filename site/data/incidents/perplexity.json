@@ -1,8 +1,20 @@
 {
   "company_id": "perplexity",
-  "last_scraped": "2026-06-30T19:44:04.430Z",
+  "last_scraped": "2026-07-01T02:41:46.317Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "cmr18mqib01bn0zqm49b8h3pv-perplexity-chat",
+      "product_id": "perplexity-chat",
+      "component_id": "perplexity-chat",
+      "component_name": "Search/App",
+      "title": "Computer Sandbox Issue",
+      "opened_at": "2026-06-30T21:39:00.000Z",
+      "resolved_at": "2026-06-30T21:39:00.000Z",
+      "duration_minutes": 0,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://status.perplexity.com/incident/cmr18mqib01bn0zqm49b8h3pv"
+    },
     {
       "id": "cmq08wkuw02waqmn6yt1kdgej-perplexity-chat",
       "product_id": "perplexity-chat",
