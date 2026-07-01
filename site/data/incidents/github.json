@@ -1,8 +1,20 @@
 {
   "company_id": "github",
-  "last_scraped": "2026-07-01T09:31:48.396Z",
+  "last_scraped": "2026-07-01T14:12:24.206Z",
   "scrape_success": true,
   "incidents": [
+    {
+      "id": "rl7f90w0n0gq-github-copilot",
+      "product_id": "github-copilot",
+      "component_id": "github-copilot",
+      "component_name": "Copilot",
+      "title": "Delays in copilot budget limits resets for some users",
+      "opened_at": "2026-07-01T10:51:33.331Z",
+      "resolved_at": "2026-07-01T13:26:06.678Z",
+      "duration_minutes": 155,
+      "raw_severity": "degraded_performance",
+      "status_page_incident_url": "https://stspg.io/jy3yhfvwxpjh"
+    },
     {
       "id": "5t81zk0vrk3z-github-copilot",
       "product_id": "github-copilot",
