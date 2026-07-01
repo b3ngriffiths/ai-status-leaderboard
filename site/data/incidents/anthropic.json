@@ -1,6 +1,6 @@
 {
   "company_id": "anthropic",
-  "last_scraped": "2026-07-01T14:12:22.865Z",
+  "last_scraped": "2026-07-01T19:40:57.760Z",
   "scrape_success": true,
   "incidents": [
     {
@@ -1114,8 +1114,8 @@
       "component_name": "claude.ai",
       "title": "We’ve suspended access to Claude Mythos 5 and Claude Fable 5",
       "opened_at": "2026-06-13T00:50:43.835Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-07-01T19:26:26.285Z",
+      "duration_minutes": 27036,
       "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
@@ -1126,8 +1126,8 @@
       "component_name": "Claude Cowork",
       "title": "We’ve suspended access to Claude Mythos 5 and Claude Fable 5",
       "opened_at": "2026-06-13T00:50:43.835Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-07-01T19:26:26.285Z",
+      "duration_minutes": 27036,
       "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
@@ -1138,8 +1138,8 @@
       "component_name": "Claude API (api.anthropic.com)",
       "title": "We’ve suspended access to Claude Mythos 5 and Claude Fable 5",
       "opened_at": "2026-06-13T00:50:43.835Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-07-01T19:26:26.285Z",
+      "duration_minutes": 27036,
       "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
@@ -1150,8 +1150,8 @@
       "component_name": "Claude Code",
       "title": "We’ve suspended access to Claude Mythos 5 and Claude Fable 5",
       "opened_at": "2026-06-13T00:50:43.835Z",
-      "resolved_at": null,
-      "duration_minutes": null,
+      "resolved_at": "2026-07-01T19:26:26.285Z",
+      "duration_minutes": 27036,
       "raw_severity": "major_outage",
       "status_page_incident_url": "https://stspg.io/kqx0j625mrgv"
     },
